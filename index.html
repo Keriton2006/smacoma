@@ -1,1 +1,145 @@
+                    modal.style.display = "flex";
+                });
+            });
 
+            const modal = document.getElementById("imageModal");
+            const modalClose = document.getElementById("modalClose");
+
+            modalClose.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) modal.style.display = "none";
+            });
+
+            // Headmistress Message Animation
+            const headmistressMessage = document.getElementById("headmistressMessage");
+            const fullText = "Greetings to all our students, parents, and visitors! At St. Margaret College Makerere, established in 1954, we pride ourselves on fostering a community where academic excellence meets personal growth. As we step into 2025, we’re introducing enhanced digital learning tools, a new arts center, and expanded sports facilities to enrich our students’ experiences. Join us in shaping a bright future!";
+            
+            function typeWriter(text, element, speed = 50) {
+                let i = 0;
+                element.textContent = "";
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                const observer = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting && i === 0) {
+                        type();
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.5 });
+                observer.observe(element);
+            }
+
+            typeWriter(fullText, headmistressMessage);
+
+            const chatbotContainer = document.querySelector(".chatbot-container");
+            const openChatbot = document.getElementById("openChatbot");
+            const closeChatbot = document.getElementById("closeChatbot");
+            const chatMessages = document.getElementById("chatMessages");
+            const chatInput = document.getElementById("chatInput");
+            const sendMessage = document.getElementById("sendMessage");
+
+            openChatbot.addEventListener("click", () => {
+                chatbotContainer.classList.add("active");
+                openChatbot.style.opacity = "0";
+            });
+
+            closeChatbot.addEventListener("click", () => {
+                chatbotContainer.classList.remove("active");
+                setTimeout(() => {
+                    openChatbot.style.opacity = "1";
+                }, 300);
+            });
+
+            const responses = {
+                "hi": "Hey there! I’m Keriton, a student bot at SMACOMA. How can I assist you?",
+                "hello": "Hi! I’m Keriton, here to guide you through St. Margaret College Makerere. What’s up?",
+                "about": "SMACOMA, founded in 1954, is all about excellence and growth. Want details on our history or mission?",
+                "history": "Since 1954, SMACOMA has been a leader in education, mixing tradition with modern vibes right here in Makerere.",
+                "mission": "We aim to spark curiosity, build leaders, and serve the community through top-notch education.",
+                "academics": "We’ve got STEM, Arts, Commerce, and tons of clubs. What subject or activity are you into?",
+                "admissions": "2025-2026 admissions are open! Apply online or drop by. Need the process or fees info?",
+                "fees": "Our fees are fair, with payment plans and scholarships. Want the latest details?",
+                "events": "Check out Career Day (May 10), Cultural Fest (June 20), or Sports Day (April 25). Which one’s your vibe?",
+                "contact": "Call us at +256 414 531 234 or email info@smacoma.ac.ug. How can we connect?",
+                "default": "Hmm, not sure about that! I can chat about our history, academics, admissions, or events. What do you want to explore?"
+            };
+
+            function addMessage(text, isBot = false) {
+                const messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.classList.add(isBot ? "bot-message" : "user-message");
+                
+                if (isBot) {
+                    const avatar = document.createElement("img");
+                    avatar.src = "student.png";
+                    avatar.classList.add("message-avatar");
+                    messageDiv.appendChild(avatar);
+                }
+
+                const span = document.createElement("span");
+                span.textContent = text;
+                messageDiv.appendChild(span);
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function handleMessage() {
+                const userInput = chatInput.value.trim().toLowerCase();
+                if (!userInput) return;
+
+                addMessage(userInput);
+                chatInput.value = "";
+
+                setTimeout(() => {
+                    const response = responses[userInput] || responses["default"];
+                    addMessage(response, true);
+                }, 600);
+            }
+
+            sendMessage.addEventListener("click", handleMessage);
+            chatInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") handleMessage();
+            });
+
+            const counters = document.querySelectorAll('.counter-number');
+            const speed = 200;
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText.replace('+', '');
+                        const increment = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+
+                    const observer = new IntersectionObserver(entries => {
+                        if (entries[0].isIntersecting) {
+                            updateCount();
+                            observer.disconnect();
+                        }
+                    }, { threshold: 0.5 });
+
+                    observer.observe(counter);
+                });
+            };
+
+            animateCounters();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929704338996b0c4',t:'MTc0MzQ5OTI4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
