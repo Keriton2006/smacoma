@@ -485,8 +485,9 @@
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
             display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: center;
             text-align: center;
             padding: 2rem;
         }
@@ -495,27 +496,26 @@
             opacity: 1;
         }
 
-        .prefect-content {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
+        .prefect-slide h2 {
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 0.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
 
-        .prefect-content h2 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .prefect-content p {
-            color: var(--accent);
-            font-size: 1.1rem;
-            line-height: 1.6;
+        .prefect-slide p {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            max-width: 80%;
         }
 
         .slider-nav {
@@ -742,16 +742,13 @@
                 height: 300px;
             }
 
-            .prefect-content {
-                padding: 1.5rem;
-            }
-
-            .prefect-content h2 {
+            .prefect-slide h2 {
                 font-size: 1.5rem;
             }
 
-            .prefect-content p {
-                font-size: 0.95rem;
+            .prefect-slide p {
+                font-size: 1rem;
+                max-width: 90%;
             }
 
             .slider-btn {
@@ -831,16 +828,14 @@
                 height: 250px;
             }
 
-            .prefect-content {
-                padding: 1rem;
-            }
-
-            .prefect-content h2 {
+            .prefect-slide h2 {
                 font-size: 1.2rem;
+                padding: 0.4rem 0.8rem;
             }
 
-            .prefect-content p {
-                font-size: 0.85rem;
+            .prefect-slide p {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
             }
 
             .slider-btn {
@@ -1472,46 +1467,32 @@
             <div class="prefects-slider">
                 <div class="slider-container">
                     <div class="prefect-slide active" data-index="0" style="background-image: url('P (1).JPG');">
-                        <div class="prefect-content">
-                            <h2>John Mukasa - Head Prefect (2010)</h2>
-                            <p>"SMACOMA taught me leadership and responsibility, shaping me into the person I am today."</p>
-                        </div>
+                        <h2>John Mukasa - Head Prefect (2010)</h2>
+                        <p>"SMACOMA taught me leadership and responsibility, shaping me into the person I am today."</p>
                     </div>
                     <div class="prefect-slide" data-index="1" style="background-image: url('P (2).JPG');">
-                        <div class="prefect-content">
-                            <h2>Sarah Nakitto - Deputy Head (2012)</h2>
-                            <p>"The supportive community at SMACOMA helped me excel academically and socially."</p>
-                        </div>
+                        <h2>Sarah Nakitto - Deputy Head (2012)</h2>
+                        <p>"The supportive community at SMACOMA helped me excel academically and socially."</p>
                     </div>
                     <div class="prefect-slide" data-index="2" style="background-image: url('P (3).JPG');">
-                        <div class="prefect-content">
-                            <h2>Peter Okello - Sports Prefect (2015)</h2>
-                            <p>"Sports at SMACOMA built my teamwork skills and lifelong friendships."</p>
-                        </div>
+                        <h2>Peter Okello - Sports Prefect (2015)</h2>
+                        <p>"Sports at SMACOMA built my teamwork skills and lifelong friendships."</p>
                     </div>
                     <div class="prefect-slide" data-index="3" style="background-image: url('P (4).JPG');">
-                        <div class="prefect-content">
-                            <h2>Mary Nambi - Academic Prefect (2017)</h2>
-                            <p>"The rigorous academics prepared me for university and beyond."</p>
-                        </div>
+                        <h2>Mary Nambi - Academic Prefect (2017)</h2>
+                        <p>"The rigorous academics prepared me for university and beyond."</p>
                     </div>
                     <div class="prefect-slide" data-index="4" style="background-image: url('CO.jpg');">
-                        <div class="prefect-content">
-                            <h2>David Tumusiime - Discipline Prefect (2018)</h2>
-                            <p>"SMACOMA instilled discipline and integrity that guide my career."</p>
-                        </div>
+                        <h2>David Tumusiime - Discipline Prefect (2018)</h2>
+                        <p>"SMACOMA instilled discipline and integrity that guide my career."</p>
                     </div>
                     <div class="prefect-slide" data-index="5" style="background-image: url('COO.JPG');">
-                        <div class="prefect-content">
-                            <h2>Esther Kizza - Cultural Prefect (2019)</h2>
-                            <p>"The cultural events at SMACOMA celebrated diversity and creativity."</p>
-                        </div>
+                        <h2>Esther Kizza - Cultural Prefect (2019)</h2>
+                        <p>"The cultural events at SMACOMA celebrated diversity and creativity."</p>
                     </div>
                     <div class="prefect-slide" data-index="6" style="background-image: url('DA.JPG');">
-                        <div class="prefect-content">
-                            <h2>James Ssewanyana - Health Prefect (2020)</h2>
-                            <p>"SMACOMA’s focus on well-being made me a compassionate leader."</p>
-                        </div>
+                        <h2>James Ssewanyana - Health Prefect (2020)</h2>
+                        <p>"SMACOMA’s focus on well-being made me a compassionate leader."</p>
                     </div>
                 </div>
                 <div class="slider-nav">
