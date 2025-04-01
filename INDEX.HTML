@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMACOMA - Home</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #381712;
+            --secondary: #aa6f00;
+            --accent: #ffdc6b;
+            --light-bg: #ffffff;
+            --white: #ffffff;
+            --text-gray: #95a5a6;
+        }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--light-bg);
+        }
+
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.2;
+            animation: floatUp infinite linear;
+        }
+
+        .circle { border-radius: 50%; background: var(--primary); }
+        .rectangle { background: var(--secondary); }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 40px solid var(--accent);
+            background: none;
+        }
+
+        .shape:nth-child(1) { width: 50px; height: 50px; top: 90%; left: 5%; animation-duration: 20s; }
+        .shape:nth-child(2) { width: 80px; height: 80px; top: 85%; left: 15%; animation-duration: 25s; }
+        .shape:nth-child(3) { width: 60px; height: 30px; top: 95%; left: 25%; animation-duration: 18s; }
+        .shape:nth-child(4) { width: 40px; height: 40px; top: 80%; left: 35%; animation-duration: 22s; }
+        .shape:nth-child(5) { width: 70px; height: 20px; top: 90%; left: 45%; animation-duration: 15s; }
+        .shape:nth-child(6) { width: 30px; height: 30px; top: 85%; left: 55%; animation-duration: 28s; }
+        .shape:nth-child(7) { width: 60px; height: 60px; top: 95%; left: 65%; animation-duration: 19s; }
+        .shape:nth-child(8) { width: 45px; height: 45px; top: 80%; left: 75%; animation-duration: 23s; }
+        .shape:nth-child(9) { width: 55px; height: 25px; top: 90%; left: 85%; animation-duration: 17s; }
+        .shape:nth-child(10) { width: 35px; height: 35px; top: 85%; left: 10%; animation-duration: 21s; }
+        .shape:nth-child(11) { width: 25px; height: 25px; top: 95%; left: 20%; animation-duration: 26s; }
+        .shape:nth-child(12) { width: 65px; height: 35px; top: 80%; left: 30%; animation-duration: 16s; }
+        .shape:nth-child(13) { top: 90%; left: 40%; animation-duration: 24s; }
+        .shape:nth-child(14) { width: 50px; height: 50px; top: 85%; left: 50%; animation-duration: 20s; }
+        .shape:nth-child(15) { width: 40px; height: 20px; top: 95%; left: 60%; animation-duration: 27s; }
+        .shape:nth-child(16) { width: 55px; height: 55px; top: 80%; left: 70%; animation-duration: 18s; }
+        .shape:nth-child(17) { width: 30px; height: 30px; top: 90%; left: 80%; animation-duration: 22s; }
+        .shape:nth-child(18) { top: 85%; left: 90%; animation-duration: 25s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 0.2; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        .navbar {
+            background: var(--white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+            touch-action: manipulation;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a:active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a:active {
+            color: var(--primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .marquee-container {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem;
+            margin: 0 auto;
+            max-width: 1400px;
+            font-size: 1rem;
+            position: sticky;
+            top: 72px;
+            z-index: 900;
+        }
+
+        marquee {
+            width: 100%;
+        }
+
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            margin: 2rem auto;
+            max-width: 1400px;
+            border-radius: 20px;
+            background: var(--light-bg);
+        }
+
+        .slide {
+            width: 25%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            animation: slide 16s infinite ease-in-out;
+        }
+
+        .slide:empty {
+            background: var(--text-gray);
+        }
+
+        .slide:nth-child(1) { left: 0%; }
+        .slide:nth-child(2) { left: 25%; }
+        .slide:nth-child(3) { left: 50%; }
+        .slide:nth-child(4) { left: 75%; }
+
+        .hero-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 800px;
+            line-height: 1.4;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slide {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-100%); }
+            50%, 70% { transform: translateX(-200%); }
+            75%, 95% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .headmistress-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .headmistress-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .headmistress-image {
+            width: 40%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .headmistress-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .headmistress-content {
+            width: 60%;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .headmistress-content h2 {
+            color: #333;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .headmistress-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .headmistress-content .card-btn {
+            margin-top: 1rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content-card h2 {
+            color: #333;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+
+        .content-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: #f28c38;
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .card-btn:hover, .card-btn:active {
+            background: #e07b30;
+            transform: scale(1.05);
+        }
+
+        .counter-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(199, 52, 52, 0) 0%, rgba(170, 111, 0, 0) 100%);
+            color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .counter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+
+        .counter-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: #fffefeb4;
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: black;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-number::after {
+            content: '+';
+            font-size: 1.5rem;
+            margin-left: 4px;
+        }
+
+        .counter-label {
+            font-size: 1rem;
+            font-weight: 300;
+            color: black;
+            opacity: 0.9;
+        }
+
+        .audio-player {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .audio-player h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .marquee-container {
+                font-size: 0.85rem;
+                top: 50px;
+            }
+
+            .hero {
+                height: 40vh;
+                margin: 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 0.95rem;
+                padding: 0 0.5rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .headmistress-card {
+                flex-direction: column;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .headmistress-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .headmistress-content {
+                width: 100%;
+            }
+
+            .content-card {
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .card-image {
+                height: 150px;
+            }
+
+            .content-card h2 {
+                font-size: 1.2rem;
+            }
+
+            .content-card p {
+                font-size: 0.85rem;
+            }
+
+            .card-btn {
+                padding: 0.5rem 1.2rem;
+            }
+
+            .counter-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .counter-title {
+                font-size: 2rem;
+            }
+
+            .counter-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .counter-item {
+                padding: 1rem;
+            }
+
+            .counter-number {
+                font-size: 1.8rem;
+            }
+
+            .counter-label {
+                font-size: 0.85rem;
+            }
+
+            .audio-player {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .audio-player h2 {
+                font-size: 1.5rem;
+            }
+
+            .audio-player audio {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 35vh;
+            }
+
+            .hero-text h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-text p {
+                font-size: 0.8rem;
+            }
+
+            .marquee-container {
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .card-image {
+                height: 120px;
+            }
+
+            .card-content {
+                padding: 1rem;
+            }
+
+            .content-card h2 {
+                font-size: 1.1rem;
+            }
+
+            .content-card p {
+                font-size: 0.8rem;
+            }
+
+            .card-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .counter-title {
+                font-size: 1.5rem;
+            }
+
+            .counter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .counter-number {
+                font-size: 1.8rem;
+            }
+        }
+
+        .footer {
+            background: beige;
+            color: black;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: brown;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: black;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+        }
+
+        .social-links a:hover, .social-links a:active {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-links, .footer-contact {
+            list-style: none;
+        }
+
+        .footer-links li, .footer-contact li {
+            margin: 0.75rem 0;
+        }
+
+        .footer-links a, .footer-contact a {
+            color: black;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover, .footer-links a:active {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .footer-contact i {
+            margin-right: 0.75rem;
+            color: var(--accent);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 20px;
+            flex: 1;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover, .newsletter-form button:active {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 20px;
+            }
+        }
+
+        .chatbot-wrapper {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1500;
+        }
+
+        .chatbot-avatar {
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.2s ease;
+            position: relative;
+        }
+
+        .chatbot-avatar img.avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--white);
+        }
+
+        .chatbot-badge {
+            position: absolute;
+            bottom: -10px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .chatbot-avatar:hover .chatbot-badge {
+            opacity: 1;
+        }
+
+        .chatbot-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-container {
+            width: 320px;
+            height: 450px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.8);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease, opacity 0.2s ease;
+            opacity: 0;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .chatbot-header {
+            background: whitesmoke;
+            color: maroon;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-avatar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-avatar-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--white);
+        }
+
+        .header-avatar span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+        }
+
+        .message-avatar {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .bot-message span {
+            background: var(--light-bg);
+            color: var(--primary);
+            padding: 8px 12px;
+            border-radius: 10px 10px 10px 0;
+            max-width: 80%;
+            font-size: 0.9rem;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .user-message span {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 12px;
+            border-radius: 10px 10px 0 10px;
+            max-width: 80%;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background: var(--white);
+            border-top: 1px solid var(--text-gray);
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--text-gray);
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--primary);
+        }
+
+        .chatbot-input button {
+            background: var(--primary);
+            border: none;
+            padding: 8px 15px;
+            color: var(--white);
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            background: var(--accent);
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: 100%;
+                height: 70vh;
+                bottom: 0;
+                right: 0;
+                border-radius: 15px 15px 0 0;
+                transform-origin: bottom center;
+            }
+
+            .chatbot-wrapper {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .chatbot-avatar {
+                width: 50px;
+                height: 50px;
+            }
+
+            .header-avatar span {
+                font-size: 0.8rem;
+            }
+
+            .bot-message span, .user-message span {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) and (min-width: 481px) {
+            .chatbot-container {
+                width: 280px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape circle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape circle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="SMACOMA" class="logo-img">
+            </div>
+            <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            Term 1 2025 begins February 10 - Admissions open for 2025-2026 - Science Fair on April 15 - Open House March 28 - Contact us at +256 414 531 234 for inquiries!
+        </marquee>
+    </div>
+
+    <section class="hero">
+        <div class="slide" data-src=""><img src="P (2).JPG" alt=""></div>
+        <div class="slide" data-src="u.jpg"><img src="m (2).jpg" alt=""></div>
+        <div class="slide" data-src="sr.jpg"><img src="COO.JPG" alt=""></div>
+        <div class="slide" data-src="ll.j"><img src="CO.JPG" alt=""></div>
+        <div class="hero-text">
+            <h1>Welcome to St. Margaret College Makerere</h1>
+            <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+        </div>
+    </section>
+
+    <div class="modal" id="imageModal">
+        <span class="modal-close" id="modalClose">×</span>
+        <img id="modalImage" src="" alt="Full-screen image">
+    </div>
+
+    <main class="main-content">
+        <section id="welcome">
+            <h2 class="section-title">Headmistress’s Welcome</h2>
+            <div class="content-grid">
+                <div class="headmistress-card">
+                    <div class="headmistress-image">
+                        <img src="CO.JPG" alt="Headmistress">
+                    </div>
+                    <div class="headmistress-content">
+                        <h2>A Message from the Head</h2>
+                        <p id="headmistressMessage"></p>
+                        <a href="#about" class="card-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">About SMACOMA</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="m (1).jpg" alt="History">
+                    </div>
+                    <div class="card-content">
+                        <h2>Our Rich History</h2>
+                        <p>Since its founding in 1954, SMACOMA has grown into a beacon of education in Makerere, inspired by Uganda’s finest institutions.</p>
+                        <a href="#about" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="m (2).JPG" alt="Mission">
+                    </div>
+                    <div class="card-content">
+                        <h2>Our Mission</h2>
+                        <p>To provide a transformative education that nurtures intellectual curiosity, ethical leadership, and community service.</p>
+                        <a href="#mission" class="card-btn">Explore</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="J.jpg" alt="Values">
+                    </div>
+                    <div class="card-content">
+                        <h2>Core Values</h2>
+                        <p>Excellence, Integrity, Respect, and Innovation drive our school culture, fostering a supportive environment for all.</p>
+                        <a href="#values" class="card-btn">Discover</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="CO.jpg" alt="Campus">
+                    </div>
+                    <div class="card-content">
+                        <h2>Our Campus</h2>
+                        <p>Located in the heart of Makerere, our campus boasts modern classrooms, science labs, a library, and new facilities.</p>
+                        <a href="#campus" class="card-btn">Tour Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="counter-section" id="student-counter">
+            <h2 class="counter-title">Our Growing Community</h2>
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <span class="counter-number" data-target="1280">0</span>
+                    <span class="counter-label">Students Since 1954</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="284">0</span>
+                    <span class="counter-label">Current Enrollment</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="740">0</span>
+                    <span class="counter-label">Alumni Network</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="32">0</span>
+                    <span class="counter-label">Staff Members</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="academics">
+            <h2 class="section-title">Academic Excellence</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (1).JPG" alt="STEM">
+                    </div>
+                    <div class="card-content">
+                        <h2>STEM Programs</h2>
+                        <p>Advanced courses in science, technology, engineering, and mathematics with cutting-edge labs.</p>
+                        <a href="#academics" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (2).JPG" alt="Arts">
+                    </div>
+                    <div class="card-content">
+                        <h2>Arts & Humanities</h2>
+                        <p>Literature, history, and fine arts programs encourage creativity and critical thinking.</p>
+                        <a href="#academics" class="card-btn">Explore</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (3).JPG" alt="Commerce">
+                    </div>
+                    <div class="card-content">
+                        <h2>Commerce Studies</h2>
+                        <p>Economics, business studies, and entrepreneurship with hands-on projects.</p>
+                        <a href="#academics" class="card-btn">Discover</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (4).JPG" alt="Extracurriculars">
+                    </div>
+                    <div class="card-content">
+                        <h2>Extracurricular Activities</h2>
+                        <p>Sports, music, drama, and debate clubs build leadership and teamwork.</p>
+                        <a href="#academics" class="card-btn">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <h2 class="section-title">Latest News</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (2).JPG" alt="Term Start">
+                    </div>
+                    <div class="card-content">
+                        <h2>Term 1 2025 Begins</h2>
+                        <p>We welcome students back on February 10, 2025. Check our portal for updates!</p>
+                        <a href="#news" class="card-btn">Read More</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="DA.JPG" alt="Science Fair">
+                    </div>
+                    <div class="card-content">
+                        <h2>Science Fair 2025</h2>
+                        <p>April 15: Students showcase projects in robotics, renewable energy, and more.</p>
+                        <a href="#news" class="card-btn">Details</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (3).JPG" alt="Debate Win">
+                    </div>
+                    <div class="card-content">
+                        <h2>Debate Team Success</h2>
+                        <p>Our team clinched the Regional Debate Title on March 20, 2025.</p>
+                        <a href="#news" class="card-btn">Celebrate</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (1).JPG" alt="Arts Center">
+                    </div>
+                    <div class="card-content">
+                        <h2>New Arts Center Opens</h2>
+                        <p>March 30: Our new arts center enhances creative learning.</p>
+                        <a href="#news" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="audio-player" id="audioSection">
+            <h2>School Anthem</h2>
+            <audio controls>
+                <source src="school-anthem.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <section id="events">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (4).JPG" alt="Career Day">
+                    </div>
+                    <div class="card-content">
+                        <h2>Career Day</h2>
+                        <p>May 10: Connect with professionals to plan your future.</p>
+                        <a href="#events" class="card-btn">Join Us</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="CO.jpg" alt="Cultural Festival">
+                    </div>
+                    <div class="card-content">
+                        <h2>Cultural Festival</h2>
+                        <p>June 20: Enjoy performances, art, and food celebrating diversity.</p>
+                        <a href="#events" class="card-btn">Participate</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (2).JPG" alt="Open House">
+                    </div>
+                    <div class="card-content">
+                        <h2>Open House</h2>
+                        <p>March 28: Visit our campus and explore our programs.</p>
+                        <a href="#events" class="card-btn">Register</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="COO.JPG" alt="Sports Day">
+                    </div>
+                    <div class="card-content">
+                        <h2>Sports Day</h2>
+                        <p>April 25: Cheer on our teams in athletics and more.</p>
+                        <a href="#events" class="card-btn">Attend</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="admissions">
+            <h2 class="section-title">Admissions</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (4).JPG" alt="Process">
+                    </div>
+                    <div class="card-content">
+                        <h2>Admission Process</h2>
+                        <p>Apply for 2025-2026 now! Exams start January 20.</p>
+                        <a href="#admissions" class="card-btn">Apply Now</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="DA.jpg" alt="Fees">
+                    </div>
+                    <div class="card-content">
+                        <h2>Fees Structure</h2>
+                        <p>Affordable fees with payment plans and scholarships.</p>
+                        <a href="#admissions" class="card-btn">View Fees</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (3).JPG" alt="Requirements">
+                    </div>
+                    <div class="card-content">
+                        <h2>Entry Requirements</h2>
+                        <p>P7 leavers need 22 aggregates; S5 need strong O-Levels.</p>
+                        <a href="#admissions" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2 class="section-title">Community Voices</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-content">
+                        <h2>Student Perspective</h2>
+                        <p>"SMACOMA’s STEM labs sparked my passion for engineering." - David T., S5</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-content">
+                        <h2>Parent Insight</h2>
+                        <p>"The school’s focus on discipline is exceptional." - Mrs. Nambi</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-content">
+                        <h2>Alumni Reflection</h2>
+                        <p>"My leadership skills grew here." - Jane K., Class of 2015</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-content">
+                        <h2>Teacher’s View</h2>
+                        <p>"Teaching here is rewarding." - Mr. Okello</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="alumni">
+            <h2 class="section-title">Alumni Network</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="P (1).JPG" alt="Notable Alumni">
+                    </div>
+                    <div class="card-content">
+                        <h2>Notable Alumni</h2>
+                        <p>Our graduates excel in medicine, education, and business.</p>
+                        <a href="#alumni" class="card-btn">Meet Them</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="COO.JPG" alt="Mentorship">
+                    </div>
+                    <div class="card-content">
+                        <h2>Mentorship Program</h2>
+                        <p>Alumni guide current students with career advice.</p>
+                        <a href="#alumni" class="card-btn">Join Now</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                        <img src="CO.JPG" alt="Reunion">
+                    </div>
+                    <div class="card-content">
+                        <h2>Alumni Reunion</h2>
+                        <p>July 5, 2025: Reconnect and celebrate SMACOMA’s legacy.</p>
+                        <a href="#alumni" class="card-btn">RSVP</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="logo.png" alt="SMACOMA Logo" class="footer-logo">
+                <p>St. Margaret College Makerere - Educating Since 1954</p>
+                <p>P.O. Box 123, Makerere, Kampala, Uganda</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/smacoma" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/smacoma" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/smacoma" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/smacoma" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#events">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> Makerere Hill Road, Kampala</li>
+                    <li><i class="fas fa-phone"></i> +256 414 531 234</li>
+                    <li><i class="fas fa-phone"></i> +256 772 345 678</li>
+                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7d14131b123d0e101c1e12101c531c1e53081a">[email&#160;protected]</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Stay informed about SMACOMA updates</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 7:30 AM - 4:30 PM</li>
+                    <li><i class="fas fa-clock"></i> Sat: 9:00 AM - 1:00 PM</li>
+                    <li><i class="fas fa-clock"></i> Sun: Closed</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 St. Margaret College Makerere. All Rights Reserved. | Designed by SMACOMA ICT Crew</p>
+        </div>
+    </footer>
+
+    <div class="chatbot-wrapper" id="keritonChatbot">
+        <div class="chatbot-avatar" id="openChatbot">
+            <img src="student.png" alt="Keriton Avatar" class="avatar-img">
+            <span class="chatbot-badge">Ask Keriton!</span>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="header-avatar">
+                    <img src="student.png" alt="Keriton" class="header-avatar-img">
+                    <span>Keriton - Your SMACOMA Guide</span>
+                </div>
+                <button class="chatbot-close" id="closeChatbot"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <img src="student.png" alt="Keriton" class="message-avatar">
+                    <span>Hello! I’m Keriton, a student bot here to help you explore SMACOMA. What’s on your mind?</span>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Ask me anything...">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.addEventListener("scroll", () => {
+                const navbar = document.querySelector(".navbar");
+                navbar.classList.toggle("scrolled", window.scrollY > 50);
+            });
+
+            const navToggle = document.querySelector(".nav-toggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            navToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+
+            const newsletterForm = document.querySelector(".newsletter-form");
+            newsletterForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector("input").value;
+                alert(`Thank you for subscribing with ${email}!`);
+                newsletterForm.reset();
+            });
+
+            const slides = document.querySelectorAll(".slide");
+            slides.forEach(slide => {
+                const src = slide.getAttribute("data-src");
+                if (src) {
+                    slide.style.backgroundImage = `url(${src})`;
+                } else {
+                    slide.style.backgroundColor = "var(--text-gray)";
+                }
+
+                slide.addEventListener("click", () => {
+                    const modal = document.getElementById("imageModal");
+                    const modalImage = document.getElementById("modalImage");
+                    modalImage.src = src || "placeholder.jpg";
+                    modal.style.display = "flex";
+                });
+            });
+
+            const modal = document.getElementById("imageModal");
+            const modalClose = document.getElementById("modalClose");
+
+            modalClose.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) modal.style.display = "none";
+            });
+
+            // Headmistress Message Animation
+            const headmistressMessage = document.getElementById("headmistressMessage");
+            const fullText = "Greetings to all our students, parents, and visitors! At St. Margaret College Makerere, established in 1954, we pride ourselves on fostering a community where academic excellence meets personal growth. As we step into 2025, we’re introducing enhanced digital learning tools, a new arts center, and expanded sports facilities to enrich our students’ experiences. Join us in shaping a bright future!";
+            
+            function typeWriter(text, element, speed = 50) {
+                let i = 0;
+                element.textContent = "";
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                const observer = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting && i === 0) {
+                        type();
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.5 });
+                observer.observe(element);
+            }
+
+            typeWriter(fullText, headmistressMessage);
+
+            const chatbotContainer = document.querySelector(".chatbot-container");
+            const openChatbot = document.getElementById("openChatbot");
+            const closeChatbot = document.getElementById("closeChatbot");
+            const chatMessages = document.getElementById("chatMessages");
+            const chatInput = document.getElementById("chatInput");
+            const sendMessage = document.getElementById("sendMessage");
+
+            openChatbot.addEventListener("click", () => {
+                chatbotContainer.classList.add("active");
+                openChatbot.style.opacity = "0";
+            });
+
+            closeChatbot.addEventListener("click", () => {
+                chatbotContainer.classList.remove("active");
+                setTimeout(() => {
+                    openChatbot.style.opacity = "1";
+                }, 300);
+            });
+
+            const responses = {
+                "hi": "Hey there! I’m Keriton, a student bot at SMACOMA. How can I assist you?",
+                "hello": "Hi! I’m Keriton, here to guide you through St. Margaret College Makerere. What’s up?",
+                "about": "SMACOMA, founded in 1954, is all about excellence and growth. Want details on our history or mission?",
+                "history": "Since 1954, SMACOMA has been a leader in education, mixing tradition with modern vibes right here in Makerere.",
+                "mission": "We aim to spark curiosity, build leaders, and serve the community through top-notch education.",
+                "academics": "We’ve got STEM, Arts, Commerce, and tons of clubs. What subject or activity are you into?",
+                "admissions": "2025-2026 admissions are open! Apply online or drop by. Need the process or fees info?",
+                "fees": "Our fees are fair, with payment plans and scholarships. Want the latest details?",
+                "events": "Check out Career Day (May 10), Cultural Fest (June 20), or Sports Day (April 25). Which one’s your vibe?",
+                "contact": "Call us at +256 414 531 234 or email info@smacoma.ac.ug. How can we connect?",
+                "default": "Hmm, not sure about that! I can chat about our history, academics, admissions, or events. What do you want to explore?"
+            };
+
+            function addMessage(text, isBot = false) {
+                const messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.classList.add(isBot ? "bot-message" : "user-message");
+                
+                if (isBot) {
+                    const avatar = document.createElement("img");
+                    avatar.src = "student.png";
+                    avatar.classList.add("message-avatar");
+                    messageDiv.appendChild(avatar);
+                }
+
+                const span = document.createElement("span");
+                span.textContent = text;
+                messageDiv.appendChild(span);
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function handleMessage() {
+                const userInput = chatInput.value.trim().toLowerCase();
+                if (!userInput) return;
+
+                addMessage(userInput);
+                chatInput.value = "";
+
+                setTimeout(() => {
+                    const response = responses[userInput] || responses["default"];
+                    addMessage(response, true);
+                }, 600);
+            }
+
+            sendMessage.addEventListener("click", handleMessage);
+            chatInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") handleMessage();
+            });
+
+            const counters = document.querySelectorAll('.counter-number');
+            const speed = 200;
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText.replace('+', '');
+                        const increment = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+
+                    const observer = new IntersectionObserver(entries => {
+                        if (entries[0].isIntersecting) {
+                            updateCount();
+                            observer.disconnect();
+                        }
+                    }, { threshold: 0.5 });
+
+                    observer.observe(counter);
+                });
+            };
+
+            animateCounters();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929704338996b0c4',t:'MTc0MzQ5OTI4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

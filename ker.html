@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keriton AI - Dynamic News & Education Assistant</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Same CSS as previous version - unchanged for brevity */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #661d10;
+            --secondary: #700b70;
+            --accent: #8b122c;
+            --light-bg: #f5f6f5;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.1);
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .chatbot-interface {
+            width: 100%;
+            min-height: 70vh;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .chatbot-header {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .chatbot-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .chatbot-header span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem 0;
+            overflow-y: auto;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+        }
+
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .bot-message span {
+            background: var(--light-bg);
+            color: var(--text-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            max-width: 80%;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .user-message span {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            max-width: 80%;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding-top: 1rem;
+            border-top: 1px solid var(--text-gray);
+            flex-shrink: 0;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--text-gray);
+            border-radius: 25px 0 0 25px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--primary);
+        }
+
+        .chatbot-input button {
+            background: var(--primary);
+            border: none;
+            padding: 1rem 2rem;
+            color: var(--white);
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            background: var(--accent);
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .chatbot-interface {
+                padding: 1rem;
+                min-height: 80vh;
+            }
+
+            .features {
+                padding: 2rem 1rem;
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .chatbot-input input {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .chatbot-input button {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="SMACOMA Logo" class="logo-img">
+                <span>Keriton AI</span>
+            </div>
+            <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Keriton AI: Dynamic Answers for All</h1>
+        <p>Your go-to assistant for SMACOMA education and live news—ask anything, get real-time, dynamic responses!</p>
+    </section>
+
+    <div class="chatbot-interface">
+        <div class="chatbot-header">
+            <img src="student.png" alt="Keriton Avatar">
+            <span>Keriton AI - Dynamic Assistant</span>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot-message">
+                <img src="student.png" alt="Keriton" class="message-avatar">
+                <span>Hey there! I’m Keriton, ready to tackle your questions with live data from SMACOMA and the web. What’s up?</span>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask Keriton anything...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Dynamic Responses</h3>
+            <p>Get tailored answers that adapt to your questions, every time.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-newspaper"></i>
+            <h3>Live News</h3>
+            <p>Stay updated with real-time news integrated into your answers.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Education Edge</h3>
+            <p>Explore SMACOMA’s offerings with smart, context-aware guidance.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Keriton AI by SMACOMA ICT Crew | <a href="#contact">Contact Us</a> | Powered by xAI</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navToggle = document.querySelector(".nav-toggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            navToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+
+            const chatMessages = document.getElementById("chatMessages");
+            const chatInput = document.getElementById("chatInput");
+            const sendMessage = document.getElementById("sendMessage");
+
+            // Base knowledge for SMACOMA
+            const knowledgeBase = {
+                smacoma: {
+                    academics: ["STEM", "Arts", "Commerce", "Extracurriculars"],
+                    events: ["Term 1 starts Feb 10, 2025", "Science Fair April 15", "Open House March 28"],
+                    contact: "Reach us at +256 414 531 234 or [email protected].",
+                    admissions: "Open for 2025-2026! P7 needs 22 aggregates, S5 needs strong O-Levels."
+                }
+            };
+
+            // NewsAPI key (replace with your own)
+            const NEWS_API_KEY = "338904a913724002b8d9a295eb9b08bf"; // Sign up at newsapi.org
+            const NEWS_API_URL = "https://newsapi.org/v2/top-headlines?language=en&pageSize=5&apiKey=" + 338904a913724002b8d9a295eb9b08bf;
+
+            // Fetch live news data
+            async function fetchNews(query = "") {
+                try {
+                    const url = query ? `${"https://newsapi.org/v2/top-headlines?language=en&pageSize=5&apiKey="}&q=${encodeURIComponent(query)}` : "https://newsapi.org/v2/top-headlines?language=en&pageSize=5&apiKey=";
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error("News API request failed");
+                    const data = await response.json();
+                    return data.articles.map(article => ({
+                        title: article.title,
+                        description: article.description || "No description available.",
+                        source: article.source.name
+                    }));
+                } catch (error) {
+                    console.error(error);
+                    return null;
+                }
+            }
+
+            // Dynamic response generator with live API integration
+            async function generateDynamicResponse(input) {
+                const lowerInput = input.toLowerCase();
+                const words = lowerInput.split(" ");
+                const greetings = ["Hey!", "Hi there!", "Hello!"];
+                const connectors = ["Here’s what I know:", "Let me tell you:", "Check this out:"];
+
+                if (lowerInput.startsWith("what")) {
+                    if (lowerInput.includes("smacoma")) {
+                        if (lowerInput.includes("academics")) {
+                            return `${connectors[0]} SMACOMA offers ${knowledgeBase.smacoma.academics.join(", ")}. Which one interests you?`;
+                        } else if (lowerInput.includes("events")) {
+                            return `${connectors[1]} Upcoming SMACOMA events include ${knowledgeBase.smacoma.events.join(", ")}. Want more details?`;
+                        } else {
+                            return "What about SMACOMA? I can tell you about academics, events, admissions, or more!";
+                        }
+                    } else if (lowerInput.includes("news")) {
+                        const query = words.slice(words.indexOf("news") + 1).join(" ") || "latest";
+                        const news = await fetchNews(query);
+                        if (news && news.length > 0) {
+                            const newsSummary = news.map(n => `${n.title} (${n.source})`).join("\n");
+                            return `Here’s the latest on "${query}":\n${newsSummary}\nWant more details on any of these?`;
+                        } else {
+                            return "Couldn’t fetch news right now. Try again or ask about something else!";
+                        }
+                    } else {
+                        return "What do you want to know? I can cover SMACOMA or fetch live news for you!";
+                    }
+                } else if (lowerInput.startsWith("when")) {
+                    if (lowerInput.includes("term") || lowerInput.includes("start")) {
+                        return "SMACOMA’s Term 1 starts Feb 10, 2025. Need the full schedule?";
+                    } else if (lowerInput.includes("news")) {
+                        const news = await fetchNews("recent events");
+                        if (news && news.length > 0) {
+                            return `Recent events in the news include: ${news[0].title}. Want more?`;
+                        } else {
+                            return "No recent news available right now. What else can I help with?";
+                        }
+                    } else {
+                        return "When what? SMACOMA events or news timelines, maybe?";
+                    }
+                } else if (lowerInput.startsWith("who")) {
+                    if (lowerInput.includes("elon musk")) {
+                        const news = await fetchNews("Elon Musk");
+                        if (news && news.length > 0) {
+                            return `Elon Musk is in the news: ${news[0].title} (${news[0].source}). More details?`;
+                        } else {
+                            return "Elon Musk is a tech mogul—couldn’t fetch live updates right now. What else?";
+                        }
+                    } else if (lowerInput.includes("smacoma")) {
+                        return "Who at SMACOMA? I can talk about staff, students, or alumni!";
+                    } else {
+                        return "Who are you asking about? A news figure or someone from SMACOMA?";
+                    }
+                } else if (lowerInput.startsWith("where")) {
+                    if (lowerInput.includes("smacoma")) {
+                        return "SMACOMA is on Makerere Hill Road, Kampala, Uganda. Want directions?";
+                    } else {
+                        return "Where what? A news event location or SMACOMA-related?";
+                    }
+                } else if (lowerInput.includes("hi") || lowerInput.includes("hello")) {
+                    return `${greetings[Math.floor(Math.random() * greetings.length)]} I’m Keriton, your live-data assistant. What’s on your mind?`;
+                } else if (lowerInput.includes("news")) {
+                    const query = words.slice(words.indexOf("news") + 1).join(" ") || "top";
+                    const news = await fetchNews(query);
+                    if (news && news.length > 0) {
+                        const newsSummary = news.map(n => `${n.title} (${n.source})`).join("\n");
+                        return `Live news on "${query}":\n${newsSummary}\nWhat else can I fetch?`;
+                    } else {
+                        return "Couldn’t grab news right now. Ask me something else!";
+                    }
+                } else if (lowerInput.includes("smacoma")) {
+                    return "SMACOMA’s my base! Ask about academics, events, admissions, or more.";
+                } else {
+                    const suggestion = words.length > 1 ? `Did you mean something about ${words[0]}?` : "Not sure what you mean!";
+                    return `${suggestion} I can fetch SMACOMA info or live news—give me a hint!`;
+                }
+            }
+
+            function addMessage(text, isBot = false) {
+                const messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.classList.add(isBot ? "bot-message" : "user-message");
+                
+                if (isBot) {
+                    const avatar = document.createElement("img");
+                    avatar.src = "student.png";
+                    avatar.classList.add("message-avatar");
+                    messageDiv.appendChild(avatar);
+                }
+
+                const span = document.createElement("span");
+                span.textContent = text;
+                messageDiv.appendChild(span);
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            async function handleMessage() {
+                const userInput = chatInput.value.trim();
+                if (!userInput) return;
+
+                addMessage(userInput);
+                chatInput.value = "";
+
+                const response = await generateDynamicResponse(userInput);
+                addMessage(response, true);
+            }
+
+            sendMessage.addEventListener("click", handleMessage);
+            chatInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") handleMessage();
+            });
+        });
+    </script>
+</body>
+</html>

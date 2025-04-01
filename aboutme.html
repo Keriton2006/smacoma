@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Mugisha Kevin</title>
+    <link rel="icon" type="logo.png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --cream: #f5f5dc;
+            --grey: #808080;
+            --orange: #ff6200;
+            --white: #ffffff;
+            --text-grey: #666666;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--text-grey);
+            line-height: 1.6;
+            padding-left: 70px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Dynamic Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background: var(--cream);
+        }
+
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.2;
+            animation: float 20s infinite linear;
+        }
+
+        .circle {
+            border-radius: 50%;
+            background: var(--orange);
+        }
+
+        .rectangle {
+            background: var(--grey);
+        }
+
+        /* Randomly positioned shapes */
+        .shape:nth-child(1) { width: 50px; height: 50px; top: 10%; left: 15%; animation-duration: 25s; }
+        .shape:nth-child(2) { width: 80px; height: 80px; top: 60%; left: 25%; animation-duration: 30s; }
+        .shape:nth-child(3) { width: 60px; height: 30px; top: 30%; left: 70%; animation-duration: 22s; }
+        .shape:nth-child(4) { width: 40px; height: 40px; top: 80%; left: 50%; animation-duration: 28s; }
+        .shape:nth-child(5) { width: 70px; height: 20px; top: 20%; left: 90%; animation-duration: 26s; }
+        .shape:nth-child(6) { width: 30px; height: 30px; top: 50%; left: 5%; animation-duration: 24s; }
+        .shape:nth-child(3) { width: 60px; height: 30px; top: 30%; left: 70%; animation-duration: 22s; }
+        .shape:nth-child(4) { width: 40px; height: 40px; top: 80%; left: 50%; animation-duration: 28s; }
+        .shape:nth-child(3) { width: 60px; height: 30px; top: 30%; left: 70%; animation-duration: 22s; }
+        .shape:nth-child(4) { width: 40px; height: 40px; top: 80%; left: 50%; animation-duration: 28s; }
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -30px) rotate(90deg); }
+            50% { transform: translate(-10px, 20px) rotate(180deg); }
+            75% { transform: translate(30px, 10px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Side Navbar */
+        .side-navbar {
+            width: 70px;
+            height: 100vh;
+            background: goldenrod;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 0;
+            z-index: 1100;
+            transition: width 0.3s ease;
+        }
+
+        .side-navbar:hover {
+            width: 220px;
+        }
+
+        .side-logo {
+            height: 60px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .side-navbar:hover .side-logo {
+            transform: scale(1.1);
+        }
+
+        .side-nav-links {
+            list-style: none;
+            width: 100%;
+        }
+
+        .side-nav-links li {
+            margin: 1.5rem 0;
+        }
+
+        .side-nav-links a {
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            opacity: 0.8;
+        }
+
+        .side-nav-links a i {
+            font-size: 1.6rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .side-nav-links a span {
+            display: none;
+            margin-left: 1rem;
+            font-weight: 600;
+        }
+
+        .side-navbar:hover .side-nav-links a span {
+            display: inline;
+        }
+
+        .side-nav-links a:hover {
+            background: var(--white);
+            color: var(--black);
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: var(--grey);
+            margin-top: 0.5rem;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--orange);
+            margin: 1rem auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            max-width: 500px;
+        }
+
+        .search-bar input {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--orange);
+            border-radius: 25px 0 0 25px;
+            outline: none;
+            background: var(--white);
+            color: var(--text-grey);
+            width: 70%;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--grey);
+            width: 80%;
+        }
+
+        .search-bar button {
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background: var(--grey);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--orange);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 70px;
+            height: 3px;
+            background: var(--grey);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Me */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-grey);
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin: 0.75rem 0;
+            font-size: 1rem;
+            color: var(--text-grey);
+            display: flex;
+            align-items: center;
+        }
+
+        .skills-list li i {
+            color: var(--orange);
+            margin-right: 0.75rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            color: var(--orange);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: var(--text-grey);
+            font-size: 0.95rem;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--orange);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+        }
+
+        .project-card a:hover {
+            background: var(--grey);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-card p {
+            color: var(--text-grey);
+            font-size: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--grey);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--grey);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--orange);
+        }
+
+        .footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-left: 0;
+            }
+
+            .side-navbar {
+                width: 0;
+                overflow: hidden;
+            }
+
+            .side-navbar.active {
+                width: 200px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-bar input {
+                width: 60%;
+            }
+
+            .search-bar input:focus {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Shapes -->
+    <div class="background-shapes">
+        <div class="shape circle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape rectangle"></div>
+        <div class="shape circle"></div>
+    </div>
+
+    <!-- Side Navbar -->
+    <aside class="side-navbar">
+        <img src="logo.png" alt="logo.png" class="side-logo">
+        <ul class="side-nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="#about"><i class="fas fa-user"></i><span>About Me</span></a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i><span>Projects</span></a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Header -->
+    <header class="header">
+        <img src="u.jpg" alt="Profile Picture" class="profile-pic">
+        <h1>Mugisha Kevin</h1>
+        <p>AKA Keriton Halax the Developer | Web Developer | Student at St. Margaret College Makerere</p>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search my portfolio...">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- About Me -->
+        <section class="section" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Hey there! I’m Mugisha Kevin, also known as Keriton Halax the Developer, a passionate web developer and a proud student at St. Margaret College Makerere. With a strong foundation in web design, I specialize in creating visually appealing, user-friendly websites that leave a lasting impression. My time at SMACOMA has inspired me to push the boundaries of creativity and technology, blending innovative designs with functional code.</p>
+                    <p>Beyond coding, I enjoy exploring UI/UX trends, gaming, and supporting our school’s vibrant community events!</p>
+                </div>
+                <div class="skills">
+                    <h3 style="color: var(--orange); margin-bottom: 1rem;">Skills</h3>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</li>
+                        <li><i class="fas fa-paint-brush"></i> UI/UX Design (Figma, Adobe XD)</li>
+                        <li><i class="fas fa-server"></i> Responsive Web Design</li>
+                        <li><i class="fas fa-database"></i> Basic Backend (PHP, MySQL)</li>
+                        <li><i class="fas fa-tools"></i> Version Control (Git)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="h.png" alt="SMACOMA Website">
+                    <h3>SMACOMA Location Page</h3>
+                    <p>Developed a modern location page for St. Margaret College Makerere, featuring GPS integration and a sleek interface.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card">
+                    <img src="j.webp" alt="Portfolio Site">
+                    <h3>Personal Portfolio</h3>
+                    <p>A vibrant orange-themed portfolio showcasing my web development skills, with smooth animations and a dynamic layout.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card">
+                    <img src="jj.jpg" alt="E-Commerce Mockup">
+                    <h3>E-Commerce Mockup</h3>
+                    <p>A stylish e-commerce prototype with a focus on UX, built with HTML, CSS, and JavaScript.</p>
+                    <a href="#">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email me at:</p>
+                    <a href="mailto:mugishakevin@example.com">mugishakevin@example.com</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <p>Connect on LinkedIn:</p>
+                    <a href="https://linkedin.com/in/mugishakevin" target="_blank">linkedin.com/in/mugishakevin</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-github"></i>
+                    <p>Check my GitHub:</p>
+                    <a href="https://github.com/keritonhalax" target="_blank">github.com/keritonhalax</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Mugisha Kevin. Crafted with <i class="fas fa-heart" style="color: var(--orange);"></i> for St. Margaret College Makerere.</p>
+        <p><a href="#home">Back to Top</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Search functionality
+            const searchInput = document.getElementById("searchInput");
+            const searchBtn = document.getElementById("searchBtn");
+            const sections = document.querySelectorAll(".section");
+
+            function performSearch() {
+                const query = searchInput.value.toLowerCase().trim();
+                sections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    section.style.display = text.includes(query) || query === "" ? "block" : "none";
+                });
+            }
+
+            searchBtn.addEventListener("click", performSearch);
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") performSearch();
+            });
+
+            // Mobile toggle for side navbar
+            const sideNavbar = document.querySelector(".side-navbar");
+            window.addEventListener("resize", () => {
+                if (window.innerWidth <= 768) {
+                    sideNavbar.classList.remove("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ugandan Curriculum Explorer</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --cream: #f5f5dc;
+            --grey: #808080;
+            --orange: #ff6200; /* Bright orange replacing maroon pink */
+            --white: #ffffff;
+            --text-grey: #666666;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--text-grey);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .header .logo {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .header .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--grey);
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--grey);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: var(--orange);
+            transform: scale(1.1);
+        }
+
+        .nav .home-link {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            color: var(--orange);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar ul li img {
+            width: 24px;
+            height: 24px;
+            object-fit: cover;
+        }
+
+        .sidebar ul li a {
+            color: var(--grey);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--orange);
+        }
+
+        .content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .content-section:nth-child(2) { animation-delay: 0.2s; }
+        .content-section:nth-child(3) { animation-delay: 0.4s; }
+        .content-section:nth-child(4) { animation-delay: 0.6s; }
+        .content-section:nth-child(5) { animation-delay: 0.8s; }
+        .content-section:nth-child(6) { animation-delay: 1s; }
+
+        .content-section h2 {
+            color: var(--orange);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: var(--grey);
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--text-grey);
+            margin-bottom: 1rem;
+        }
+
+        .content-section img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+        }
+
+        .info-card {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card h3 {
+            color: var(--grey);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: var(--orange);
+            left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--orange);
+            border-radius: 50%;
+            position: absolute;
+            left: 16px;
+            top: 5px;
+        }
+
+        .timeline-item h4 {
+            color: var(--grey);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--grey);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .footer .home-link {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--orange);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div>
+            <h1>Ugandan Curriculum Explorer</h1>
+            <p>Discover the Evolution and Structure of Education in Uganda</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="home-link">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#primary">Primary</a>
+        <a href="#secondary">Secondary</a>
+        <a href="#tertiary">Tertiary</a>
+        <a href="#updates">Recent Updates</a>
+        <a href="#assessment">Assessment</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><img src="ll.jfif" alt="Overview Icon"><a href="#overview">Education Overview</a></li>
+                <li><img src="sr.jpg" alt="Primary Icon"><a href="#primary">Primary Curriculum</a></li>
+                <li><img src="sr.jpg" alt="Secondary Icon"><a href="#secondary">Secondary Curriculum</a></li>
+                <li><img src="sss.jpg" alt="Tertiary Icon"><a href="#tertiary">Tertiary Education</a></li>
+                <li><img src="ss.jpg" alt="Updates Icon"><a href="#updates">Curriculum Updates</a></li>
+                <li><img src="s.png" alt="Assessment Icon"><a href="#assessment">Assessment System</a></li>
+                <li><img src="s.png" alt="NCDC Icon"><a href="https://ncdc.go.ug" target="_blank">NCDC Official Site</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <section id="overview" class="content-section">
+                <h2>Overview of Ugandan Education</h2>
+                <img src="l.jfif" alt="Ugandan Classroom">
+                <p>Uganda's education system follows a 7-6-3+ structure: 7 years of primary education, 6 years of secondary education (4 years O-Level, 2 years A-Level), and 3+ years of tertiary education. It’s rooted in the British colonial system, with English as the official medium of instruction since independence in 1962. The Ministry of Education and Sports oversees policy, while the National Curriculum Development Centre (NCDC) designs curricula.</p>
+                <div class="info-card">
+                    <h3>Key Facts</h3>
+                    <p>- Enrollment: Over 8 million primary students (2023).<br>
+                    - Literacy Rate: 76.5% (2022, UNESCO).<br>
+                    - Universal Secondary Education (USE) introduced in 2007.<br>
+                    - Rural-urban disparity remains a challenge.</p>
+                </div>
+            </section>
+
+            <section id="primary" class="content-section">
+                <h2>Primary Curriculum</h2>
+                <img src="i.jpg_large" alt="Primary School">
+                <p>The primary cycle (P1-P7) aims to build foundational skills in literacy, numeracy, and civic awareness. Subjects include English, Mathematics, Science, Social Studies, Religious Education, Creative Arts, Physical Education, and local languages (e.g., Luganda, Acholi) up to P3. The curriculum emphasizes thematic learning to integrate knowledge across disciplines.</p>
+                <div class="info-card">
+                    <h3>Curriculum Details</h3>
+                    <p>- Weekly Hours: 35-40 lessons (40 minutes each).<br>
+                    - Focus: Child-centered learning, practical activities.<br>
+                    - Challenges: Overcrowded classrooms (average 60:1 ratio), teacher shortages.</p>
+                </div>
+                <p>Post-COVID, an abridged curriculum was introduced in 2022 to recover lost time, prioritizing core competencies over breadth.</p>
+            </section>
+
+            <section id="secondary" class="content-section">
+                <h2>Secondary Curriculum</h2>
+                <img src="iii.jfif" alt="Secondary Students">
+                <p>Secondary education is split into Lower Secondary (S1-S4) and Upper Secondary (S5-S6). The 2020 reform introduced a competency-based Lower Secondary curriculum, reducing subjects from 43 to 21 to focus on practical skills and reduce student overload.</p>
+                <div class="info-card">
+                    <h3>Lower Secondary (O-Level)</h3>
+                    <p>- S1-S2: 12 subjects (e.g., English, Math, Physics, Biology, Kiswahili).<br>
+                    - S3-S4: 8-9 subjects, including electives like Agriculture or Fine Art.<br>
+                    - Assessment: Uganda Certificate of Education (UCE) exams.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Upper Secondary (A-Level)</h3>
+                    <p>- Students choose 3 principal subjects (e.g., PCB - Physics, Chemistry, Biology) + General Paper.<br>
+                    - Focus: Specialization for tertiary education.<br>
+                    - Exams: Uganda Advanced Certificate of Education (UACE).</p>
+                </div>
+                <p>Vocational options like Technical Drawing and Entrepreneurship are integrated to enhance employability.</p>
+            </section>
+
+            <section id="tertiary" class="content-section">
+                <h2>Tertiary Education</h2>
+                <img src="university-campus.jpg" alt="University Campus">
+                <p>Tertiary education encompasses universities, polytechnics, and teacher training colleges. Makerere University, Kyambogo University, and Mbarara University of Science and Technology are leading public institutions. Private universities like Uganda Christian University also thrive.</p>
+                <div class="info-card">
+                    <h3>Structure & Options</h3>
+                    <p>- Degrees: 3-5 years (e.g., Medicine: 5 years).<br>
+                    - Diplomas/Certificates: 1-2 years via UVQF.<br>
+                    - Enrollment: ~150,000 students annually, with only 40% of UACE qualifiers admitted.</p>
+                </div>
+                <p>Technical and Vocational Education and Training (TVET) programs focus on skills like plumbing, carpentry, and ICT, aligning with Uganda’s Vision 2040 for industrialization.</p>
+            </section>
+
+            <section id="updates" class="content-section">
+                <h2>Recent Curriculum Updates</h2>
+                <img src="ss.jpg" alt="Curriculum Update">
+                <p>The 2020 Lower Secondary reform marked a shift to a competency-based approach, emphasizing skills over rote learning. Kiswahili became compulsory to promote East African integration, alongside Physical Education and Entrepreneurship.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>1997: Universal Primary Education (UPE)</h4>
+                        <p>Free education doubled enrollment to 5.3 million by 1998.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2007: Universal Secondary Education (USE)</h4>
+                        <p>Extended free education to secondary level, targeting disadvantaged students.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2020: Competency-Based Curriculum</h4>
+                        <p>Cut subjects, introduced project-based learning, and added 20% formative assessment.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2022: Abridged Curriculum</h4>
+                        <p>Condensed syllabus to recover COVID-19 learning losses, focusing on essentials.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2023: Digital Learning Push</h4>
+                        <p>Pilot programs for ICT integration in rural schools launched.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section">
+                <h2>Assessment System</h2>
+                <img src="sss.jpg" alt="Exam Hall">
+                <p>Uganda’s assessment is managed by the Uganda National Examinations Board (UNEB). Exams are rigorous, with results determining progression and opportunities.</p>
+                <div class="info-card">
+                    <h3>Primary Leaving Examination (PLE)</h3>
+                    <p>- Subjects: English, Math, Science, Social Studies.<br>
+                    - Grading: Division 1 (best) to 4, or Ungraded.<br>
+                    - 2022 Pass Rate: 88%.</p>
+                </div>
+                <div class="info-card">
+                    <h3>UCE & UACE</h3>
+                    <p>- UCE: Aggregate scores from 8 best subjects (Distinction 1 to Failure 9).<br>
+                    - UACE: Points system (A=6, B=5, etc.) for university entry.<br>
+                    - Continuous Assessment introduced in 2020 (20% weighting).</p>
+                </div>
+                <p>Critics argue the system favors urban students, prompting calls for equitable resource distribution.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Ugandan Curriculum Explorer | Powered by <a href="#">xAI</a></p>
+        <a href="index.html" class="home-link">Back to Home</a>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('.nav a, .sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

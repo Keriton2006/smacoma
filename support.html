@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location - St. Margaret College Makerere</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --cream: #f5f5dc;
+            --grey: #808080;
+            --orange: #ff6200;
+            --white: #ffffff;
+            --text-grey: #666666;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--text-grey);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .header .logo {
+            height: 70px;
+            transition: transform 0.3s ease;
+        }
+
+        .header .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--grey);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: var(--orange);
+            transform: scale(1.1);
+        }
+
+        .nav .home-link {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2.5rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .map-section h2 {
+            color: var(--orange);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .map-section h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--grey);
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 450px;
+            background: var(--grey);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .map-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .gps-coordinates {
+            font-size: 1.2rem;
+            color: var(--text-grey);
+            margin-top: 1.5rem;
+        }
+
+        .gps-coordinates span {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* Location Details */
+        .location-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .location-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .location-card h3 {
+            color: var(--grey);
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-card p, .location-card a {
+            font-size: 1rem;
+            color: var(--text-grey);
+            margin: 0.6rem 0;
+        }
+
+        .location-card a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .location-card a:hover {
+            color: var(--grey);
+        }
+
+        .location-card i {
+            margin-right: 0.6rem;
+            color: var(--orange);
+        }
+
+        /* Interactive Elements */
+        .interactive-map-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .interactive-map-link:hover {
+            background: var(--grey);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--grey);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .footer .home-link {
+            position: absolute;
+            right: 2.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--orange);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .map-section, .location-card {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .location-card:nth-child(2) { animation-delay: 0.2s; }
+        .location-card:nth-child(3) { animation-delay: 0.4s; }
+        .location-card:nth-child(4) { animation-delay: 0.6s; }
+        .location-card:nth-child(5) { animation-delay: 0.8s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-wrap: wrap;
+                gap: 1.2rem;
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .map-placeholder {
+                height: 350px;
+            }
+
+            .footer .home-link {
+                position: static;
+                display: inline-block;
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="logo.png" alt="St. Margaret College Logo" class="logo">
+        <div>
+            <h1>Location</h1>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="home-link">Home</a>
+        <a href="curriculum.html">Curriculum Explorer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="#map">Map</a>
+        <a href="#details">Details</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Map Section -->
+        <section class="map-section" id="map">
+            <h2>Find Us Here</h2>
+            <div class="map-placeholder">
+                <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.139413315617!2d32.557778!3d0.328056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMCwyMCc0MS4wIk4gMzLCsDM0JzA0LjAiRQ!5e0!3m2!1sen!2sug!4v1698765432100!5m2!1sen!2sug" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></p>
+            </div>
+            <div class="gps-coordinates">
+                <p>GPS Coordinates: <span>Latitude: 0.328056 N</span> | <span>Longitude: 32.567778 E</span></p>
+            </div>
+            <a href="https://www.google.com/maps?q=0.328056,32.567778" target="_blank" class="interactive-map-link">Open in Google Maps</a>
+        </section>
+
+        <!-- Location Details -->
+        <section class="location-details" id="details">
+            <div class="location-card">
+                <h3>Campus Location</h3>
+                <p><i class="fas fa-map-marker-alt"></i> St. Margaret College Makerere</p>
+                <p><i class="fas fa-building"></i> Makerere II Parish, Kawempe Division</p>
+                <p><i class="fas fa-city"></i> Kampala Capital City Authority (KCCA), Uganda</p>
+                <p><i class="fas fa-road"></i> Adjacent to Makerere University Main Campus, Makerere Hill Road</p>
+                <p><i class="fas fa-globe"></i> Approx. 3.5 km northwest of Kampala Central Business District</p>
+                <p><i class="fas fa-flag"></i> Located within Makerere University’s southwestern precinct</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Accessibility</h3>
+                <p><i class="fas fa-car"></i> 5-minute drive from Wandegeya Traffic Lights on Bombo Road</p>
+                <p><i class="fas fa-bus"></i> Public transport: Boda bodas and taxis from Kampala city center</p>
+                <p><i class="fas fa-walking"></i> 15-minute walk from Makerere University Main Gate</p>
+                <p><i class="fas fa-compass"></i> Nearby landmarks: Makerere College School, Mary Stuart Hall</p>
+                <p><i class="fas fa-map-signs"></i> Access via Makerere Hill Road, University Road, or Sir Apollo Kaggwa Road</p>
+                <p><i class="fas fa-clock"></i> Approx. 40-minute drive from Entebbe International Airport</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Surrounding Area</h3>
+                <p><i class="fas fa-university"></i> Borders Makerere University’s School of Education & Fine Art</p>
+                <p><i class="fas fa-tree"></i> Near University Main Sports Grounds and green spaces</p>
+                <p><i class="fas fa-shopping-cart"></i> 1 km from Wandegeya Market and shopping hubs</p>
+                <p><i class="fas fa-hospital"></i> 3 km from Mulago National Referral Hospital</p>
+                <p><i class="fas fa-church"></i> Close to St. Francis Chapel and Makerere University Mosque</p>
+                <p><i class="fas fa-utensils"></i> Proximity to eateries like Wandegeya Food Court</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Geographical Context</h3>
+                <p><i class="fas fa-mountain"></i> Situated on Makerere Hill, one of Kampala’s seven hills</p>
+                <p><i class="fas fa-water"></i> 35 km north of Lake Victoria’s northern shore</p>
+                <p><i class="fas fa-temperature-high"></i> Average elevation: 1,240 meters above sea level</p>
+                <p><i class="fas fa-cloud-sun"></i> Tropical climate with avg. temp of 22°C year-round</p>
+                <p><i class="fas fa-map"></i> Part of Uganda’s Central Region, East Africa</p>
+                <p><i class="fas fa-globe-africa"></i> Coordinates align with equatorial proximity</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Contact & Directions</h3>
+                <p><i class="fas fa-phone"></i> +256 123 456 789</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@stmargaretcollege.ac.ug">info@stmargaretcollege.ac.ug</a></p>
+                <p><i class="fas fa-link"></i> <a href="https://www.stmargaretcollege.ac.ug" target="_blank">Visit Our Website</a></p>
+                <p><i class="fas fa-directions"></i> Directions: From Kampala CBD, head north on Bombo Road, turn left onto Makerere Hill Road</p>
+                <p><i class="fas fa-info-circle"></i> Inquiries: Available at the school administration office</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 St. Margaret College Makerere. All rights reserved.</p>
+        <p>Designed with <i class="fas fa-heart"></i> by xAI</p>
+        <a href="index.html" class="home-link">Back to Home</a>
+    </footer>
+</body>
+</html>
