@@ -456,6 +456,122 @@
             transform: scale(1.05);
         }
 
+        /* Updated Prefects Slider Styles */
+        .prefects-slider {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .prefect-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .prefect-slide.active {
+            opacity: 1;
+        }
+
+        .prefect-content {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .prefect-content h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .prefect-content p {
+            color: var(--accent);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .slider-btn {
+            background: var(--secondary);
+            border: none;
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s ease, background 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background: var(--primary);
+        }
+
         .counter-section {
             max-width: 1400px;
             margin: 4rem auto;
@@ -622,30 +738,26 @@
                 font-size: 0.95rem;
             }
 
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .prefects-slider {
+                height: 300px;
             }
 
-            .content-card {
-                margin: 0;
-                max-width: 100%;
+            .prefect-content {
+                padding: 1.5rem;
             }
 
-            .card-image {
-                height: 150px;
+            .prefect-content h2 {
+                font-size: 1.5rem;
             }
 
-            .content-card h2 {
-                font-size: 1.2rem;
+            .prefect-content p {
+                font-size: 0.95rem;
             }
 
-            .content-card p {
-                font-size: 0.85rem;
-            }
-
-            .card-btn {
-                padding: 0.5rem 1.2rem;
+            .slider-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
 
             .counter-section {
@@ -715,24 +827,25 @@
                 height: 150px;
             }
 
-            .card-image {
-                height: 120px;
+            .prefects-slider {
+                height: 250px;
             }
 
-            .card-content {
+            .prefect-content {
                 padding: 1rem;
             }
 
-            .content-card h2 {
-                font-size: 1.1rem;
+            .prefect-content h2 {
+                font-size: 1.2rem;
             }
 
-            .content-card p {
-                font-size: 0.8rem;
+            .prefect-content p {
+                font-size: 0.85rem;
             }
 
-            .card-btn {
-                padding: 0.4rem 1rem;
+            .slider-btn {
+                width: 30px;
+                height: 30px;
                 font-size: 0.9rem;
             }
 
@@ -1178,7 +1291,7 @@
     <main class="main-content">
         <section id="welcome" class="headmistress-message">
             <div class="headmistress-photo">
-                <img src="t.png" alt="Headmistress">
+                <img src="headmistress.png" alt="Headmistress">
             </div>
             <div class="headmistress-text">
                 <h2>Open Message from the Headmistress</h2>
@@ -1355,47 +1468,64 @@
         </section>
 
         <section id="events">
-            <h2 class="section-title">Upcoming Events</h2>
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="card-image">
-                        <img src="P (4).JPG" alt="Career Day">
+            <h2 class="section-title">Alumni of Prefects</h2>
+            <div class="prefects-slider">
+                <div class="slider-container">
+                    <div class="prefect-slide active" data-index="0" style="background-image: url('P (1).JPG');">
+                        <div class="prefect-content">
+                            <h2>John Mukasa - Head Prefect (2010)</h2>
+                            <p>"SMACOMA taught me leadership and responsibility, shaping me into the person I am today."</p>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <h2>Career Day</h2>
-                        <p>May 10: Connect with professionals to plan your future.</p>
-                        <a href="#events" class="card-btn">Join Us</a>
+                    <div class="prefect-slide" data-index="1" style="background-image: url('P (2).JPG');">
+                        <div class="prefect-content">
+                            <h2>Sarah Nakitto - Deputy Head (2012)</h2>
+                            <p>"The supportive community at SMACOMA helped me excel academically and socially."</p>
+                        </div>
+                    </div>
+                    <div class="prefect-slide" data-index="2" style="background-image: url('P (3).JPG');">
+                        <div class="prefect-content">
+                            <h2>Peter Okello - Sports Prefect (2015)</h2>
+                            <p>"Sports at SMACOMA built my teamwork skills and lifelong friendships."</p>
+                        </div>
+                    </div>
+                    <div class="prefect-slide" data-index="3" style="background-image: url('P (4).JPG');">
+                        <div class="prefect-content">
+                            <h2>Mary Nambi - Academic Prefect (2017)</h2>
+                            <p>"The rigorous academics prepared me for university and beyond."</p>
+                        </div>
+                    </div>
+                    <div class="prefect-slide" data-index="4" style="background-image: url('CO.jpg');">
+                        <div class="prefect-content">
+                            <h2>David Tumusiime - Discipline Prefect (2018)</h2>
+                            <p>"SMACOMA instilled discipline and integrity that guide my career."</p>
+                        </div>
+                    </div>
+                    <div class="prefect-slide" data-index="5" style="background-image: url('COO.JPG');">
+                        <div class="prefect-content">
+                            <h2>Esther Kizza - Cultural Prefect (2019)</h2>
+                            <p>"The cultural events at SMACOMA celebrated diversity and creativity."</p>
+                        </div>
+                    </div>
+                    <div class="prefect-slide" data-index="6" style="background-image: url('DA.JPG');">
+                        <div class="prefect-content">
+                            <h2>James Ssewanyana - Health Prefect (2020)</h2>
+                            <p>"SMACOMA’s focus on well-being made me a compassionate leader."</p>
+                        </div>
                     </div>
                 </div>
-                <div class="content-card">
-                    <div class="card-image">
-                        <img src="CO.jpg" alt="Cultural Festival">
-                    </div>
-                    <div class="card-content">
-                        <h2>Cultural Festival</h2>
-                        <p>June 20: Enjoy performances, art, and food celebrating diversity.</p>
-                        <a href="#events" class="card-btn">Participate</a>
-                    </div>
+                <div class="slider-nav">
+                    <button class="slider-btn" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <div class="content-card">
-                    <div class="card-image">
-                        <img src="P (2).JPG" alt="Open House">
-                    </div>
-                    <div class="card-content">
-                        <h2>Open House</h2>
-                        <p>March 28: Visit our campus and explore our programs.</p>
-                        <a href="#events" class="card-btn">Register</a>
-                    </div>
-                </div>
-                <div class="content-card">
-                    <div class="card-image">
-                        <img src="COO.JPG" alt="Sports Day">
-                    </div>
-                    <div class="card-content">
-                        <h2>Sports Day</h2>
-                        <p>April 25: Cheer on our teams in athletics and more.</p>
-                        <a href="#events" class="card-btn">Attend</a>
-                    </div>
+                <div class="slider-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                    <span class="dot" data-index="4"></span>
+                    <span class="dot" data-index="5"></span>
+                    <span class="dot" data-index="6"></span>
                 </div>
             </div>
         </section>
@@ -1534,7 +1664,7 @@
                     <li><i class="fas fa-map-marker-alt"></i> Makerere Hill Road, Kampala</li>
                     <li><i class="fas fa-phone"></i> +256 414 531 234</li>
                     <li><i class="fas fa-phone"></i> +256 772 345 678</li>
-                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7d14131b123d0e101c1e12101c531c1e53081a">[email&#160;protected]</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7d14131b123d0e101c1e12101c531c1e53081a">[email protected]</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1665,6 +1795,44 @@
 
             animateWords(headmistressMessage, words);
 
+            // Prefects Slider
+            const prefectSlides = document.querySelectorAll(".prefect-slide");
+            const prevSlideBtn = document.getElementById("prevSlide");
+            const nextSlideBtn = document.getElementById("nextSlide");
+            const dots = document.querySelectorAll(".dot");
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                prefectSlides.forEach(slide => slide.classList.remove("active"));
+                dots.forEach(dot => dot.classList.remove("active"));
+                prefectSlides[index].classList.add("active");
+                dots[index].classList.add("active");
+                currentSlide = index;
+            }
+
+            prevSlideBtn.addEventListener("click", () => {
+                currentSlide = (currentSlide - 1 + prefectSlides.length) % prefectSlides.length;
+                showSlide(currentSlide);
+            });
+
+            nextSlideBtn.addEventListener("click", () => {
+                currentSlide = (currentSlide + 1) % prefectSlides.length;
+                showSlide(currentSlide);
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener("click", () => {
+                    const index = parseInt(dot.getAttribute("data-index"));
+                    showSlide(index);
+                });
+            });
+
+            // Auto-slide every 5 seconds
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % prefectSlides.length;
+                showSlide(currentSlide);
+            }, 5000);
+
             const chatbotContainer = document.querySelector(".chatbot-container");
             const openChatbot = document.getElementById("openChatbot");
             const closeChatbot = document.getElementById("closeChatbot");
@@ -1693,7 +1861,7 @@
                 "academics": "We’ve got STEM, Arts, Commerce, and tons of clubs. What subject or activity are you into?",
                 "admissions": "2025-2026 admissions are open! Apply online or drop by. Need the process or fees info?",
                 "fees": "Our fees are fair, with payment plans and scholarships. Want the latest details?",
-                "events": "Check out Career Day (May 10), Cultural Fest (June 20), or Sports Day (April 25). Which one’s your vibe?",
+                "events": "Check out our Alumni of Prefects slider to hear from past leaders!",
                 "contact": "Call us at +256 414 531 234 or email info@smacoma.ac.ug. How can we connect?",
                 "default": "Hmm, not sure about that! I can chat about our history, academics, admissions, or events. What do you want to explore?"
             };
