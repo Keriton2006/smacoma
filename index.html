@@ -133,6 +133,11 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
         }
 
         .nav-links a {
@@ -538,6 +543,8 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .audio-player h2 {
@@ -553,33 +560,93 @@
             outline: none;
         }
 
+        .waveform {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .audio-player.playing .waveform {
+            opacity: 1;
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: wave 1s infinite ease-in-out;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { animation-delay: 0.6s; }
+        .wave-bar:nth-child(8) { animation-delay: 0.7s; }
+        .wave-bar:nth-child(9) { animation-delay: 0.8s; }
+        .wave-bar:nth-child(10) { animation-delay: 0.9s; }
+
+        @keyframes wave {
+            0%, 100% { height: 10px; }
+            50% { height: 40px; }
+        }
+
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.5rem 1rem;
+                position: relative;
             }
 
             .nav-container {
-                flex-wrap: wrap;
-            }
-
-            .logo-img {
-                height: 40px;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-            }
-
-            .nav-links.active {
-                display: flex;
+                flex-wrap: nowrap;
+                position: relative;
             }
 
             .nav-toggle {
                 display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 250px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 4rem 2rem;
+                transform: translateX(-100%);
+                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 0;
+                width: 100%;
+                text-align: left;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-links a:hover, .nav-links a:active {
+                color: var(--primary);
+                background: rgba(56, 23, 18, 0.1);
+                border-radius: 5px;
             }
 
             .marquee-container {
@@ -689,6 +756,14 @@
 
             .audio-player audio {
                 max-width: 100%;
+            }
+
+            .waveform {
+                height: 40px;
+            }
+
+            .wave-bar {
+                width: 3px;
             }
         }
 
@@ -1352,10 +1427,22 @@
 
         <section class="audio-player" id="audioSection">
             <h2>School Anthem</h2>
-            <audio controls>
+            <audio controls id="schoolAnthem">
                 <source src="school-anthem.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
+            <div class="waveform">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
         </section>
 
         <section id="events">
@@ -1429,7 +1516,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="P (3).JPG" alt="Requirements">
+                        <img src="PAngry Birds ToonsP (3).JPG" alt="Requirements">
                     </div>
                     <div class="card-content">
                         <h2>Entry Requirements</h2>
@@ -1520,7 +1607,7 @@
                     <a href="https://linkedin.com/company/smacoma" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="footer-section">
+            < flaw class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="#home">Home</a></li>
@@ -1538,7 +1625,7 @@
                     <li><i class="fas fa-map-marker-alt"></i> Makerere Hill Road, Kampala</li>
                     <li><i class="fas fa-phone"></i> +256 414 531 234</li>
                     <li><i class="fas fa-phone"></i> +256 772 345 678</li>
-                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7d14131b123d0e101c1e12101c531c1e53081a">[email&#160;protected]</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7d14131b123d0e101c1e12101c531c1e53081a">[email protected]</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1602,6 +1689,8 @@
 
             navToggle.addEventListener("click", () => {
                 navLinks.classList.toggle("active");
+                const isOpen = navLinks.classList.contains("active");
+                navToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
 
             const newsletterForm = document.querySelector(".newsletter-form");
@@ -1766,7 +1855,22 @@
             };
 
             animateCounters();
+
+            const audioPlayer = document.querySelector(".audio-player");
+            const audio = document.getElementById("schoolAnthem");
+
+            audio.addEventListener("play", () => {
+                audioPlayer.classList.add("playing");
+            });
+
+            audio.addEventListener("pause", () => {
+                audioPlayer.classList.remove("playing");
+            });
+
+            audio.addEventListener("ended", () => {
+                audioPlayer.classList.remove("playing");
+            });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929704338996b0c4',t:'MTc0MzQ5OTI4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
