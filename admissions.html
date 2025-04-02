@@ -8,440 +8,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        :root { --primary: #e74c3c; --text-dark: #2c3e50; --bg-light: #f8f9fa; }
 
-        :root {
-            --primary: #e74c3c;
-            --primary-dark: #c0392b;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #f8f9fa;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: padding 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-img {
-            height: 100px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-dark);
-        }
-
-        .search-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-left: -400px;
-        }
-
-        .search-bar input {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-        }
-
-        .search-bar button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            background: var(--primary-dark);
-        }
-
-        /* Banner */
-        .admissions-banner {
-            height: 50vh;
-            min-height: 300px;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sr.jpg');
-            background-size: cover;
-            background-position: center;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 60px;
-        }
-
-        .banner-text h1 {
-            color: var(--text-light);
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease;
-        }
-
-        .banner-text p {
-            color: var(--text-light);
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            animation: fadeIn 1s ease 0.3s forwards;
-            opacity: 0;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .sidebar {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-
-        .sidebar h3 {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            padding: 0.75rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar a:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        .main-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .content-box {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-
-        .content-box.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .content-box h2 {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .content-box p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .content-box ol, .content-box ul {
-            padding-left: 1.5rem;
-            color: #666;
-        }
-
-        .content-box li {
-            margin: 0.75rem 0;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Back to Top */
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-        }
-
-        #backToTop.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: var(--text-light);
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .navbar {
-                padding: 1rem 2rem;
-            }
-
-            .container {
-                grid-template-columns: 300px 1fr;
-            }
-
-            .content-box {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .nav-links {
-                display: none;
-            }
-
-            .search-bar {
-                width: 100%;
-                margin-top: 1rem;
-            }
-        }
+        body { background: var(--bg-light); }
+        .navbar { position: fixed; width: 100%; background: white; padding: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--primary); }
+        .admissions-banner { height: 50vh; background: url('sr.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .banner-text { color: white; }
+        .container { max-width: 1200px; margin: 2rem auto; display: grid; gap: 2rem; }
+        .content-box { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+        .content-box.visible { opacity: 1; transform: translateY(0); }
+        .download-btn { background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 25px; text-decoration: none; transition: 0.3s ease; }
+        .download-btn:hover { background: darkred; }
+        #backToTop { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; opacity: 0; transform: scale(0.8); transition: all 0.3s ease; }
+        #backToTop.show { opacity: 1; transform: scale(1); }
+        footer { background: var(--text-dark); color: white; text-align: center; padding: 1rem; }
+        @media (max-width: 767px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
     <header class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png" alt="St. Margaret College Makerere" class="logo-img">
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#academics">Academics</a></li>
-                    <li><a href="admissions.html" class="active">Admissions</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                </ul>
-                <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search...">
-                    <button id="searchBtn"><i class="fas fa-search"></i></button>
-                </div>
-            </nav>
+            <div class="logo"><img src="logo.png" alt="SMACOMA"></div>
+            <nav><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="#about">About</a></li><li><a href="#academics">Academics</a></li><li><a href="admissions.html" class="active">Admissions</a></li><li><a href="contact.php">Contact</a></li></ul></nav>
         </div>
     </header>
-
     <section class="admissions-banner">
-        <div class="banner-text">
-            <h1>Admissions at SMACOMA</h1>
-            <p>Join Our Community of Future Leaders</p>
-        </div>
+        <div class="banner-text"><h1>Admissions at SMACOMA</h1><p>Join Our Community of Future Leaders</p></div>
     </section>
-
     <div class="container">
-        <aside class="sidebar">
-            <h3>Admissions Links</h3>
-            <ul>
-                <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-                <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
-                <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-                <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
-                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Admissions</a></li>
-                <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-                <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
-                <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-                <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
-                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Admissions</a></li>
-                <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-                <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
-                <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-                <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
-                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Admissions</a></li>
-                <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-                <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
-                <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-                <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
-                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Admissions</a></li>
-                <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-                <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
-                <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-                <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
-                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Admissions</a></li>
-            </ul>
-        </aside>
-
-        <main class="main-content">
-            <section id="application-process" class="content-box">
-                <h2>Application Process</h2>
-                <p>At St. Margaret College Makerere, we make the application process straightforward and accessible. Follow these steps to apply:</p>
-                <ol>
-                    <li><strong>Download the Application Form:</strong> Get the form below or visit our office.</li>
-                    <li><strong>Complete the Form:</strong> Fill in all required details accurately.</li>
-                    <li><strong>Submit Documents:</strong> Attach the necessary documents (see requirements below).</li>
-                    <li><strong>Pay Application Fee:</strong> A non-refundable fee of UGX 50,000 is required.</li>
-                    <li><strong>Submit Application:</strong> Send your application via email to <a href="mailto:admissions@smacoma.edu">admissions@smacoma.edu</a> or drop it at our admissions office.</li>
-                </ol>
-            </section>
-
-            <section id="requirements" class="content-box">
-                <h2>Admission Requirements</h2>
-                <p>We welcome applications from students who meet the following criteria:</p>
-                <ul>
-                    <li>Completed O-Level or A-Level with a minimum of 5 passes, including English and Mathematics.</li>
-                    <li>Certified copies of academic transcripts and certificates.</li>
-                    <li>Two recent passport-sized photographs.</li>
-                    <li>A copy of the applicant's birth certificate or national ID.</li>
-                    <li>Recommendation letter from the previous school (optional).</li>
-                </ul>
-            </section>
-
-            <section id="deadlines" class="content-box">
-                <h2>Application Deadlines</h2>
-                <p>Ensure you submit your application before the following deadlines:</p>
-                <ul>
-                    <li><strong>First Intake (January):</strong> November 30, 2024</li>
-                    <li><strong>Second Intake (June):</strong> April 30, 2025</li>
-                </ul>
-                <p>Late applications may be considered on a case-by-case basis.</p>
-            </section>
-
-            <section id="download-form" class="content-box">
-                <h2>Download Application Form</h2>
-                <p>Click the button below to download the application form in PDF format.</p>
-                <a href="application-form.pdf" download class="download-btn">
-                    <i class="fas fa-download"></i> Download Application Form
-                </a>
-            </section>
-        </main>
+        <section id="application-process" class="content-box"><h2>Application Process</h2><p>Follow these steps to apply...</p></section>
+        <section id="requirements" class="content-box"><h2>Admission Requirements</h2><p>Ensure you meet the following criteria...</p></section>
+        <section id="deadlines" class="content-box"><h2>Application Deadlines</h2><p>Submit your application before these dates...</p></section>
+        <section id="download-form" class="content-box"><h2>Download Application Form</h2><a href="application-form.pdf" download class="download-btn">Download Form</a></section>
     </div>
-
-    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-    <footer>
-        <p>© 2025 St. Margaret College Makerere. All rights reserved.</p>
-    </footer>
-
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+    <footer><p>© 2025 SMACOMA. All rights reserved.</p></footer>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Intersection Observer for content boxes
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
             document.querySelectorAll('.content-box').forEach(box => {
-                observer.observe(box);
+                new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) entry.target.classList.add('visible');
+                    });
+                }, { threshold: 0.1 }).observe(box);
             });
-
-            // Search functionality
-            const searchInput = document.getElementById("searchInput");
-            const searchBtn = document.getElementById("searchBtn");
-            const contentBoxes = document.querySelectorAll(".content-box");
-
-            function performSearch() {
-                const query = searchInput.value.toLowerCase().trim();
-                contentBoxes.forEach(box => {
-                    const text = box.textContent.toLowerCase();
-                    box.style.display = text.includes(query) || query === "" ? "block" : "none";
-                });
-            }
-
-            searchBtn.addEventListener("click", performSearch);
-            searchInput.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") performSearch();
-            });
-
-            // Back to Top
             const backToTopBtn = document.getElementById("backToTop");
             window.addEventListener("scroll", () => {
                 backToTopBtn.classList.toggle("show", window.scrollY > 300);
             });
-
             backToTopBtn.addEventListener("click", () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
