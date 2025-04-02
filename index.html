@@ -216,7 +216,7 @@
         }
 
         .slide:nth-child(1) { left: 0%; }
-        .slide:nth-child(2) { left: 25%; }
+        .shape:nth-child(2) { left: 25%; }
         .slide:nth-child(3) { left: 50%; }
         .slide:nth-child(4) { left: 75%; }
 
@@ -456,7 +456,66 @@
             transform: scale(1.05);
         }
 
-        /* Updated Prefects Slider Styles */
+        /* Video Player Styles */
+        .video-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+
+        #promo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(30, 58, 138, 0.7); /* Using --primary with opacity */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+        }
+
+        .play-button:hover {
+            background-color: rgba(30, 58, 138, 0.9);
+        }
+
+        .play-icon {
+            font-size: 40px;
+            color: var(--white);
+        }
+
+        .play-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Prefects Slider Styles */
         .prefects-slider {
             position: relative;
             width: 100%;
@@ -738,6 +797,20 @@
                 font-size: 0.95rem;
             }
 
+            .video-container {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .play-icon {
+                font-size: 30px;
+            }
+
             .prefects-slider {
                 height: 300px;
             }
@@ -822,6 +895,19 @@
             .headmistress-photo {
                 width: 150px;
                 height: 150px;
+            }
+
+            .video-container {
+                margin: 0 5px;
+            }
+
+            .play-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .play-icon {
+                font-size: 25px;
             }
 
             .prefects-slider {
@@ -1273,8 +1359,8 @@
         <div class="slide" data-src="sr.jpg"><img src="COO.JPG" alt=""></div>
         <div class="slide" data-src="ll.j"><img src="CO.JPG" alt=""></div>
         <div class="hero-text">
-            <h1>St. Margaret College Makerere</h1>
-            <p>Education is the answer</p>
+            <h1>Welcome to St. Margaret College Makerere</h1>
+            <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
         </div>
     </section>
 
@@ -1286,7 +1372,7 @@
     <main class="main-content">
         <section id="welcome" class="headmistress-message">
             <div class="headmistress-photo">
-                <img src="h.png" alt="Headmistress">
+                <img src="headmistress.png" alt="Headmistress">
             </div>
             <div class="headmistress-text">
                 <h2>Open Message from the Headmistress</h2>
@@ -1404,6 +1490,20 @@
                         <p>Sports, music, drama, and debate clubs build leadership and teamwork.</p>
                         <a href="#academics" class="card-btn">Join Now</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inserted Video Player Section -->
+        <section class="video-section" id="videoPromo">
+            <h2 class="section-title">Watch Our Story</h2>
+            <div class="video-container">
+                <video id="promo-video" muted>
+                    <source src="adv.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="play-button" id="play-button">
+                    <span class="play-icon">►</span>
                 </div>
             </div>
         </section>
@@ -1619,7 +1719,7 @@
             <div class="footer-section">
                 <img src="logo.png" alt="SMACOMA Logo" class="footer-logo">
                 <p>St. Margaret College Makerere - Educating Since 1954</p>
-                <p>P.O. Box 123, Makerere, Kampala, Uganda</p>
+                0<p>P.O. Box 123, Makerere, Kampala, Uganda</p>
                 <div class="social-links">
                     <a href="https://facebook.com/smacoma" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com/smacoma" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -1814,6 +1914,33 @@
                 showSlide(currentSlide);
             }, 5000);
 
+            // Video Player Functionality
+            const video = document.getElementById("promo-video");
+            const playButton = document.getElementById("play-button");
+
+            playButton.addEventListener("click", () => {
+                if (video.paused) {
+                    video.play();
+                    playButton.classList.add("hidden");
+                    video.removeAttribute("muted"); // Unmute on play if desired
+                } else {
+                    video.pause();
+                    playButton.classList.remove("hidden");
+                }
+            });
+
+            video.addEventListener("click", () => {
+                if (!video.paused) {
+                    video.pause();
+                    playButton.classList.remove("hidden");
+                }
+            });
+
+            video.addEventListener("ended", () => {
+                playButton.classList.remove("hidden");
+            });
+
+            // Chatbot Functionality
             const chatbotContainer = document.querySelector(".chatbot-container");
             const openChatbot = document.getElementById("openChatbot");
             const closeChatbot = document.getElementById("closeChatbot");
@@ -1885,6 +2012,7 @@
                 if (e.key === "Enter") handleMessage();
             });
 
+            // Counter Animation
             const counters = document.querySelectorAll('.counter-number');
             const speed = 200;
 
