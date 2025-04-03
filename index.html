@@ -2189,6 +2189,10 @@
 
             animateCounters();
         });
+        document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Right-click is disabled to protect our content.');
+});
     </script>
 </body>
 </html>
