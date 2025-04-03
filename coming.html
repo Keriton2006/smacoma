@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMACOMA - Coming Soon</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #d4af37; /* Golden primary */
+            --secondary: #f4c430; /* Lighter gold accent */
+            --accent: #3c2f2f; /* Deep brown for contrast */
+            --light-bg: #fff8e1; /* Warm off-white background */
+            --white: #ffffff;
+            --text-gray: #5d4037; /* Soft brown-gray for text */
+        }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Graphics */
+        .background-graphic {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: url('coming-soon-graphic.jpg') no-repeat center center/cover;
+            opacity: 0.3;
+            animation: subtleZoom 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes subtleZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(244, 196, 48, 0.5));
+            z-index: -1;
+        }
+
+        /* Content Container */
+        .coming-soon-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-item {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: scale(1.05);
+        }
+
+        .countdown-item span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .countdown-item label {
+            font-size: 0.9rem;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        /* Newsletter Signup */
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid var(--secondary);
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--primary);
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 20px 20px 0;
+            color: var(--white);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Social Links */
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .coming-soon-container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+            }
+
+            .countdown-item span {
+                font-size: 1.5rem;
+            }
+
+            .countdown-item label {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .countdown {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 20px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-graphic"></div>
+    <div class="overlay"></div>
+
+    <div class="coming-soon-container">
+        <img src="logo.png" alt="SMACOMA Logo" class="logo">
+        <h1>We're Coming Soon!</h1>
+        <p>St. Margaret College Makerere is preparing something extraordinary for 2025. Stay tuned for a new era of education excellence!</p>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <label>Days</label>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <label>Hours</label>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <label>Minutes</label>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <label>Seconds</label>
+            </div>
+        </div>
+
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Get Updates</button>
+        </form>
+
+        <div class="social-links">
+            <a href="https://facebook.com/smacoma" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/smacoma" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/smacoma" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer to February 10, 2025 (Term 1 Start)
+        const launchDate = new Date("February 10, 2025 00:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = String(days).padStart(2, "0");
+            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "<h2>We're Live!</h2>";
+            }
+        };
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
+</html>
