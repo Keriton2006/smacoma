@@ -16,10 +16,10 @@
         }
 
         :root {
-            --primary: #1e3a8a; /* Blue */
-            --secondary: #60a5fa; /* Light Blue */
-            --accent: #000000; /* Black */
-            --light-bg: #ffffff; /* White */
+            --primary: #1e3a8a;
+            --secondary: #60a5fa;
+            --accent: #000000;
+            --light-bg: #ffffff;
             --white: #ffffff;
             --text-gray: #6b7280;
         }
@@ -101,9 +101,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             transition: background 0.3s ease;
         }
 
@@ -190,84 +187,66 @@
             width: 100%;
         }
 
+        /* Updated Hero Section */
         .hero {
             position: relative;
-            height: 70vh;
+            height: 80vh;
+            width: 100%;
             overflow: hidden;
-            margin: 2rem auto;
-            max-width: 1400px;
-            border-radius: 20px;
             background: var(--light-bg);
         }
 
-        .slide {
-            width: 25%;
+        .hero-slider {
+            position: relative;
+            width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
-            position: absolute;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            animation: slide 16s infinite ease-in-out;
         }
 
-        .slide:empty {
-            background: var(--text-gray);
-        }
-
-        .slide:nth-child(1) { left: 0%; }
-        .shape:nth-child(2) { left: 25%; }
-        .slide:nth-child(3) { left: 50%; }
-        .slide:nth-child(4) { left: 75%; }
-
-        .hero-text {
+        .hero-slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-text {
             text-align: center;
             color: var(--white);
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
             padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            max-width: 800px;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease forwards;
         }
 
         .hero-text h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             margin-bottom: 1rem;
-            animation: fadeInDown 1s ease;
         }
 
         .hero-text p {
             font-size: 1.5rem;
             font-weight: 300;
-            max-width: 800px;
             line-height: 1.4;
-            animation: fadeInUp 1s ease 0.5s forwards;
-            opacity: 0;
         }
 
-        @keyframes slide {
-            0%, 20% { transform: translateX(0); }
-            25%, 45% { transform: translateX(-100%); }
-            50%, 70% { transform: translateX(-200%); }
-            75%, 95% { transform: translateX(-300%); }
-            100% { transform: translateX(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
+        @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -403,6 +382,17 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
+        /* Gradient Hover for Community Voices Cards */
+        #testimonials .content-card:hover {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--white);
+        }
+
+        #testimonials .content-card:hover h2,
+        #testimonials .content-card:hover p {
+            color: var(--white);
+        }
+
         .card-image {
             width: 100%;
             height: 180px;
@@ -456,7 +446,6 @@
             transform: scale(1.05);
         }
 
-        /* Updated Video Player Styles */
         .video-section {
             max-width: 1400px;
             margin: 4rem auto;
@@ -515,7 +504,6 @@
             pointer-events: none;
         }
 
-        /* Prefects Slider Styles */
         .prefects-slider {
             position: relative;
             width: 100%;
@@ -721,33 +709,50 @@
             outline: none;
         }
 
+        /* Mobile Side Nav and Other Media Queries */
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.5rem 1rem;
+                position: relative;
             }
 
             .nav-container {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                justify-content: space-between;
             }
 
             .logo-img {
                 height: 40px;
             }
 
+            .nav-toggle {
+                display: block;
+            }
+
             .nav-links {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 100vh;
+                background: var(--white);
                 flex-direction: column;
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
+                padding: 4rem 2rem;
+                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
             }
 
             .nav-links.active {
                 display: flex;
+                transform: translateX(0);
             }
 
-            .nav-toggle {
-                display: block;
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem;
             }
 
             .marquee-container {
@@ -756,17 +761,15 @@
             }
 
             .hero {
-                height: 40vh;
-                margin: 1rem;
+                height: 60vh;
             }
 
             .hero-text h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .hero-text p {
-                font-size: 0.95rem;
-                padding: 0 0.5rem;
+                font-size: 1rem;
             }
 
             .main-content {
@@ -874,15 +877,15 @@
 
         @media (max-width: 480px) {
             .hero {
-                height: 35vh;
+                height: 50vh;
             }
 
             .hero-text h1 {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             .hero-text p {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
             }
 
             .marquee-container {
@@ -1338,12 +1341,12 @@
             <button class="nav-toggle"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="academics.html">Academics</a></li>
-                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -1356,13 +1359,31 @@
     </div>
 
     <section class="hero">
-        <div class="slide" data-src=""><img src="P (2).JPG" alt=""></div>
-        <div class="slide" data-src="u.jpg"><img src="m (2).jpg" alt=""></div>
-        <div class="slide" data-src="sr.jpg"><img src="COO.JPG" alt=""></div>
-        <div class="slide" data-src="ll.j"><img src="CO.JPG" alt=""></div>
-        <div class="hero-text">
-            <h1>Welcome to St. Margaret College Makerere</h1>
-            <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('P (2).JPG');">
+                <div class="hero-text">
+                    <h1>Welcome to St. Margaret College Makerere</h1>
+                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('m (2).jpg');">
+                <div class="hero-text">
+                    <h1>Welcome to St. Margaret College Makerere</h1>
+                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('COO.JPG');">
+                <div class="hero-text">
+                    <h1>Welcome to St. Margaret College Makerere</h1>
+                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('CO.JPG');">
+                <div class="hero-text">
+                    <h1>Welcome to St. Margaret College Makerere</h1>
+                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1746,7 +1767,7 @@
                     <li><i class="fas fa-map-marker-alt"></i> Makerere Hill Road, Kampala</li>
                     <li><i class="fas fa-phone"></i> +256 414 531 234</li>
                     <li><i class="fas fa-phone"></i> +256 772 345 678</li>
-                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7d14131b123d0e101c1e12101c531c1e53081a">[email protected]</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:info@smacoma.ac.ug">info@smacoma.ac.ug</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1797,7 +1818,6 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             window.addEventListener("scroll", () => {
@@ -1820,19 +1840,27 @@
                 newsletterForm.reset();
             });
 
-            const slides = document.querySelectorAll(".slide");
-            slides.forEach(slide => {
-                const src = slide.getAttribute("data-src");
-                if (src) {
-                    slide.style.backgroundImage = `url(${src})`;
-                } else {
-                    slide.style.backgroundColor = "var(--text-gray)";
-                }
+            // Hero Slider
+            const slides = document.querySelectorAll(".hero-slide");
+            let currentSlide = 0;
 
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove("active"));
+                slides[index].classList.add("active");
+                currentSlide = index;
+            }
+
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }, 5000);
+
+            slides.forEach(slide => {
                 slide.addEventListener("click", () => {
                     const modal = document.getElementById("imageModal");
                     const modalImage = document.getElementById("modalImage");
-                    modalImage.src = src || "placeholder.jpg";
+                    const bgImage = slide.style.backgroundImage.slice(5, -2);
+                    modalImage.src = bgImage;
                     modal.style.display = "flex";
                 });
             });
@@ -1882,37 +1910,36 @@
             const prevSlideBtn = document.getElementById("prevSlide");
             const nextSlideBtn = document.getElementById("nextSlide");
             const dots = document.querySelectorAll(".dot");
-            let currentSlide = 0;
+            let currentPrefectSlide = 0;
 
-            function showSlide(index) {
+            function showPrefectSlide(index) {
                 prefectSlides.forEach(slide => slide.classList.remove("active"));
                 dots.forEach(dot => dot.classList.remove("active"));
                 prefectSlides[index].classList.add("active");
                 dots[index].classList.add("active");
-                currentSlide = index;
+                currentPrefectSlide = index;
             }
 
             prevSlideBtn.addEventListener("click", () => {
-                currentSlide = (currentSlide - 1 + prefectSlides.length) % prefectSlides.length;
-                showSlide(currentSlide);
+                currentPrefectSlide = (currentPrefectSlide - 1 + prefectSlides.length) % prefectSlides.length;
+                showPrefectSlide(currentPrefectSlide);
             });
 
             nextSlideBtn.addEventListener("click", () => {
-                currentSlide = (currentSlide + 1) % prefectSlides.length;
-                showSlide(currentSlide);
+                currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
+                showPrefectSlide(currentPrefectSlide);
             });
 
             dots.forEach(dot => {
                 dot.addEventListener("click", () => {
                     const index = parseInt(dot.getAttribute("data-index"));
-                    showSlide(index);
+                    showPrefectSlide(index);
                 });
             });
 
-            // Auto-slide every 5 seconds
             setInterval(() => {
-                currentSlide = (currentSlide + 1) % prefectSlides.length;
-                showSlide(currentSlide);
+                currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
+                showPrefectSlide(currentPrefectSlide);
             }, 5000);
 
             // Video Player Functionality
@@ -1964,7 +1991,7 @@
                 "hi": "Hey there! I’m Keriton, a student bot at SMACOMA. How can I assist you?",
                 "hello": "Hi! I’m Keriton, here to guide you through St. Margaret College Makerere. What’s up?",
                 "about": "SMACOMA, founded in 1954, is all about excellence and growth. Want details on our history or mission?",
-                "history W": "Since 1954, SMACOMA has been a leader in education, mixing tradition with modern vibes right here in Makerere.",
+                "history": "Since 1954, SMACOMA has been a leader in education, mixing tradition with modern vibes right here in Makerere.",
                 "mission": "We aim to spark curiosity, build leaders, and serve the community through top-notch education.",
                 "academics": "We’ve got STEM, Arts, Commerce, and tons of clubs. What subject or activity are you into?",
                 "admissions": "2025-2026 admissions are open! Apply online or drop by. Need the process or fees info?",
@@ -2044,9 +2071,6 @@
 
             animateCounters();
         });
-        document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-});
     </script>
 </body>
 </html>
