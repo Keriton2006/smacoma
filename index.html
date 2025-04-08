@@ -15,18 +15,19 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        :root {
-            --primary: #8B0000;    /* Dark Red - Deep, bold color for headers and CTAs */
-            --secondary: #CC9900;  /* Dark Yellow - Warm, muted yellow for accents and backgrounds */
-            --accent: #DAA520;     /* Gold - Luxurious highlight for key elements */
-            --light-bg: #FFF8E7;   /* Pale Gold-White - Subtle, warm background */
-            --white: #FFFFFF;      /* White - Clean contrast for text */
-            --text-dark: #3C2F2F;  /* Dark Brown - Rich, readable text color */
-        }
+ :root {
+    --primary: #8B0000;    /* Dark Red - Deep, bold color for headers and CTAs */
+    --secondary: #CC9900;  /* Dark Yellow - Warm, muted yellow for accents and backgrounds */
+    --accent: #DAA520;     /* Gold - Luxurious highlight for key elements */
+    --light-bg: #FFF8E7;   /* Pale Gold-White - Subtle, warm background */
+    --white: #FFFFFF;      /* White - Clean contrast for text */
+    --text-dark: #3C2F2F;  /* Dark Brown - Rich, readable text color */
+}
+
 
         body {
             background: var(--light-bg);
-            color: var(--text-dark);
+            color: var(--text-gray);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
@@ -171,7 +172,7 @@
             padding: 0.5rem;
         }
 
-        .news-marquee {
+       .news-marquee {
             position: relative;
             max-width: 1400px;
             margin: 2rem auto;
@@ -238,7 +239,7 @@
 
         .marquee-card p {
             font-size: 0.9rem;
-            color: var(--text-dark);
+            color: var(--text-gray);
             line-height: 1.4;
         }
 
@@ -264,7 +265,7 @@
             animation-play-state: paused;
         }
 
-        /* Updated Hero Section with Light Black Overlay */
+        /* Updated Hero Section */
         .hero {
             position: relative;
             height: 80vh;
@@ -295,17 +296,6 @@
             z-index: 1;
         }
 
-        .hero-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Light black overlay */
-            z-index: 2;
-        }
-
         .hero-slide.active {
             opacity: 1;
         }
@@ -319,8 +309,6 @@
             max-width: 800px;
             transform: translateY(20px);
             animation: slideUp 0.8s ease forwards;
-            position: relative;
-            z-index: 3; /* Ensure text is above the overlay */
         }
 
         .hero-text h1 {
@@ -435,7 +423,7 @@
 
         .headmistress-text p {
             font-size: 1.1rem;
-            color: var(--text-dark);
+            color: var(--accent);
             line-height: 1.8;
         }
 
@@ -472,6 +460,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
+        /* Gradient Hover for Community Voices Cards */
         #testimonials .content-card:hover {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             color: var(--white);
@@ -798,6 +787,7 @@
             outline: none;
         }
 
+        /* Mobile Side Nav and Other Media Queries */
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.5rem 1rem;
@@ -841,6 +831,11 @@
             .nav-links a {
                 font-size: 1.2rem;
                 padding: 1rem;
+            }
+
+            .marquee-container {
+                font-size: 0.85rem;
+                top: 50px;
             }
 
             .hero {
@@ -969,6 +964,10 @@
 
             .hero-text p {
                 font-size: 0.9rem;
+            }
+
+            .marquee-container {
+                font-size: 0.8rem;
             }
 
             .section-title {
@@ -1322,13 +1321,13 @@
             display: flex;
             padding: 10px;
             background: var(--white);
-            border-top: 1px solid var(--text-dark);
+            border-top: 1px solid var(--text-gray);
         }
 
         .chatbot-input input {
             flex: 1;
             padding: 8px 12px;
-            border: 1px solid var(--text-dark);
+            border: 1px solid var(--text-gray);
             border-radius: 20px 0 0 20px;
             outline: none;
             font-size: 0.9rem;
@@ -1430,29 +1429,27 @@
             </nav>
         </div>
     </header>
-
     <section class="hero">
         <div class="hero-slider">
-            <!-- Using images from the provided set for the hero slides -->
-            <div class="hero-slide active" style="background-image: url('l1 (1).jpg');">
+            <div class="hero-slide active" style="background-image: url('l1.JPG');">
                 <div class="hero-text">
                     <h1>Welcome to St. Margaret College Makerere</h1>
                     <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('l1 (4).jpg');">
+            <div class="hero-slide" style="background-image: url('l1(3).jpg');">
                 <div class="hero-text">
                     <h1>Welcome to St. Margaret College Makerere</h1>
                     <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('l1 (10).jpg');">
+            <div class="hero-slide" style="background-image: url('COO.JPG');">
                 <div class="hero-text">
                     <h1>Welcome to St. Margaret College Makerere</h1>
                     <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('image4.jpg');">
+            <div class="hero-slide" style="background-image: url('da.jpg');">
                 <div class="hero-text">
                     <h1>Welcome to St. Margaret College Makerere</h1>
                     <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
@@ -1465,8 +1462,7 @@
         <span class="modal-close" id="modalClose">×</span>
         <img id="modalImage" src="" alt="Full-screen image">
     </div>
-
-    <section class="news-marquee">
+<section class="news-marquee">
         <div class="marquee-wrapper">
             <div class="marquee-content">
                 <div class="marquee-card">
@@ -1518,7 +1514,7 @@
     <main class="main-content">
         <section id="welcome" class="headmistress-message">
             <div class="headmistress-photo">
-                <img src="image5.jpg" alt="Headmistress">
+                <img src="l1(7).jpg" alt="Headmistress">
             </div>
             <div class="headmistress-text">
                 <h2>Open Message from the Headmistress</h2>
@@ -1531,7 +1527,7 @@
             <div class="content-grid">
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image6.jpg" alt="History">
+                        <img src="l1(14).jpg" alt="History">
                     </div>
                     <div class="card-content">
                         <h2>Our Rich History</h2>
@@ -1541,7 +1537,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image7.jpg" alt="Mission">
+                        <img src="m (2).JPG" alt="Mission">
                     </div>
                     <div class="card-content">
                         <h2>Our Mission</h2>
@@ -1551,7 +1547,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image8.jpg" alt="Values">
+                        <img src="J.jpg" alt="Values">
                     </div>
                     <div class="card-content">
                         <h2>Core Values</h2>
@@ -1561,7 +1557,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image9.jpg" alt="Campus">
+                        <img src="CO.jpg" alt="Campus">
                     </div>
                     <div class="card-content">
                         <h2>Our Campus</h2>
@@ -1599,7 +1595,7 @@
             <div class="content-grid">
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image10.jpg" alt="STEM">
+                        <img src="P (1).JPG" alt="STEM">
                     </div>
                     <div class="card-content">
                         <h2>STEM Programs</h2>
@@ -1609,7 +1605,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image11.jpg" alt="Arts">
+                        <img src="P (2).JPG" alt="Arts">
                     </div>
                     <div class="card-content">
                         <h2>Arts & Humanities</h2>
@@ -1619,17 +1615,17 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image12.jpg" alt="Commerce">
+                        <img src="P (3).JPG" alt="Commerce">
                     </div>
                     <div class="card-content">
                         <h2>Commerce Studies</h2>
-                        <p>Economics, business studies, and entrepreneurship Ascendancy programs with hands-on projects.</p>
+                        <p>Economics, business studies, and entrepreneurship with hands-on projects.</p>
                         <a href="#academics" class="card-btn">Discover</a>
                     </div>
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image13.jpg" alt="Extracurriculars">
+                        <img src="P (4).JPG" alt="Extracurriculars">
                     </div>
                     <div class="card-content">
                         <h2>Extracurricular Activities</h2>
@@ -1658,7 +1654,7 @@
             <div class="content-grid">
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image14.jpg" alt="Term Start">
+                        <img src="P (2).JPG" alt="Term Start">
                     </div>
                     <div class="card-content">
                         <h2>Term 1 2025 Begins</h2>
@@ -1668,7 +1664,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image15.jpg" alt="Science Fair">
+                        <img src="DA.JPG" alt="Science Fair">
                     </div>
                     <div class="card-content">
                         <h2>Science Fair 2025</h2>
@@ -1678,7 +1674,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image16.jpg" alt="Debate Win">
+                        <img src="P (3).JPG" alt="Debate Win">
                     </div>
                     <div class="card-content">
                         <h2>Debate Team Success</h2>
@@ -1688,7 +1684,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image17.jpg" alt="Arts Center">
+                        <img src="P (1).JPG" alt="Arts Center">
                     </div>
                     <div class="card-content">
                         <h2>New Arts Center Opens</h2>
@@ -1711,31 +1707,31 @@
             <h2 class="section-title">Alumni of Prefects</h2>
             <div class="prefects-slider">
                 <div class="slider-container">
-                    <div class="prefect-slide active" data-index="0" style="background-image: url('image18.jpg');">
+                    <div class="prefect-slide active" data-index="0" style="background-image: url('P (1).JPG');">
                         <h2>John Mukasa - Head Prefect (2010)</h2>
                         <p>"SMACOMA taught me leadership and responsibility, shaping me into the person I am today."</p>
                     </div>
-                    <div class="prefect-slide" data-index="1" style="background-image: url('image19.jpg');">
+                    <div class="prefect-slide" data-index="1" style="background-image: url('P (2).JPG');">
                         <h2>Sarah Nakitto - Deputy Head (2012)</h2>
                         <p>"The supportive community at SMACOMA helped me excel academically and socially."</p>
                     </div>
-                    <div class="prefect-slide" data-index="2" style="background-image: url('image20.jpg');">
+                    <div class="prefect-slide" data-index="2" style="background-image: url('P (3).JPG');">
                         <h2>Peter Okello - Sports Prefect (2015)</h2>
                         <p>"Sports at SMACOMA built my teamwork skills and lifelong friendships."</p>
                     </div>
-                    <div class="prefect-slide" data-index="3" style="background-image: url('image21.jpg');">
+                    <div class="prefect-slide" data-index="3" style="background-image: url('P (4).JPG');">
                         <h2>Mary Nambi - Academic Prefect (2017)</h2>
                         <p>"The rigorous academics prepared me for university and beyond."</p>
                     </div>
-                    <div class="prefect-slide" data-index="4" style="background-image: url('image22.jpg');">
+                    <div class="prefect-slide" data-index="4" style="background-image: url('CO.jpg');">
                         <h2>David Tumusiime - Discipline Prefect (2018)</h2>
                         <p>"SMACOMA instilled discipline and integrity that guide my career."</p>
                     </div>
-                    <div class="prefect-slide" data-index="5" style="background-image: url('image23.jpg');">
+                    <div class="prefect-slide" data-index="5" style="background-image: url('COO.JPG');">
                         <h2>Esther Kizza - Cultural Prefect (2019)</h2>
                         <p>"The cultural events at SMACOMA celebrated diversity and creativity."</p>
                     </div>
-                    <div class="prefect-slide" data-index="6" style="background-image: url('image24.jpg');">
+                    <div class="prefect-slide" data-index="6" style="background-image: url('DA.JPG');">
                         <h2>James Ssewanyana - Health Prefect (2020)</h2>
                         <p>"SMACOMA’s focus on well-being made me a compassionate leader."</p>
                     </div>
@@ -1761,7 +1757,7 @@
             <div class="content-grid">
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image25.jpg" alt="Process">
+                        <img src="P (4).JPG" alt="Process">
                     </div>
                     <div class="card-content">
                         <h2>Admission Process</h2>
@@ -1771,7 +1767,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image26.jpg" alt="Fees">
+                        <img src="DA.jpg" alt="Fees">
                     </div>
                     <div class="card-content">
                         <h2>Fees Structure</h2>
@@ -1781,7 +1777,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image27.jpg" alt="Requirements">
+                        <img src="P (3).JPG" alt="Requirements">
                     </div>
                     <div class="card-content">
                         <h2>Entry Requirements</h2>
@@ -1796,36 +1792,24 @@
             <h2 class="section-title">Community Voices</h2>
             <div class="content-grid">
                 <div class="content-card">
-                    <div class="card-image">
-                        <img src="image28.jpg" alt="Student Perspective">
-                    </div>
                     <div class="card-content">
                         <h2>Student Perspective</h2>
                         <p>"SMACOMA’s STEM labs sparked my passion for engineering." - David T., S5</p>
                     </div>
                 </div>
                 <div class="content-card">
-                    <div class="card-image">
-                        <img src="image29.jpg" alt="Parent Insight">
-                    </div>
                     <div class="card-content">
                         <h2>Parent Insight</h2>
                         <p>"The school’s focus on discipline is exceptional." - Mrs. Nambi</p>
                     </div>
                 </div>
                 <div class="content-card">
-                    <div class="card-image">
-                        <img src="image30.jpg" alt="Alumni Reflection">
-                    </div>
                     <div class="card-content">
                         <h2>Alumni Reflection</h2>
                         <p>"My leadership skills grew here." - Jane K., Class of 2015</p>
                     </div>
                 </div>
                 <div class="content-card">
-                    <div class="card-image">
-                        <img src="image31.jpg" alt="Teacher’s View">
-                    </div>
                     <div class="card-content">
                         <h2>Teacher’s View</h2>
                         <p>"Teaching here is rewarding." - Mr. Okello</p>
@@ -1839,7 +1823,7 @@
             <div class="content-grid">
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image32.jpg" alt="Notable Alumni">
+                        <img src="P (1).JPG" alt="Notable Alumni">
                     </div>
                     <div class="card-content">
                         <h2>Notable Alumni</h2>
@@ -1849,7 +1833,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image33.jpg" alt="Mentorship">
+                        <img src="COO.JPG" alt="Mentorship">
                     </div>
                     <div class="card-content">
                         <h2>Mentorship Program</h2>
@@ -1859,7 +1843,7 @@
                 </div>
                 <div class="content-card">
                     <div class="card-image">
-                        <img src="image34.jpg" alt="Reunion">
+                        <img src="CO.JPG" alt="Reunion">
                     </div>
                     <div class="card-content">
                         <h2>Alumni Reunion</h2>
@@ -2125,7 +2109,7 @@
             const responses = {
                 "hi": "Hey there! I’m Keriton, a student bot at SMACOMA. How can I assist you?",
                 "hello": "Hi! I’m Keriton, here to guide you through St. Margaret College Makerere. What’s up?",
-                "about": "SMACOMA, founded in 1954, is all about excellence and growth. Want details on our history or mission
+                "about": "SMACOMA, founded in 1954, is all about excellence and growth. Want details on our history or mission?",
                 "history": "Since 1954, SMACOMA has been a leader in education, mixing tradition with modern vibes right here in Makerere.",
                 "mission": "We aim to spark curiosity, build leaders, and serve the community through top-notch education.",
                 "academics": "We’ve got STEM, Arts, Commerce, and tons of clubs. What subject or activity are you into?",
