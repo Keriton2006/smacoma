@@ -15,15 +15,15 @@
             font-family: 'Poppins', sans-serif;
         }
 
- :root {
-    --primary: #8B0000;    /* Dark Red - Deep, bold color for headers and CTAs */
-    --secondary: #CC9900;  /* Dark Yellow - Warm, muted yellow for accents and backgrounds */
-    --accent: #DAA520;     /* Gold - Luxurious highlight for key elements */
-    --light-bg: #FFF8E7;   /* Pale Gold-White - Subtle, warm background */
-    --white: #FFFFFF;      /* White - Clean contrast for text */
-    --text-dark: #3C2F2F;  /* Dark Brown - Rich, readable text color */
-}
-
+        :root {
+            --primary: #8B0000;    /* Dark Red - Deep, bold color for headers and CTAs */
+            --secondary: #CC9900;  /* Dark Yellow - Warm, muted yellow for accents and backgrounds */
+            --accent: #DAA520;     /* Gold - Luxurious highlight for key elements */
+            --light-bg: #FFF8E7;   /* Pale Gold-White - Subtle, warm background */
+            --white: #FFFFFF;      /* White - Clean contrast for text */
+            --text-dark: #3C2F2F;  /* Dark Brown - Rich, readable text color */
+            --text-gray: #666;     /* Gray for secondary text */
+        }
 
         body {
             background: var(--light-bg);
@@ -172,7 +172,7 @@
             padding: 0.5rem;
         }
 
-       .news-marquee {
+        .news-marquee {
             position: relative;
             max-width: 1400px;
             margin: 2rem auto;
@@ -265,68 +265,127 @@
             animation-play-state: paused;
         }
 
-        /* Updated Hero Section */
+        /* Updated Hero Section (Inspired by Keriton Tech Uganda) */
         .hero {
             position: relative;
             height: 80vh;
-            width: 100%;
             overflow: hidden;
-            background: transparent;
         }
 
-        .hero-slider {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-slide {
+        .slideshow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             background-size: cover;
             background-position: center;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
         }
 
-        .hero-slide.active {
+        .slide.active {
             opacity: 1;
         }
 
-        .hero-text {
-            text-align: center;
-            color: var(--white);
-            padding: 2rem;
-            background: transparent;
-            border-radius: 10px;
-            max-width: 800px;
-            transform: translateY(20px);
-            animation: slideUp 0.8s ease forwards;
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+            z-index: 1;
         }
 
-        .hero-text h1 {
+        .slide-1 { background-image: url('l1 (17).JPG'); }
+        .slide-2 { background-image: url('l1 (2).jpg'); }
+        .slide-3 { background-image: url('COO.JPG'); }
+        .slide-4 { background-image: url('da.jpg'); }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-content .hashtags {
+            font-size: 1rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            color: var(--white);
             margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        .hero-text p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            line-height: 1.4;
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-content .cta-btn {
+            background: var(--secondary); /* Dark Yellow button */
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .hero-content .cta-btn:hover {
+            transform: scale(1.05);
+            background: var(--primary); /* Dark Red on hover */
+        }
+
+        .slide-dots {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--white);
+            border-radius: 50%;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease, background 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background: var(--accent);
         }
 
         .modal {
@@ -787,6 +846,166 @@
             outline: none;
         }
 
+        /* Footer with Moving Pens and Books */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .footer-object {
+            position: absolute;
+            opacity: 0.3;
+            animation: floatAcross 15s linear infinite;
+        }
+
+        .pen {
+            width: 40px;
+            height: 40px;
+            background: url('https://img.icons8.com/ios-filled/50/FFFFFF/pen.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .book {
+            width: 50px;
+            height: 50px;
+            background: url('https://img.icons8.com/ios-filled/50/FFFFFF/book.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .footer-object:nth-child(1) { top: 20%; left: -50px; animation-duration: 15s; }
+        .footer-object:nth-child(2) { top: 40%; left: -50px; animation-duration: 18s; }
+        .footer-object:nth-child(3) { top: 60%; left: -50px; animation-duration: 20s; }
+        .footer-object:nth-child(4) { top: 30%; left: -50px; animation-duration: 22s; }
+        .footer-object:nth-child(5) { top: 50%; left: -50px; animation-duration: 17s; }
+
+        @keyframes floatAcross {
+            0% { transform: translateX(-50px); opacity: 0.3; }
+            100% { transform: translateX(100vw); opacity: 0.3; }
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+        }
+
+        .social-links a:hover, .social-links a:active {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links, .footer-contact {
+            list-style: none;
+        }
+
+        .footer-links li, .footer-contact li {
+            margin: 0.75rem 0;
+        }
+
+        .footer-links a, .footer-contact a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover, .footer-links a:active {
+            opacity: 1;
+            color: var(--secondary);
+        }
+
+        .footer-contact i {
+            margin-right: 0.75rem;
+            color: var(--secondary);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 20px;
+            flex: 1;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover, .newsletter-form button:active {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
         /* Mobile Side Nav and Other Media Queries */
         @media (max-width: 768px) {
             .navbar {
@@ -842,12 +1061,16 @@
                 height: 60vh;
             }
 
-            .hero-text h1 {
+            .hero-content h1 {
                 font-size: 2rem;
             }
 
-            .hero-text p {
+            .hero-content p {
                 font-size: 1rem;
+            }
+
+            .hero-content .hashtags {
+                font-size: 0.8rem;
             }
 
             .main-content {
@@ -951,6 +1174,10 @@
             .audio-player audio {
                 max-width: 100%;
             }
+
+            .slide-dots {
+                right: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -958,12 +1185,16 @@
                 height: 50vh;
             }
 
-            .hero-text h1 {
+            .hero-content h1 {
                 font-size: 1.5rem;
             }
 
-            .hero-text p {
+            .hero-content p {
                 font-size: 0.9rem;
+            }
+
+            .hero-content .hashtags {
+                font-size: 0.7rem;
             }
 
             .marquee-container {
@@ -1024,118 +1255,15 @@
             .counter-number {
                 font-size: 1.8rem;
             }
-        }
 
-        .footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 4rem 2rem 2rem;
-        }
+            .slide-dots {
+                right: 5px;
+            }
 
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .footer-section p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .footer-logo {
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            touch-action: manipulation;
-        }
-
-        .social-links a:hover, .social-links a:active {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        .footer-links, .footer-contact {
-            list-style: none;
-        }
-
-        .footer-links li, .footer-contact li {
-            margin: 0.75rem 0;
-        }
-
-        .footer-links a, .footer-contact a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover, .footer-links a:active {
-            opacity: 1;
-            color: var(--secondary);
-        }
-
-        .footer-contact i {
-            margin-right: 0.75rem;
-            color: var(--secondary);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .newsletter-form input {
-            padding: 0.75rem;
-            border: none;
-            border-radius: 20px;
-            flex: 1;
-            outline: none;
-        }
-
-        .newsletter-form button {
-            background: var(--secondary);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 20px;
-            color: var(--white);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-form button:hover, .newsletter-form button:active {
-            background: var(--accent);
-            transform: scale(1.05);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1429,32 +1557,47 @@
             </nav>
         </div>
     </header>
+
     <section class="hero">
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('l1.JPG');">
-                <div class="hero-text">
-                    <h1>Welcome to St. Margaret College Makerere</h1>
+        <div class="slideshow">
+            <div class="slide slide-1 active">
+                <div class="hero-content">
+                    <div class="hashtags">#EDUCATION #EXCELLENCE #LEADERSHIP</div>
+                    <h1>Welcome to SMACOMA</h1>
                     <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+                    <a href="#about" class="cta-btn">Discover More</a>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('l1(3).jpg');">
-                <div class="hero-text">
-                    <h1>Welcome to St. Margaret College Makerere</h1>
-                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+            <div class="slide slide-2">
+                <div class="hero-content">
+                    <div class="hashtags">#EDUCATION #EXCELLENCE #LEADERSHIP</div>
+                    <h1>Academic Excellence</h1>
+                    <p>Join a legacy of academic achievement and personal growth.</p>
+                    <a href="#academics" class="cta-btn">Explore Programs</a>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('COO.JPG');">
-                <div class="hero-text">
-                    <h1>Welcome to St. Margaret College Makerere</h1>
-                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+            <div class="slide slide-3">
+                <div class="hero-content">
+                    <div class="hashtags">#EDUCATION #EXCELLENCE #LEADERSHIP</div>
+                    <h1>Our Community</h1>
+                    <p>Be part of a vibrant and supportive school community.</p>
+                    <a href="#testimonials" class="cta-btn">Meet Our Voices</a>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('da.jpg');">
-                <div class="hero-text">
-                    <h1>Welcome to St. Margaret College Makerere</h1>
-                    <p>Empowering Future Leaders Since 1954 - Excellence in Education and Beyond</p>
+            <div class="slide slide-4">
+                <div class="hero-content">
+                    <div class="hashtags">#EDUCATION #EXCELLENCE #LEADERSHIP</div>
+                    <h1>Join SMACOMA</h1>
+                    <p>Apply now for the 2025-2026 academic year!</p>
+                    <a href="#admissions" class="cta-btn">Apply Today</a>
                 </div>
             </div>
+        </div>
+        <div class="slide-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
         </div>
     </section>
 
@@ -1462,7 +1605,8 @@
         <span class="modal-close" id="modalClose">×</span>
         <img id="modalImage" src="" alt="Full-screen image">
     </div>
-<section class="news-marquee">
+
+    <section class="news-marquee">
         <div class="marquee-wrapper">
             <div class="marquee-content">
                 <div class="marquee-card">
@@ -1698,7 +1842,7 @@
         <section class="audio-player" id="audioSection">
             <h2>School Anthem</h2>
             <audio controls>
-                <source src="school-anthem.mp3" type="audio/mpeg">
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </section>
@@ -1856,6 +2000,13 @@
     </main>
 
     <footer class="footer">
+        <div class="footer-background">
+            <div class="footer-object pen"></div>
+            <div class="footer-object book"></div>
+            <div class="footer-object pen"></div>
+            <div class="footer-object book"></div>
+            <div class="footer-object pen"></div>
+        </div>
         <div class="footer-container">
             <div class="footer-section">
                 <img src="logo.png" alt="SMACOMA Logo" class="footer-logo">
@@ -1886,314 +2037,292 @@
                     <li><i class="fas fa-map-marker-alt"></i> Makerere Hill Road, Kampala</li>
                     <li><i class="fas fa-phone"></i> +256 414 531 234</li>
                     <li><i class="fas fa-phone"></i> +256 772 345 678</li>
+                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#76f5f9faf2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5
                     <li><i class="fas fa-envelope"></i> <a href="mailto:info@smacoma.ac.ug">info@smacoma.ac.ug</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Newsletter</h3>
-                <p>Stay informed about SMACOMA updates</p>
+                <p>Stay updated with our latest news and events.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Your email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit">Subscribe</button>
                 </form>
-            </div>
-            <div class="footer-section">
-                <h3>School Hours</h3>
-                <ul class="footer-contact">
-                    <li><i class="fas fa-clock"></i> Mon-Fri: 7:30 AM - 4:30 PM</li>
-                    <li><i class="fas fa-clock"></i> Sat: 9:00 AM - 1:00 PM</li>
-                    <li><i class="fas fa-clock"></i> Sun: Closed</li>
-                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 St. Margaret College Makerere. All Rights Reserved. | Designed by SMACOMA ICT Crew</p>
+            <p>&copy; 2025 St. Margaret College Makerere. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <div class="chatbot-wrapper" id="keritonChatbot">
-        <div class="chatbot-avatar" id="openChatbot">
-            <img src="student.png" alt="Keriton Avatar" class="avatar-img">
-            <span class="chatbot-badge">Ask Keriton!</span>
+    <!-- Chatbot Section -->
+    <div class="chatbot-wrapper">
+        <div class="chatbot-avatar">
+            <img src="chatbot-avatar.png" alt="Chatbot Avatar" class="avatar-img">
+            <span class="chatbot-badge">Ask Me!</span>
         </div>
         <div class="chatbot-container">
             <div class="chatbot-header">
                 <div class="header-avatar">
-                    <img src="student.png" alt="Keriton" class="header-avatar-img">
-                    <span>Keriton - Your SMACOMA Guide</span>
+                    <img src="chatbot-avatar.png" alt="Chatbot" class="header-avatar-img">
+                    <span>SMACOMA Assistant</span>
                 </div>
-                <button class="chatbot-close" id="closeChatbot"><i class="fas fa-times"></i></button>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
             </div>
-            <div class="chatbot-messages" id="chatMessages">
+            <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
-                    <img src="student.png" alt="Keriton" class="message-avatar">
-                    <span>Hello! I’m Keriton, a student bot here to help you explore SMACOMA. What’s on your mind?</span>
+                    <img src="chatbot-avatar.png" alt="Bot" class="message-avatar">
+                    <span>Hello! How can I assist you today?</span>
                 </div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatInput" placeholder="Ask me anything...">
-                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chatbotInput" placeholder="Type your message...">
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            window.addEventListener("scroll", () => {
-                const navbar = document.querySelector(".navbar");
-                navbar.classList.toggle("scrolled", window.scrollY > 50);
-            });
+        // Navbar Toggle for Mobile
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-            const navToggle = document.querySelector(".nav-toggle");
-            const navLinks = document.querySelector(".nav-links");
-
-            navToggle.addEventListener("click", () => {
-                navLinks.classList.toggle("active");
-            });
-
-            const newsletterForm = document.querySelector(".newsletter-form");
-            newsletterForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector("input").value;
-                alert(`Thank you for subscribing with ${email}!`);
-                newsletterForm.reset();
-            });
-
-            // Hero Slider
-            const slides = document.querySelectorAll(".hero-slide");
-            let currentSlide = 0;
-
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove("active"));
-                slides[index].classList.add("active");
-                currentSlide = index;
-            }
-
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }, 5000);
-
-            slides.forEach(slide => {
-                slide.addEventListener("click", () => {
-                    const modal = document.getElementById("imageModal");
-                    const modalImage = document.getElementById("modalImage");
-                    const bgImage = slide.style.backgroundImage.slice(5, -2);
-                    modalImage.src = bgImage;
-                    modal.style.display = "flex";
-                });
-            });
-
-            const modal = document.getElementById("imageModal");
-            const modalClose = document.getElementById("modalClose");
-
-            modalClose.addEventListener("click", () => {
-                modal.style.display = "none";
-            });
-
-            modal.addEventListener("click", (e) => {
-                if (e.target === modal) modal.style.display = "none";
-            });
-
-            // Headmistress Message Animation
-            const headmistressMessage = document.getElementById("headmistressMessage");
-            const fullText = "Greetings to all our students, parents, and visitors! At St. Margaret College Makerere, established in 1954, we pride ourselves on fostering a community where academic excellence meets personal growth. As we step into 2025, we’re introducing enhanced digital learning tools, a new arts center, and expanded sports facilities to enrich our students’ experiences. Join us in shaping a bright future!";
-            const words = fullText.split(" ");
-
-            function animateWords(element, wordsArray, speed = 300) {
-                element.innerHTML = wordsArray.map(word => `<span class="word">${word}</span>`).join(" ");
-                const wordElements = element.querySelectorAll(".word");
-                let index = 0;
-
-                const observer = new IntersectionObserver(entries => {
-                    if (entries[0].isIntersecting && index === 0) {
-                        function showNextWord() {
-                            if (index < wordElements.length) {
-                                wordElements[index].classList.add("visible");
-                                index++;
-                                setTimeout(showNextWord, speed);
-                            }
-                        }
-                        showNextWord();
-                        observer.disconnect();
-                    }
-                }, { threshold: 0.5 });
-
-                observer.observe(element);
-            }
-
-            animateWords(headmistressMessage, words);
-
-            // Prefects Slider
-            const prefectSlides = document.querySelectorAll(".prefect-slide");
-            const prevSlideBtn = document.getElementById("prevSlide");
-            const nextSlideBtn = document.getElementById("nextSlide");
-            const dots = document.querySelectorAll(".dot");
-            let currentPrefectSlide = 0;
-
-            function showPrefectSlide(index) {
-                prefectSlides.forEach(slide => slide.classList.remove("active"));
-                dots.forEach(dot => dot.classList.remove("active"));
-                prefectSlides[index].classList.add("active");
-                dots[index].classList.add("active");
-                currentPrefectSlide = index;
-            }
-
-            prevSlideBtn.addEventListener("click", () => {
-                currentPrefectSlide = (currentPrefectSlide - 1 + prefectSlides.length) % prefectSlides.length;
-                showPrefectSlide(currentPrefectSlide);
-            });
-
-            nextSlideBtn.addEventListener("click", () => {
-                currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
-                showPrefectSlide(currentPrefectSlide);
-            });
-
-            dots.forEach(dot => {
-                dot.addEventListener("click", () => {
-                    const index = parseInt(dot.getAttribute("data-index"));
-                    showPrefectSlide(index);
-                });
-            });
-
-            setInterval(() => {
-                currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
-                showPrefectSlide(currentPrefectSlide);
-            }, 5000);
-
-            // Video Player Functionality
-            const video = document.getElementById("promo-video");
-            const playButton = document.getElementById("play-button");
-
-            playButton.addEventListener("click", () => {
-                if (video.paused) {
-                    video.play();
-                    playButton.classList.add("hidden");
-                } else {
-                    video.pause();
-                    playButton.classList.remove("hidden");
-                }
-            });
-
-            video.addEventListener("click", () => {
-                if (!video.paused) {
-                    video.pause();
-                    playButton.classList.remove("hidden");
-                }
-            });
-
-            video.addEventListener("ended", () => {
-                playButton.classList.remove("hidden");
-            });
-
-            // Chatbot Functionality
-            const chatbotContainer = document.querySelector(".chatbot-container");
-            const openChatbot = document.getElementById("openChatbot");
-            const closeChatbot = document.getElementById("closeChatbot");
-            const chatMessages = document.getElementById("chatMessages");
-            const chatInput = document.getElementById("chatInput");
-            const sendMessage = document.getElementById("sendMessage");
-
-            openChatbot.addEventListener("click", () => {
-                chatbotContainer.classList.add("active");
-                openChatbot.style.opacity = "0";
-            });
-
-            closeChatbot.addEventListener("click", () => {
-                chatbotContainer.classList.remove("active");
-                setTimeout(() => {
-                    openChatbot.style.opacity = "1";
-                }, 300);
-            });
-
-            const responses = {
-                "hi": "Hey there! I’m Keriton, a student bot at SMACOMA. How can I assist you?",
-                "hello": "Hi! I’m Keriton, here to guide you through St. Margaret College Makerere. What’s up?",
-                "about": "SMACOMA, founded in 1954, is all about excellence and growth. Want details on our history or mission?",
-                "history": "Since 1954, SMACOMA has been a leader in education, mixing tradition with modern vibes right here in Makerere.",
-                "mission": "We aim to spark curiosity, build leaders, and serve the community through top-notch education.",
-                "academics": "We’ve got STEM, Arts, Commerce, and tons of clubs. What subject or activity are you into?",
-                "admissions": "2025-2026 admissions are open! Apply online or drop by. Need the process or fees info?",
-                "fees": "Our fees are fair, with payment plans and scholarships. Want the latest details?",
-                "events": "Check out our Alumni of Prefects slider to hear from past leaders!",
-                "contact": "Call us at +256 414 531 234 or email info@smacoma.ac.ug. How can we connect?",
-                "default": "Hmm, not sure about that! I can chat about our history, academics, admissions, or events. What do you want to explore?"
-            };
-
-            function addMessage(text, isBot = false) {
-                const messageDiv = document.createElement("div");
-                messageDiv.classList.add("message");
-                messageDiv.classList.add(isBot ? "bot-message" : "user-message");
-                
-                if (isBot) {
-                    const avatar = document.createElement("img");
-                    avatar.src = "student.png";
-                    avatar.classList.add("message-avatar");
-                    messageDiv.appendChild(avatar);
-                }
-
-                const span = document.createElement("span");
-                span.textContent = text;
-                messageDiv.appendChild(span);
-
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function handleMessage() {
-                const userInput = chatInput.value.trim().toLowerCase();
-                if (!userInput) return;
-
-                addMessage(userInput);
-                chatInput.value = "";
-
-                setTimeout(() => {
-                    const response = responses[userInput] || responses["default"];
-                    addMessage(response, true);
-                }, 600);
-            }
-
-            sendMessage.addEventListener("click", handleMessage);
-            chatInput.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") handleMessage();
-            });
-
-            // Counter Animation
-            const counters = document.querySelectorAll('.counter-number');
-            const speed = 200;
-
-            const animateCounters = () => {
-                counters.forEach(counter => {
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-target');
-                        const count = +counter.innerText.replace('+', '');
-                        const increment = target / speed;
-
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count + increment);
-                            setTimeout(updateCount, 10);
-                        } else {
-                            counter.innerText = target.toLocaleString();
-                        }
-                    };
-
-                    const observer = new IntersectionObserver(entries => {
-                        if (entries[0].isIntersecting) {
-                            updateCount();
-                            observer.disconnect();
-                        }
-                    }, { threshold: 0.5 });
-
-                    observer.observe(counter);
-                });
-            };
-
-            animateCounters();
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
-        document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    alert('Right-click is disabled to protect our content.');
-});
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hero Slideshow
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dots .dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    dots[i].classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+
+        // Image Modal
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const images = document.querySelectorAll('.card-image img, .headmistress-photo img');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImage.src = image.src;
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Headmistress Message Animation
+        const messageText = "At St. Margaret College Makerere, we are committed to fostering an environment where every student can thrive academically, socially, and morally. Our dedicated staff and vibrant community ensure that each child receives the support they need to achieve their full potential. Join us in shaping the leaders of tomorrow.";
+        const messageElement = document.getElementById('headmistressMessage');
+        const words = messageText.split(' ');
+
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.classList.add('word');
+            span.textContent = word + ' ';
+            messageElement.appendChild(span);
+
+            setTimeout(() => {
+                span.classList.add('visible');
+            }, index * 100);
+        });
+
+        // Video Play Button
+        const video = document.getElementById('promo-video');
+        const playButton = document.getElementById('play-button');
+
+        playButton.addEventListener('click', () => {
+            video.play();
+            playButton.classList.add('hidden');
+        });
+
+        video.addEventListener('play', () => {
+            playButton.classList.add('hidden');
+        });
+
+        video.addEventListener('pause', () => {
+            playButton.classList.remove('hidden');
+        });
+
+        // Prefects Slider
+        const prefectSlides = document.querySelectorAll('.prefect-slide');
+        const prevSlideBtn = document.getElementById('prevSlide');
+        const nextSlideBtn = document.getElementById('nextSlide');
+        const sliderDots = document.querySelectorAll('.slider-dots .dot');
+        let currentPrefectSlide = 0;
+
+        function showPrefectSlide(index) {
+            prefectSlides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                sliderDots[i].classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    sliderDots[i].classList.add('active');
+                }
+            });
+        }
+
+        prevSlideBtn.addEventListener('click', () => {
+            currentPrefectSlide = (currentPrefectSlide - 1 + prefectSlides.length) % prefectSlides.length;
+            showPrefectSlide(currentPrefectSlide);
+        });
+
+        nextSlideBtn.addEventListener('click', () => {
+            currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
+            showPrefectSlide(currentPrefectSlide);
+        });
+
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentPrefectSlide = index;
+                showPrefectSlide(currentPrefectSlide);
+            });
+        });
+
+        setInterval(() => {
+            currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
+            showPrefectSlide(currentPrefectSlide);
+        }, 5000);
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter-number');
+        const counterSection = document.getElementById('student-counter');
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / 100;
+                let count = 0;
+
+                const updateCounter = () => {
+                    if (count < target) {
+                        count += increment;
+                        counter.textContent = Math.ceil(count);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+            });
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(counterSection);
+
+        // Chatbot Functionality
+        const chatbotAvatar = document.querySelector('.chatbot-avatar');
+        const chatbotContainer = document.querySelector('.chatbot-container');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+
+        chatbotAvatar.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        const responses = {
+            "hello": "Hi there! How can I assist you today?",
+            "admissions": "For admissions, you can apply for the 2025-2026 academic year. Exams start on January 20. Check the Admissions section for more details!",
+            "fees": "Our fees are affordable with payment plans and scholarships available. Visit the Admissions section to view the fees structure.",
+            "academics": "We offer programs in STEM, Arts & Humanities, Commerce, and a variety of extracurricular activities. Explore the Academics section for more info!",
+            "contact": "You can reach us at Makerere Hill Road, Kampala, or call +256 414 531 234. Email us at info@smacoma.ac.ug.",
+            "default": "I'm not sure about that. Could you please provide more details or ask something else?"
+        };
+
+        function addMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', type);
+            messageDiv.innerHTML = `
+                <img src="${type === 'bot-message' ? 'chatbot-avatar.png' : 'user-avatar.png'}" alt="${type === 'bot-message' ? 'Bot' : 'User'}" class="message-avatar">
+                <span>${message}</span>
+            `;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function getBotResponse(userMessage) {
+            userMessage = userMessage.toLowerCase();
+            if (userMessage.includes('hello') || userMessage.includes('hi')) return responses.hello;
+            if (userMessage.includes('admission')) return responses.admissions;
+            if (userMessage.includes('fee')) return responses.fees;
+            if (userMessage.includes('academic')) return responses.academics;
+            if (userMessage.includes('contact')) return responses.contact;
+            return responses.default;
+        }
+
+        chatbotSend.addEventListener('click', () => {
+            const userMessage = chatbotInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, 'user-message');
+                const botResponse = getBotResponse(userMessage);
+                setTimeout(() => {
+                    addMessage(botResponse, 'bot-message');
+                }, 500);
+                chatbotInput.value = '';
+            }
+        });
+
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                chatbotSend.click();
+            }
+        });
     </script>
 </body>
 </html>
