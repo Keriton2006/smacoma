@@ -16,13 +16,13 @@
         }
 
         :root {
-            --primary: #8B0000;    /* Dark Red - Deep, bold color for headers and CTAs */
-            --secondary: #CC9900;  /* Dark Yellow - Warm, muted yellow for accents and backgrounds */
-            --accent: #DAA520;     /* Gold - Luxurious highlight for key elements */
-            --light-bg: #FFF8E7;   /* Pale Gold-White - Subtle, warm background */
-            --white: #FFFFFF;      /* White - Clean contrast for text */
-            --text-dark: #3C2F2F;  /* Dark Brown - Rich, readable text color */
-            --text-gray: #666;     /* Gray for secondary text */
+            --primary: #8B0000;    /* Dark Red */
+            --secondary: #CC9900;  /* Dark Yellow */
+            --accent: #DAA520;     /* Gold */
+            --light-bg: #FFF8E7;   /* Pale Gold-White */
+            --white: #FFFFFF;      /* White */
+            --text-dark: #3C2F2F;  /* Dark Brown */
+            --text-gray: #666;     /* Gray */
         }
 
         body {
@@ -118,6 +118,11 @@
             align-items: center;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
         .logo-img {
             height: 110px;
             transition: transform 0.3s ease;
@@ -125,6 +130,16 @@
 
         .logo-img:hover {
             transform: scale(1.1);
+        }
+
+        .logo-text {
+            margin-left: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links {
@@ -172,12 +187,24 @@
             padding: 0.5rem;
         }
 
+        .nav-close {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
         .news-marquee {
             position: relative;
             max-width: 1400px;
             margin: 2rem auto;
             padding: 1rem 0;
-            overflow: hidden;
+            overflow dui-hidden;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -265,7 +292,6 @@
             animation-play-state: paused;
         }
 
-        /* Updated Hero Section (Inspired by Keriton Tech Uganda) */
         .hero {
             position: relative;
             height: 80vh;
@@ -306,7 +332,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
@@ -347,7 +373,7 @@
         }
 
         .hero-content .cta-btn {
-            background: var(--secondary); /* Dark Yellow button */
+            background: var(--secondary);
             color: var(--white);
             padding: 0.8rem 2rem;
             border-radius: 5px;
@@ -359,7 +385,7 @@
 
         .hero-content .cta-btn:hover {
             transform: scale(1.05);
-            background: var(--primary); /* Dark Red on hover */
+            background: var(--primary);
         }
 
         .slide-dots {
@@ -486,16 +512,14 @@
             line-height: 1.8;
         }
 
-        .word {
+        .sentence {
             opacity: 0;
-            display: inline-block;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: block;
+            transition: opacity 0.5s ease;
         }
 
-        .word.visible {
+        .sentence.visible {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .content-grid {
@@ -519,7 +543,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Gradient Hover for Community Voices Cards */
         #testimonials .content-card:hover {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             color: var(--white);
@@ -846,7 +869,6 @@
             outline: none;
         }
 
-        /* Footer with Moving Pens and Books */
         .footer {
             background: var(--primary);
             color: var(--white);
@@ -1004,291 +1026,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
-        }
-
-        /* Mobile Side Nav and Other Media Queries */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.5rem 1rem;
-                position: relative;
-            }
-
-            .nav-container {
-                flex-wrap: nowrap;
-                justify-content: space-between;
-            }
-
-            .logo-img {
-                height: 40px;
-            }
-
-            .nav-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 250px;
-                height: 100vh;
-                background: var(--white);
-                flex-direction: column;
-                padding: 4rem 2rem;
-                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
-                z-index: 1001;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
-            }
-
-            .nav-links.active {
-                display: flex;
-                transform: translateX(0);
-            }
-
-            .nav-links a {
-                font-size: 1.2rem;
-                padding: 1rem;
-            }
-
-            .marquee-container {
-                font-size: 0.85rem;
-                top: 50px;
-            }
-
-            .hero {
-                height: 60vh;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .hero-content .hashtags {
-                font-size: 0.8rem;
-            }
-
-            .main-content {
-                padding: 0 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .headmistress-message {
-                flex-direction: column;
-                padding: 1rem;
-                margin: 1rem;
-            }
-
-            .headmistress-photo {
-                width: 200px;
-                height: 200px;
-            }
-
-            .headmistress-text h2 {
-                font-size: 1.5rem;
-            }
-
-            .headmistress-text p {
-                font-size: 0.95rem;
-            }
-
-            .video-container {
-                max-width: 100%;
-                height: 450px;
-                margin: 0 10px;
-            }
-
-            .play-button {
-                width: 80px;
-                height: 80px;
-            }
-
-            .play-icon {
-                font-size: 40px;
-            }
-
-            .prefects-slider {
-                height: 300px;
-            }
-
-            .prefect-slide h2 {
-                font-size: 1.5rem;
-            }
-
-            .prefect-slide p {
-                font-size: 1rem;
-                max-width: 90%;
-            }
-
-            .slider-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .counter-section {
-                padding: 1rem;
-                margin: 1rem;
-            }
-
-            .counter-title {
-                font-size: 2rem;
-            }
-
-            .counter-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                padding: 1rem;
-                gap: 1rem;
-            }
-
-            .counter-item {
-                padding: 1rem;
-            }
-
-            .counter-number {
-                font-size: 1.8rem;
-            }
-
-            .counter-label {
-                font-size: 0.85rem;
-            }
-
-            .audio-player {
-                padding: 1rem;
-                margin: 1rem;
-            }
-
-            .audio-player h2 {
-                font-size: 1.5rem;
-            }
-
-            .audio-player audio {
-                max-width: 100%;
-            }
-
-            .slide-dots {
-                right: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                height: 50vh;
-            }
-
-            .hero-content h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content p {
-                font-size: 0.9rem;
-            }
-
-            .hero-content .hashtags {
-                font-size: 0.7rem;
-            }
-
-            .marquee-container {
-                font-size: 0.8rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .headmistress-photo {
-                width: 150px;
-                height: 150px;
-            }
-
-            .video-container {
-                height: 300px;
-                margin: 0 5px;
-            }
-
-            .play-button {
-                width: 60px;
-                height: 60px;
-            }
-
-            .play-icon {
-                font-size: 30px;
-            }
-
-            .prefects-slider {
-                height: 250px;
-            }
-
-            .prefect-slide h2 {
-                font-size: 1.2rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .prefect-slide p {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .slider-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-
-            .counter-title {
-                font-size: 1.5rem;
-            }
-
-            .counter-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .counter-number {
-                font-size: 1.8rem;
-            }
-
-            .slide-dots {
-                right: 5px;
-            }
-
-            .dot {
-                width: 8px;
-                height: 8px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-section {
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .newsletter-form input,
-            .newsletter-form button {
-                width: 100%;
-                border-radius: 20px;
-            }
         }
 
         .chatbot-wrapper {
@@ -1480,9 +1217,87 @@
             background: var(--secondary);
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-container {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 4rem 2rem;
+                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-close {
+                display: block;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-content .hashtags {
+                font-size: 0.8rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .headmistress-message {
+                flex-direction: column;
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .headmistress-photo {
+                width: 200px;
+                height: 200px;
+            }
+
             .chatbot-container {
-                width: 100%;
+                width: 90%;
                 height: 70vh;
                 bottom: 0;
                 right: 0;
@@ -1494,25 +1309,28 @@
                 bottom: 10px;
                 right: 10px;
             }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 50vh;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .logo-text {
+                font-size: 0.8rem;
+            }
 
             .chatbot-avatar {
                 width: 50px;
                 height: 50px;
-            }
-
-            .header-avatar span {
-                font-size: 0.8rem;
-            }
-
-            .bot-message span, .user-message span {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 768px) and (min-width: 481px) {
-            .chatbot-container {
-                width: 280px;
-                height: 400px;
             }
         }
     </style>
@@ -1543,10 +1361,12 @@
         <div class="nav-container">
             <div class="logo">
                 <img src="logo.png" alt="SMACOMA" class="logo-img">
+                <span class="logo-text">ST MARGARET COLLEGE MAKERERE</span>
             </div>
             <button class="nav-toggle"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul class="nav-links">
+                    <button class="nav-close"><i class="fas fa-times"></i></button>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="academics.html">Academics</a></li>
@@ -2037,7 +1857,6 @@
                     <li><i class="fas fa-map-marker-alt"></i> Makerere Hill Road, Kampala</li>
                     <li><i class="fas fa-phone"></i> +256 414 531 234</li>
                     <li><i class="fas fa-phone"></i> +256 772 345 678</li>
-                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#76f5f9faf2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5f8f0f5f2f5
                     <li><i class="fas fa-envelope"></i> <a href="mailto:info@smacoma.ac.ug">info@smacoma.ac.ug</a></li>
                 </ul>
             </div>
@@ -2055,7 +1874,6 @@
         </div>
     </footer>
 
-    <!-- Chatbot Section -->
     <div class="chatbot-wrapper">
         <div class="chatbot-avatar">
             <img src="chatbot-avatar.png" alt="Chatbot Avatar" class="avatar-img">
@@ -2083,15 +1901,19 @@
     </div>
 
     <script>
-        // Navbar Toggle for Mobile
+        // Navbar Toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
+        const navClose = document.querySelector('.nav-close');
 
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Navbar Scroll Effect
+        navClose.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -2129,7 +1951,7 @@
             });
         });
 
-        setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+        setInterval(nextSlide, 5000);
 
         // Image Modal
         const modal = document.getElementById('imageModal');
@@ -2155,28 +1977,36 @@
         });
 
         // Headmistress Message Animation
-        const messageText = "At St. Margaret College Makerere, we are committed to fostering an environment where every student can thrive academically, socially, and morally. Our dedicated staff and vibrant community ensure that each child receives the support they need to achieve their full potential. Join us in shaping the leaders of tomorrow.";
+        const messageText = [
+            "At St. Margaret College Makerere, we are committed to fostering an environment where every student can thrive academically, socially, and morally.",
+            "Our dedicated staff and vibrant community ensure that each child receives the support they need to achieve their full potential.",
+            "Join us in shaping the leaders of tomorrow."
+        ];
         const messageElement = document.getElementById('headmistressMessage');
-        const words = messageText.split(' ');
 
-        words.forEach((word, index) => {
+        messageText.forEach((sentence, index) => {
             const span = document.createElement('span');
-            span.classList.add('word');
-            span.textContent = word + ' ';
+            span.classList.add('sentence');
+            span.textContent = sentence;
             messageElement.appendChild(span);
 
             setTimeout(() => {
                 span.classList.add('visible');
-            }, index * 100);
+            }, index * 1000);
         });
 
-        // Video Play Button
+        // Video Play/Pause
         const video = document.getElementById('promo-video');
         const playButton = document.getElementById('play-button');
 
         playButton.addEventListener('click', () => {
-            video.play();
-            playButton.classList.add('hidden');
+            if (video.paused) {
+                video.play();
+                playButton.classList.add('hidden');
+            } else {
+                video.pause();
+                playButton.classList.remove('hidden');
+            }
         });
 
         video.addEventListener('play', () => {
@@ -2266,6 +2096,12 @@
         const chatbotClose = document.querySelector('.chatbot-close');
         const chatbotInput = document.getElementById('chatbotInput');
         const chatbotSend = document.getElementById('chatbotSend');
+        const chatbotMessages = document.getElementById('chat        // Chatbot Functionality (continued)
+        const chatbotAvatar = document.querySelector('.chatbot-avatar');
+        const chatbotContainer = document.querySelector('.chatbot-container');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
         const chatbotMessages = document.getElementById('chatbotMessages');
 
         chatbotAvatar.addEventListener('click', () => {
@@ -2278,11 +2114,11 @@
 
         const responses = {
             "hello": "Hi there! How can I assist you today?",
-            "admissions": "For admissions, you can apply for the 2025-2026 academic year. Exams start on January 20. Check the Admissions section for more details!",
-            "fees": "Our fees are affordable with payment plans and scholarships available. Visit the Admissions section to view the fees structure.",
-            "academics": "We offer programs in STEM, Arts & Humanities, Commerce, and a variety of extracurricular activities. Explore the Academics section for more info!",
-            "contact": "You can reach us at Makerere Hill Road, Kampala, or call +256 414 531 234. Email us at info@smacoma.ac.ug.",
-            "default": "I'm not sure about that. Could you please provide more details or ask something else?"
+            "admissions": "For admissions, apply for 2025-2026 now! Exams start January 20.",
+            "fees": "Affordable fees with payment plans and scholarships. Check Admissions!",
+            "academics": "We offer STEM, Arts, Commerce, and extracurriculars. Explore Academics!",
+            "contact": "Reach us at Makerere Hill Road, Kampala, or call +256 414 531 234.",
+            "default": "I'm not sure about that. Could you ask something else?"
         };
 
         function addMessage(message, type) {
