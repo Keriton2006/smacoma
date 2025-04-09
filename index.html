@@ -6,21 +6,21 @@
     <title>SMACOMA - Home</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Times New Roman', serif; /* Updated font to Times New Roman */
         }
 
         :root {
-            --white: #FFFFFF;      /* White - Backgrounds and text contrast */
-            --maroon: #800000;     /* Maroon - Headers, buttons, and accents */
-            --dark-yellow: #B8860B; /* Dark Yellow - Secondary accents */
-            --text-dark: #4A0000;  /* Darker maroon for text on white backgrounds */
-            --text-light: #FFFFFF; /* White for text on maroon/dark yellow backgrounds */
+            --white: #FFFFFF;
+            --maroon: #800000;
+            --dark-yellow: #B8860B;
+            --text-dark: #4A0000;
+            --text-light: #FFFFFF;
         }
 
         body {
@@ -42,7 +42,7 @@
             background: var(--white);
         }
 
-        /* New UI/UX: Floating Background Elements */
+        /* Background Shapes */
         .background-shapes {
             position: fixed;
             top: 0;
@@ -94,7 +94,7 @@
             100% { transform: translateY(-100vh); opacity: 0; }
         }
 
-        /* New UI/UX: Modern Navbar */
+        /* Navbar */
         .navbar {
             background: var(--white);
             padding: 1rem 2rem;
@@ -159,7 +159,19 @@
             padding: 0.5rem;
         }
 
-        /* New UI/UX: News Marquee with Gradient Overlay */
+        .nav-close {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--maroon);
+            cursor: pointer;
+        }
+
+        /* News Marquee */
         .news-marquee {
             position: relative;
             max-width: 1400px;
@@ -244,7 +256,7 @@
             animation-play-state: paused;
         }
 
-        /* New UI/UX: Hero Section with Overlay and Animated Text */
+        /* Hero Section */
         .hero {
             position: relative;
             height: 80vh;
@@ -394,6 +406,12 @@
             border-radius: 10px;
         }
 
+        .modal video {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
         .modal-close {
             position: absolute;
             top: 20px;
@@ -428,7 +446,7 @@
             transform: translateX(-50%);
         }
 
-        /* New UI/UX: Headmistress Message with Card Design */
+        /* Headmistress Message */
         .headmistress-message {
             max-width: 1400px;
             margin: 4rem auto;
@@ -506,7 +524,7 @@
             transform: translateY(0);
         }
 
-        /* Updated Core Values Section: Full Image Coverage */
+        /* Core Values Section */
         .core-values-section {
             max-width: 1400px;
             margin: 4rem auto;
@@ -597,7 +615,7 @@
             line-height: 1.4;
         }
 
-        /* New UI/UX: Counter Section with Gradient Background */
+        /* Counter Section */
         .counter-section {
             max-width: 1400px;
             margin: 4rem auto;
@@ -660,7 +678,7 @@
             opacity: 0.9;
         }
 
-        /* New UI/UX: Video Section with Overlay */
+        /* Video Section */
         .video-section {
             max-width: 1400px;
             margin: 4rem auto;
@@ -676,34 +694,54 @@
             position: relative;
             width: 100%;
             max-width: 1200px;
-            height: 675px;
+            height: 400px;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin: 0 auto;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        #promo-video {
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
+            background: rgba(128, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .video-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
         .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
+            position: relative;
+            width: 60px;
+            height: 60px;
             background-color: rgba(184, 134, 11, 0.7);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: opacity 0.3s ease, background-color 0.3s ease;
+            transition: background-color 0.3s ease;
+            margin: 0 auto;
         }
 
         .play-button:hover {
@@ -711,16 +749,11 @@
         }
 
         .play-icon {
-            font-size: 50px;
+            font-size: 30px;
             color: var(--white);
         }
 
-        .play-button.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* New UI/UX: Prefects Slider with Card Overlay */
+        /* Prefects Slider (Arrows Removed) */
         .prefects-slider {
             position: relative;
             width: 100%;
@@ -797,36 +830,6 @@
             max-width: 80%;
         }
 
-        .slider-nav {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 10;
-        }
-
-        .slider-btn {
-            background: var(--dark-yellow);
-            border: none;
-            color: var(--text-light);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: background 0.3s ease, transform 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-btn:hover {
-            background: var(--maroon);
-            transform: scale(1.1);
-        }
-
         .slider-dots {
             position: absolute;
             bottom: 10px;
@@ -851,7 +854,7 @@
             background: var(--maroon);
         }
 
-        /* New UI/UX: Audio Player with Minimal Design */
+        /* Audio Player */
         .audio-player {
             max-width: 1400px;
             margin: 4rem auto;
@@ -876,7 +879,7 @@
             border-radius: 10px;
         }
 
-        /* Updated "Want to Join Us" Section with New UI/UX */
+        /* Join Us Section */
         .join-us-section {
             max-width: 1600px;
             margin: 6rem auto;
@@ -944,7 +947,6 @@
             font-weight: 700;
             color: var(--maroon);
             text-transform: uppercase;
-            font-family: 'Times New Roman', serif;
             line-height: 1.2;
         }
 
@@ -952,14 +954,12 @@
             font-size: 2.5rem;
             font-weight: 600;
             color: var(--dark-yellow);
-            font-family: 'Times New Roman', serif;
             line-height: 1.2;
         }
 
         .join-us-content p {
             font-size: 1.5rem;
             color: var(--text-dark);
-            font-family: 'Times New Roman', serif;
             line-height: 1.6;
             max-width: 90%;
         }
@@ -977,7 +977,6 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.2rem;
-            font-family: 'Times New Roman', serif;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -988,7 +987,7 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Updated Community Voices: No Images, With Hovers */
+        /* Community Voices */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1034,7 +1033,7 @@
             margin-bottom: 1rem;
         }
 
-        /* New UI/UX: Footer with Curved Design */
+        /* Footer */
         .footer {
             background: var(--maroon);
             color: var(--text-light);
@@ -1209,7 +1208,7 @@
             z-index: 1;
         }
 
-        /* New UI/UX: Chatbot with Floating Design */
+        /* Chatbot */
         .chatbot-wrapper {
             position: fixed;
             bottom: 20px;
@@ -1399,24 +1398,26 @@
             background: var(--dark-yellow);
         }
 
-        /* Pop-Up Alert Styling */
+        /* Enhanced Pop-Up Alert Styling */
         .popup-alert {
             position: fixed;
             bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--maroon);
+            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
             color: var(--text-light);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
             gap: 1rem;
             z-index: 2000;
             opacity: 0;
             transition: bottom 0.5s ease, opacity 0.5s ease;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--white);
         }
 
         .popup-alert.active {
@@ -1424,36 +1425,77 @@
             opacity: 1;
         }
 
-        .popup-alert p {
-            font-size: 1rem;
-            font-weight: 500;
+        .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .popup-alert a {
-            background: var(--dark-yellow);
-            color: var(--text-light);
-            padding: 0.5rem 1rem;
+        .popup-header i {
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .popup-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .popup-content p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .popup-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .popup-actions a {
+            background: var(--white);
+            color: var(--maroon);
+            padding: 0.5rem 1.5rem;
             border-radius: 20px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: background 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .popup-alert a:hover {
-            background: var(--maroon);
+        .popup-actions a i {
+            font-size: 1rem;
+        }
+
+        .popup-actions a:hover {
+            background: var(--dark-yellow);
+            color: var(--text-light);
             transform: scale(1.05);
         }
 
         .popup-close {
-            background: none;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             color: var(--text-light);
             font-size: 1.2rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .popup-close:hover {
+            background: rgba(255, 255, 255, 0.4);
             transform: rotate(90deg);
         }
 
@@ -1513,6 +1555,10 @@
             }
 
             .nav-toggle {
+                display: block;
+            }
+
+            .nav-close {
                 display: block;
             }
 
@@ -1622,17 +1668,21 @@
 
             .video-container {
                 max-width: 100%;
-                height: 450px;
+                height: 300px;
                 margin: 0 10px;
             }
 
+            .video-content p {
+                font-size: 1.2rem;
+            }
+
             .play-button {
-                width: 80px;
-                height: 80px;
+                width: 50px;
+                height: 50px;
             }
 
             .play-icon {
-                font-size: 40px;
+                font-size: 25px;
             }
 
             .prefects-slider {
@@ -1646,12 +1696,6 @@
             .prefect-slide p {
                 font-size: 1rem;
                 max-width: 90%;
-            }
-
-            .slider-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
             }
 
             .counter-section {
@@ -1725,6 +1769,34 @@
                 width: 280px;
                 height: 400px;
             }
+
+            .popup-alert {
+                padding: 1rem;
+                max-width: 400px;
+            }
+
+            .popup-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .popup-header i {
+                font-size: 1.3rem;
+            }
+
+            .popup-content p {
+                font-size: 0.9rem;
+            }
+
+            .popup-actions a {
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .popup-close {
+                width: 25px;
+                height: 25px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1770,17 +1842,21 @@
             }
 
             .video-container {
-                height: 300px;
+                height: 250px;
                 margin: 0 5px;
             }
 
+            .video-content p {
+                font-size: 1rem;
+            }
+
             .play-button {
-                width: 60px;
-                height: 60px;
+                width: 40px;
+                height: 40px;
             }
 
             .play-icon {
-                font-size: 30px;
+                font-size: 20px;
             }
 
             .prefects-slider {
@@ -1795,12 +1871,6 @@
             .prefect-slide p {
                 font-size: 0.9rem;
                 padding: 0.4rem 0.8rem;
-            }
-
-            .slider-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
             }
 
             .counter-title {
@@ -1870,21 +1940,39 @@
             }
 
             .popup-alert {
-                padding: 0.8rem 1.5rem;
-                width: 90%;
+                padding: 0.8rem;
+                max-width: 90%;
             }
 
-            .popup-alert p {
-                font-size: 0.9rem;
+            .popup-header h3 {
+                font-size: 1rem;
             }
 
-            .popup-alert a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+            .popup-header i {
+                font-size: 1.2rem;
+            }
+
+            .popup-content p {
+                font-size: 0.85rem;
+            }
+
+            .popup-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .popup-actions a {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+                width: 100%;
+                text-align: center;
+                justify-content: center;
             }
 
             .popup-close {
-                font-size: 1rem;
+                width: 20px;
+                height: 20px;
+                font-size: 0.9rem;
             }
 
             .footer-container {
@@ -1942,6 +2030,7 @@
             <button class="nav-toggle"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul class="nav-links">
+                    <button class="nav-close"><i class="fas fa-times"></i></button>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="academics.html">Academics</a></li>
@@ -2064,7 +2153,7 @@
         <section id="core-values" class="core-values-section">
             <div class="core-values-left">
                 <div class="image-grid">
-                    <img src="l1 (14).jpg" alt="School Event" class="core-values-image">
+                    <img src="l1(14).jpg" alt="School Event" class="core-values-image">
                     <img src="m (2).JPG" alt="Computer Lab" class="core-values-image">
                     <img src="J.jpg" alt="Students Studying" class="core-values-image">
                     <img src="CO.jpg" alt="School Campus" class="core-values-image">
@@ -2137,14 +2226,21 @@
 
         <section class="video-section" id="videoPromo">
             <h2 class="section-title">Watch Our Story</h2>
-            <div class="video-container">
-                <video id="promo-video">
+            <div class="video-container" style="background-image: url('students.jpg');">
+                <div class="video-overlay"></div>
+                <div class="video-content">
+                    <p>Click the play video icon below to explore a lot more about St. Margaret College Makerere</p>
+                    <div class="play-button" id="play-button">
+                        <span class="play-icon">►</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="videoModal">
+                <span class="modal-close" id="videoModalClose">×</span>
+                <video id="promo-video" controls>
                     <source src="adv.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div class="play-button" id="play-button">
-                    <span class="play-icon">►</span>
-                </div>
             </div>
         </section>
 
@@ -2211,14 +2307,10 @@
                         <p>"SMACOMA’s focus on well-being made me a compassionate leader."</p>
                     </div>
                 </div>
-                <div class="slider-nav">
-                    <button class="slider-btn" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
-                    <button class="slider-btn" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
-                </div>
                 <div class="slider-dots">
                     <span class="dot active" data-index="0"></span>
                     <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
+                    <span class                    <span class="dot" data-index="2"></span>
                     <span class="dot" data-index="3"></span>
                     <span class="dot" data-index="4"></span>
                     <span class="dot" data-index="5"></span>
@@ -2231,15 +2323,15 @@
             <div class="join-us-background"></div>
             <div class="join-us-container">
                 <div class="join-us-image">
-                    <img src="sr.jpg" alt="Students in Classroom">
+                    <img src="join-us.jpg" alt="Join Us">
                 </div>
                 <div class="join-us-content">
-                    <h2>Want to Join Us?</h2>
-                    <h3>Apply for 2025-2026</h3>
-                    <p>Become a part of St. Margaret College Makerere and unlock your potential in a nurturing environment. We offer both O'level and A'level programs designed to foster academic excellence and personal growth.</p>
+                    <h2>Be Part of</h2>
+                    <h3>Our Legacy</h3>
+                    <p>Join St. Margaret College Makerere and embark on a journey of academic excellence, leadership, and personal growth.</p>
                     <div class="join-us-buttons">
-                        <a href="#admissions" class="join-btn">Apply for O'level</a>
-                        <a href="#admissions" class="join-btn">Apply for A'level</a>
+                        <a href="admissions.html" class="join-btn">Apply Now</a>
+                        <a href="contact.html" class="join-btn">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -2249,20 +2341,20 @@
             <h2 class="section-title">Community Voices</h2>
             <div class="content-grid">
                 <div class="content-card">
-                    <h2>Munoga Favour</h2>
-                    <p>"SMACOMA gave me the confidence to pursue my dreams in medicine. The teachers are amazing!"</p>
+                    <h2>Alumni Success</h2>
+                    <p>"SMACOMA gave me the foundation to excel in my career as a software engineer." - John K., Class of 2015</p>
                 </div>
                 <div class="content-card">
-                    <h2>Mr. Mayanja</h2>
-                    <p>"As a parent, I’m impressed by the school’s commitment to holistic education."</p>
+                    <h2>Parent Feedback</h2>
+                    <p>"The teachers are dedicated, and my child has thrived here." - Sarah M., Parent</p>
                 </div>
                 <div class="content-card">
-                    <h2>Atuhaire Richard</h2>
-                    <p>"Graduating from SMACOMA opened doors to top universities. I’m forever grateful."</p>
+                    <h2>Student Experience</h2>
+                    <p>"I love the supportive environment and the opportunities to grow." - Emma N., S.4 Student</p>
                 </div>
                 <div class="content-card">
-                    <h2>Ms. Nabukenya Mary</h2>
-                    <p>"Teaching at SMACOMA is rewarding. The students are eager to learn and grow."</p>
+                    <h2>Teacher Insight</h2>
+                    <p>"It’s rewarding to see our students grow into confident leaders." - Mr. Okello, Science Teacher</p>
                 </div>
             </div>
         </section>
@@ -2278,8 +2370,8 @@
         </div>
         <div class="footer-container">
             <div class="footer-section">
-                <img src="logo.png" alt="SMACOMA Logo" class="footer-logo">
-                <p>St. Margaret College Makerere - Empowering Future Leaders Since 1954.</p>
+                <img src="logo.png" alt="SMACOMA" class="footer-logo">
+                <p>St. Margaret College Makerere<br>Empowering Future Leaders Since 1954</p>
                 <div class="social-links">
                     <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -2290,26 +2382,27 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#academics">Academics</a></li>
-                    <li><a href="#admissions">Admissions</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="t.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="footer-contact">
-                    <li><i class="fas fa-phone"></i><a href="tel:+256123456789">+256 123 456 789</a></li>
-                    <li><i class="fas fa-envelope"></i><a href="mailto:info@smacoma.ac.ug">info@smacoma.ac.ug</a></li>
-                    <li><i class="fas fa-map-marker-alt"></i>P.O. Box 123, Makerere, Kampala, Uganda</li>
+                    <li><i class="fas fa-map-marker-alt"></i> P.O. Box 123, Kampala, Uganda</li>
+                    <li><i class="fas fa-phone-alt"></i> <a href="tel:+256123456789">+256 123 456 789</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:info@smacoma.ac.ug">info@smacoma.ac.ug</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Newsletter</h3>
-                <p>Stay updated with SMACOMA news and events.</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Your Email" required>
+                <p>Stay updated with our latest news and events.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
@@ -2319,7 +2412,6 @@
         </div>
     </footer>
 
-    <!-- Chatbot Section -->
     <div class="chatbot-wrapper">
         <div class="chatbot-avatar">
             <img src="chatbot-avatar.jpg" alt="Chatbot Avatar" class="avatar-img">
@@ -2331,7 +2423,7 @@
                     <img src="chatbot-avatar.jpg" alt="Chatbot" class="header-avatar-img">
                     <span>SMACOMA Assistant</span>
                 </div>
-                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+                <button class="chatbot-close">×</button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
@@ -2346,302 +2438,314 @@
         </div>
     </div>
 
-    <!-- Pop-Up Alert -->
     <div class="popup-alert" id="popupAlert">
-        <p>Apply or Join Us Today!</p>
-        <a href="#join-us">Join Now</a>
-        <button class="popup-close" id="popupClose"><i class="fas fa-times"></i></button>
+        <div class="popup-header">
+            <i class="fas fa-bell"></i>
+            <h3>Admissions Open for 2025-2026!</h3>
+        </div>
+        <div class="popup-content">
+            <p>Join St. Margaret College Makerere for the upcoming academic year. Applications are now open for both O'level and A'level programs. Don’t miss your chance to be part of our legacy of excellence!</p>
+        </div>
+        <div class="popup-actions">
+            <a href="admissions.html"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+            <button class="popup-close">×</button>
+        </div>
     </div>
 
     <script>
-        // Navbar Toggle for Mobile
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    // Navbar Toggle for Mobile with Close Button
+    const navToggle = document.querySelector('.nav-toggle');
+    const navClose = document.querySelector('.nav-close');
+    const navLinks = document.querySelector('.nav-links');
 
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.add('active');
+    });
 
-        // Close mobile nav when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+    navClose.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+
+    // Close navbar when clicking a link on mobile
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
             }
         });
+    });
 
-        // Slideshow for Hero Section
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slide-dots .dot');
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                dots[i].classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                    dots[i].classList.add('active');
-                }
-            });
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
+    });
 
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
+    // Slideshow for Hero Section
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slide-dots .dot');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
 
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % slides.length;
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
             showSlide(currentSlide);
-        }, 5000);
-
-        // Headmistress Message Animation
-        const messageText = "At St. Margaret College Makerere, we are committed to nurturing young minds to achieve academic excellence, leadership, and integrity. Our holistic approach ensures that every student thrives in a supportive and dynamic environment.";
-        const messageElement = document.getElementById('headmistressMessage');
-        const words = messageText.split(' ');
-
-        words.forEach((word, index) => {
-            const span = document.createElement('span');
-            span.classList.add('word');
-            span.textContent = word + ' ';
-            messageElement.appendChild(span);
         });
+    });
 
-        const wordElements = document.querySelectorAll('.word');
-        const observerOptions = {
-            root: null,
-            threshold: 0.1
-        };
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 5000);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    wordElements.forEach((word, i) => {
-                        setTimeout(() => {
-                            word.classList.add('visible');
-                        }, i * 100);
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    // Image Modal for Core Values Section
+    const coreImages = document.querySelectorAll('.core-values-image');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
 
-        observer.observe(messageElement);
-
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter-number');
-        const counterSection = document.getElementById('student-counter');
-
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    counters.forEach(counter => {
-                        const updateCounter = () => {
-                            const target = +counter.getAttribute('data-target');
-                            const count = +counter.innerText;
-                            const increment = target / 200;
-
-                            if (count < target) {
-                                counter.innerText = Math.ceil(count + increment);
-                                setTimeout(updateCounter, 20);
-                            } else {
-                                counter.innerText = target;
-                            }
-                        };
-                        updateCounter();
-                    });
-                    counterObserver.unobserve(counterSection);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counterObserver.observe(counterSection);
-
-        // Video Play Button
-        const video = document.getElementById('promo-video');
-        const playButton = document.getElementById('play-button');
-
-        playButton.addEventListener('click', () => {
-            video.play();
-            playButton.classList.add('hidden');
+    coreImages.forEach(image => {
+        image.addEventListener('click', () => {
+            modalImage.src = image.src;
+            imageModal.style.display = 'flex';
         });
+    });
 
-        video.addEventListener('play', () => {
-            playButton.classList.add('hidden');
-        });
+    modalClose.addEventListener('click', () => {
+        imageModal.style.display = 'none';
+    });
 
-        video.addEventListener('pause', () => {
-            playButton.classList.remove('hidden');
-        });
-
-        // Prefects Slider
-        const prefectSlides = document.querySelectorAll('.prefect-slide');
-        const sliderDots = document.querySelectorAll('.slider-dots .dot');
-        const prevSlideBtn = document.getElementById('prevSlide');
-        const nextSlideBtn = document.getElementById('nextSlide');
-        let currentPrefectSlide = 0;
-
-        function showPrefectSlide(index) {
-            prefectSlides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                sliderDots[i].classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                    sliderDots[i].classList.add('active');
-                }
-            });
+    imageModal.addEventListener('click', (e) => {
+        if (e.target === imageModal) {
+            imageModal.style.display = 'none';
         }
+    });
 
-        prevSlideBtn.addEventListener('click', () => {
-            currentPrefectSlide = (currentPrefectSlide - 1 + prefectSlides.length) % prefectSlides.length;
-            showPrefectSlide(currentPrefectSlide);
-        });
+    // Headmistress Message Animation
+    const messageText = "At St. Margaret College Makerere, we are committed to nurturing young minds to become leaders of tomorrow. Our holistic approach ensures academic excellence, character development, and a passion for lifelong learning. Join us on this journey of growth and discovery.";
+    const messageElement = document.getElementById('headmistressMessage');
+    const words = messageText.split(' ');
 
-        nextSlideBtn.addEventListener('click', () => {
-            currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
-            showPrefectSlide(currentPrefectSlide);
-        });
+    words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.classList.add('word');
+        span.textContent = word + ' ';
+        messageElement.appendChild(span);
+    });
 
-        sliderDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentPrefectSlide = index;
-                showPrefectSlide(currentPrefectSlide);
-            });
-        });
+    const wordElements = document.querySelectorAll('.word');
+    const observerOptions = {
+        root: null,
+        threshold: 0.1
+    };
 
-        setInterval(() => {
-            currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
-            showPrefectSlide(currentPrefectSlide);
-        }, 5000);
-
-        // Image Modal
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalClose = document.getElementById('modalClose');
-        const images = document.querySelectorAll('.core-values-image');
-
-        images.forEach(image => {
-            image.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImage.src = image.src;
-            });
-        });
-
-        modalClose.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                wordElements.forEach((word, index) => {
+                    setTimeout(() => {
+                        word.classList.add('visible');
+                    }, index * 100);
+                });
+                observer.unobserve(entry.target);
             }
         });
+    }, observerOptions);
 
-        // Chatbot Functionality
-        const chatbotAvatar = document.querySelector('.chatbot-avatar');
-        const chatbotContainer = document.querySelector('.chatbot-container');
-        const chatbotClose = document.querySelector('.chatbot-close');
-        const chatbotMessages = document.getElementById('chatbotMessages');
-        const chatbotInput = document.getElementById('chatbotInput');
-        const chatbotSend = document.getElementById('chatbotSend');
+    observer.observe(messageElement);
 
-        chatbotAvatar.addEventListener('click', () => {
-            chatbotContainer.classList.toggle('active');
-        });
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter-number');
+    const counterSection = document.getElementById('student-counter');
 
-        chatbotClose.addEventListener('click', () => {
-            chatbotContainer.classList.remove('active');
-        });
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                counters.forEach(counter => {
+                    const updateCounter = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const increment = target / 200;
 
-        function addMessage(message, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-            messageDiv.innerHTML = `
-                <img src="${isUser ? 'user-avatar.jpg' : 'chatbot-avatar.jpg'}" alt="${isUser ? 'User' : 'Bot'}" class="message-avatar">
-                <span>${message}</span>
-            `;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        function botResponse(userMessage) {
-            const responses = {
-                "hello": "Hi there! How can I help you today?",
-                "admissions": "For admissions, you can apply for O'level or A'level through the 'Want to Join Us' section. Would you like more details?",
-                "academics": "We offer a wide range of subjects for both O'level and A'level. Check out the Academics page for more information!",
-                "contact": "You can reach us at +256 123 456 789 or email us at info@smacoma.ac.ug. We're located at P.O. Box 123, Makerere, Kampala, Uganda.",
-                "events": "Upcoming events include the Science Fair on April 15, 2025, and the Alumni Reunion on July 5, 2025. Visit the Events section for more details!",
-                "default": "I'm not sure about that. Could you please provide more details or ask something else?"
-            };
-
-            const message = userMessage.toLowerCase();
-            if (message.includes('hello') || message.includes('hi')) return responses.hello;
-            if (message.includes('admission') || message.includes('apply')) return responses.admissions;
-            if (message.includes('academic') || message.includes('subjects')) return responses.academics;
-            if (message.includes('contact') || message.includes('reach')) return responses.contact;
-            if (message.includes('event') || message.includes('activities')) return responses.events;
-            return responses.default;
-        }
-
-        chatbotSend.addEventListener('click', () => {
-            const message = chatbotInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                setTimeout(() => {
-                    const response = botResponse(message);
-                    addMessage(response);
-                }, 500);
-                chatbotInput.value = '';
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCounter, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                });
+                counterObserver.unobserve(entry.target);
             }
         });
+    }, { threshold: 0.5 });
 
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                chatbotSend.click();
-            }
+    counterObserver.observe(counterSection);
+
+    // Video Play Button and Modal
+    const playButton = document.getElementById('play-button');
+    const videoModal = document.getElementById('videoModal');
+    const videoModalClose = document.getElementById('videoModalClose');
+    const promoVideo = document.getElementById('promo-video');
+
+    playButton.addEventListener('click', () => {
+        videoModal.style.display = 'flex';
+        promoVideo.play();
+    });
+
+    videoModalClose.addEventListener('click', () => {
+        videoModal.style.display = 'none';
+        promoVideo.pause();
+        promoVideo.currentTime = 0; // Reset video to start
+    });
+
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            videoModal.style.display = 'none';
+            promoVideo.pause();
+            promoVideo.currentTime = 0;
+        }
+    });
+
+    // Prefects Slider (Arrows Removed)
+    const prefectSlides = document.querySelectorAll('.prefect-slide');
+    const sliderDots = document.querySelectorAll('.slider-dots .dot');
+    let currentPrefectSlide = 0;
+
+    function showPrefectSlide(index) {
+        prefectSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
-
-        // Newsletter Form Submission
-        const newsletterForm = document.getElementById('newsletterForm');
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for subscribing to our newsletter!');
-            newsletterForm.reset();
+        sliderDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
         });
+    }
 
-        // Pop-Up Alert Functionality
-        const popupAlert = document.getElementById('popupAlert');
-        const popupClose = document.getElementById('popupClose');
+    sliderDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentPrefectSlide = index;
+            showPrefectSlide(currentPrefectSlide);
+        });
+    });
 
-        // Show the pop-up after a 2-second delay
+    setInterval(() => {
+        currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
+        showPrefectSlide(currentPrefectSlide);
+    }, 5000);
+
+    // Chatbot Functionality
+    const chatbotAvatar = document.querySelector('.chatbot-avatar');
+    const chatbotContainer = document.querySelector('.chatbot-container');
+    const chatbotClose = document.querySelector('.chatbot-close');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+
+    chatbotAvatar.addEventListener('click', () => {
+        chatbotContainer.classList.toggle('active');
+    });
+
+    chatbotClose.addEventListener('click', () => {
+        chatbotContainer.classList.remove('active');
+    });
+
+    function addMessage(message, isUser = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+        messageDiv.innerHTML = `
+            ${!isUser ? '<img src="chatbot-avatar.jpg" alt="Bot" class="message-avatar">' : ''}
+            <span>${message}</span>
+        `;
+        chatbotMessages.appendChild(messageDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function handleUserMessage() {
+        const userMessage = chatbotInput.value.trim();
+        if (!userMessage) return;
+
+        addMessage(userMessage, true);
+        chatbotInput.value = '';
+
         setTimeout(() => {
-            popupAlert.classList.add('active');
-        }, 2000);
-
-        // Close the pop-up when the close button is clicked
-        popupClose.addEventListener('click', () => {
-            popupAlert.classList.remove('active');
-        });
-
-        // Optional: Close the pop-up when clicking outside of it
-        popupAlert.addEventListener('click', (e) => {
-            if (e.target === popupAlert) {
-                popupAlert.classList.remove('active');
+            let botResponse = "I'm here to help! What would you like to know?";
+            if (userMessage.toLowerCase().includes('admission')) {
+                botResponse = "Admissions for 2025-2026 are open! You can apply online at our <a href='admissions.html'>Admissions Page</a>.";
+            } else if (userMessage.toLowerCase().includes('contact')) {
+                botResponse = "You can reach us at info@smacoma.ac.ug or call +256 123 456 789. Visit our <a href='contact.html'>Contact Page</a> for more details.";
+            } else if (userMessage.toLowerCase().includes('academics')) {
+                botResponse = "We offer both O'level and A'level programs. Check out our <a href='academics.html'>Academics Page</a> for more information.";
             }
-        });
-    </script>
+            addMessage(botResponse);
+        }, 500);
+    }
+
+    chatbotSend.addEventListener('click', handleUserMessage);
+    chatbotInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleUserMessage();
+    });
+
+    // Pop-Up Alert (Appears after 3 minutes)
+    const popupAlert = document.getElementById('popupAlert');
+    const popupClose = document.querySelector('.popup-close');
+
+    setTimeout(() => {
+        popupAlert.classList.add('active');
+    }, 180000); // 3 minutes = 180,000 milliseconds
+
+    popupClose.addEventListener('click', () => {
+        popupAlert.classList.remove('active');
+    });
+
+    // Disable Right-Click to Prevent "View Page Source"
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        alert('Right-click is disabled to protect our content.');
+    });
+
+    // Disable Keyboard Shortcuts for Developer Tools and View Source
+    document.addEventListener('keydown', (e) => {
+        // Disable Ctrl+U (View Source)
+        if (e.ctrlKey && e.key === 'u') {
+            e.preventDefault();
+            alert('Viewing the source code is disabled.');
+        }
+        // Disable Ctrl+Shift+I (Developer Tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+            alert('Developer tools are disabled.');
+        }
+        // Disable F12 (Developer Tools)
+        if (e.key === 'F12') {
+            e.preventDefault();
+            alert('Developer tools are disabled.');
+        }
+        // Disable Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+            e.preventDefault();
+            alert('Developer tools are disabled.');
+        }
+        // Disable Ctrl+Shift+C (Inspect Element)
+        if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+            e.preventDefault();
+            alert('Inspect element is disabled.');
+        }
+    });
+</script>
 </body>
 </html>
