@@ -2538,48 +2538,45 @@
         </div>
     </footer>
 
-    <!-- Chatbot -->
     <div class="chatbot-wrapper">
-        <div class="chatbot-avatar">
-            <img src="sr.jpg" alt="Chatbot Avatar" class="avatar-img">
-            <span class="chatbot-badge">Ask Me!</span>
+        <div class="chatbot-avatar" id="chatbotToggle">
+            <i class="fas fa-user-graduate"></i>
+            <span class="chatbot-badge">KERITON GPT</span>
         </div>
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
                 <div class="header-avatar">
-                    <img src="sr.jpg" alt="Chatbot" class="header-avatar-img">
-                    <span>SMACOMA Assistant</span>
+                    <i class="fas fa-user-graduate"></i>
+                    <span>KERITON GPT</span>
                 </div>
                 <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
-                    <img src="sr.jpg" alt="Bot" class="message-avatar">
-                    <span>Hello! How can I assist you today?</span>
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Hello! Welcome to SMACOMA. How can KERITON GPT assist you today?</span>
                 </div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatInput" placeholder="Type your message...">
+                <input type="text" id="chatInput" placeholder="Type your question...">
                 <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
 
-    <!-- Enhanced Pop-Up Alert -->
     <div class="popup-alert" id="popupAlert">
         <div class="popup-header">
-            <i class="fas fa-bell"></i>
-            <h3>Welcome to SMACOMA!</h3>
+            <i class="fas fa-bullhorn"></i>
+            <h3>Apply or Join Us Today</h3>
         </div>
         <div class="popup-content">
-            <p>Explore our programs and join us for the 2025-2026 academic year. Admissions are now open!</p>
+            <p>Be part of St Margaret College Makerere's legacy of excellence. Enroll for the 2025-2026 academic year!</p>
         </div>
         <div class="popup-actions">
-            <a href="admissions.html"><i class="fas fa-arrow-right"></i> Apply Now</a>
+            <a href="admissions.html"><i class="fas fa-user-plus"></i> Apply Now</a>
             <button class="popup-close" id="popupClose"><i class="fas fa-times"></i></button>
         </div>
     </div>
-
     <script>
         // Navbar Toggle
         const navToggle = document.querySelector('.nav-toggle');
