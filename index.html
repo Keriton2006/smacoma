@@ -906,7 +906,7 @@
             border-radius: 10px;
         }
 
-        /* Join Us Section */
+       /* Join Us Section */
         .join-us-section {
             max-width: 1600px;
             margin: 6rem auto;
@@ -941,13 +941,43 @@
         }
 
         .join-us-image {
+            position: relative;
             width: 300px;
             height: 300px;
             border-radius: 50%;
             overflow: hidden;
-            border: 8px solid var(--dark-yellow);
             flex-shrink: 0;
             transition: transform 0.3s ease;
+        }
+
+        .join-us-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed var(--dark-yellow);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .join-us-image .box-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: var(--white);
+            background: rgba(128, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .join-us-image:hover .box-icon {
+            opacity: 1;
         }
 
         .join-us-image:hover {
@@ -960,12 +990,18 @@
             object-fit: cover;
         }
 
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .join-us-content {
             flex: 2;
-            text-align: left;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             gap: 1.5rem;
         }
 
@@ -982,12 +1018,23 @@
             font-weight: 600;
             color: var(--dark-yellow);
             line-height: 1.2;
-            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
         }
 
-        .join-us-content h3:hover {
+        .join-us-content h3::after {
+            content: 'Join Our Family';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
             color: var(--maroon);
-            transform: scale(1.05);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .join-us-content h3:hover::after {
+            opacity: 1;
         }
 
         .join-us-content p {
