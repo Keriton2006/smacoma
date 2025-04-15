@@ -6,25 +6,25 @@
     <title>SMACOMA - Home</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         :root {
-            --white: #FFFFFF;
-            --maroon: #800000;
-            --dark-yellow: #B8860B;
-            --text-dark: #4A0000;
-            --text-light: #FFFFFF;
+            --primary-blue: #1E3A8A;
+            --accent-teal: #14B8A6;
+            --light-gray: #F3F4F6;
+            --warm-white: #FEFCE8;
+            --text-dark: #111827;
         }
 
         body {
-            background: var(--white);
+            background: var(--light-gray);
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
@@ -39,7 +39,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: var(--white);
+            background: var(--light-gray);
         }
 
         /* Background Shapes */
@@ -55,18 +55,18 @@
 
         .shape {
             position: absolute;
-            opacity: 0.15;
+            opacity: 0.1;
             animation: floatUp infinite linear;
         }
 
-        .circle { border-radius: 50%; background: var(--dark-yellow); }
-        .rectangle { background: var(--maroon); }
+        .circle { border-radius: 50%; background: var(--accent-teal); }
+        .rectangle { background: var(--primary-blue); }
         .triangle {
             width: 0;
             height: 0;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
-            border-bottom: 40px solid var(--dark-yellow);
+            border-bottom: 40px solid var(--accent-teal);
             background: none;
         }
 
@@ -90,13 +90,13 @@
         .shape:nth-child(18) { top: 85%; left: 90%; animation-duration: 25s; }
 
         @keyframes floatUp {
-            0% { transform: translateY(0); opacity: 0.15; }
+            0% { transform: translateY(0); opacity: 0.1; }
             100% { transform: translateY(-100vh); opacity: 0; }
         }
 
         /* Navbar */
         .navbar {
-            background: var(--white);
+            background: var(--warm-white);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -106,7 +106,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(254, 252, 232, 0.95);
         }
 
         .nav-container {
@@ -136,7 +136,7 @@
         .logo-text {
             display: flex;
             flex-direction: column;
-            color: var(--maroon);
+            color: var(--primary-blue);
             font-weight: 700;
             text-transform: uppercase;
             font-size: 2rem;
@@ -159,7 +159,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--maroon);
+            color: var(--primary-blue);
             font-weight: 500;
             position: relative;
             transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
@@ -169,8 +169,8 @@
         }
 
         .nav-links a:hover {
-            background: var(--dark-yellow);
-            color: var(--text-light);
+            background: var(--accent-teal);
+            color: var(--warm-white);
             transform: translateY(-3px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -180,7 +180,7 @@
             font-size: 1.5rem;
             background: none;
             border: none;
-            color: var(--maroon);
+            color: var(--primary-blue);
             cursor: pointer;
             padding: 0.5rem;
         }
@@ -193,7 +193,7 @@
             font-size: 1.5rem;
             background: none;
             border: none;
-            color: var(--maroon);
+            color: var(--primary-blue);
             cursor: pointer;
         }
 
@@ -204,7 +204,7 @@
             margin: 2rem auto;
             padding: 1rem 0;
             overflow: hidden;
-            background: var(--maroon);
+            background: var(--primary-blue);
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             z-index: 10;
@@ -224,7 +224,7 @@
         }
 
         .marquee-card {
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 10px;
             padding: 1rem;
             width: 300px;
@@ -238,18 +238,18 @@
         .marquee-card:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            color: var(--warm-white);
         }
 
         .marquee-card:hover h3,
         .marquee-card:hover p {
-            color: var(--text-light);
+            color: var(--warm-white);
         }
 
         .marquee-card h3 {
             font-size: 1.2rem;
-            color: var(--maroon);
+            color: var(--primary-blue);
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
@@ -264,8 +264,8 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background: var(--dark-yellow);
-            color: var(--text-light);
+            background: var(--accent-teal);
+            color: var(--warm-white);
             padding: 0.3rem 0.6rem;
             border-radius: 20px;
             font-size: 0.7rem;
@@ -287,7 +287,7 @@
             position: relative;
             height: 80vh;
             overflow: hidden;
-            background: var(--maroon);
+            background: var(--primary-blue);
         }
 
         .slideshow {
@@ -344,7 +344,7 @@
 
         .hero-content .hashtags {
             font-size: 1rem;
-            color: var(--dark-yellow);
+            color: var(--accent-teal);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 1rem;
@@ -354,20 +354,20 @@
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            color: var(--white);
+            color: var(--warm-white);
             margin-bottom: 1rem;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            color: var(--white);
+            color: var(--warm-white);
             margin-bottom: 2rem;
         }
 
         .hero-content .cta-btn {
-            background: var(--dark-yellow);
-            color: var(--text-light);
+            background: var(--accent-teal);
+            color: var(--warm-white);
             padding: 0.8rem 2rem;
             border-radius: 25px;
             font-weight: 600;
@@ -378,7 +378,7 @@
 
         .hero-content .cta-btn:hover {
             transform: scale(1.05);
-            background: var(--maroon);
+            background: var(--primary-blue);
         }
 
         @keyframes fadeInUp {
@@ -400,7 +400,7 @@
         .dot {
             width: 10px;
             height: 10px;
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 50%;
             opacity: 0.5;
             cursor: pointer;
@@ -409,7 +409,7 @@
 
         .dot.active {
             opacity: 1;
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
         }
 
         .modal {
@@ -442,7 +442,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            color: var(--white);
+            color: var(--warm-white);
             font-size: 2rem;
             cursor: pointer;
         }
@@ -455,7 +455,7 @@
 
         .section-title {
             font-size: 2.5rem;
-            color: var(--maroon);
+            color: var(--primary-blue);
             text-align: center;
             margin-bottom: 2rem;
             position: relative;
@@ -465,7 +465,7 @@
             content: '';
             width: 80px;
             height: 3px;
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
             position: absolute;
             bottom: -10px;
             left: 50%;
@@ -477,7 +477,7 @@
             max-width: 1400px;
             margin: 4rem auto;
             padding: 3rem;
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -495,7 +495,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--maroon), var(--dark-yellow));
+            background: linear-gradient(45deg, var(--primary-blue), var(--accent-teal));
             opacity: 0.05;
             z-index: 0;
         }
@@ -505,7 +505,7 @@
             height: 250px;
             border-radius: 50%;
             overflow: hidden;
-            border: 5px solid var(--dark-yellow);
+            border: 5px solid var(--accent-teal);
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
@@ -528,7 +528,7 @@
 
         .headmistress-text h2 {
             font-size: 2rem;
-            color: var(--maroon);
+            color: var(--primary-blue);
             margin-bottom: 1.5rem;
         }
 
@@ -542,7 +542,7 @@
             opacity: 0;
             display: inline-block;
             transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.5s ease, transform [your choice of transition effect];
         }
 
         .word.visible {
@@ -550,95 +550,75 @@
             transform: translateY(0);
         }
 
-        /* Core Values Section */
+        /* New Core Values Section */
         .core-values-section {
             max-width: 1400px;
             margin: 4rem auto;
-            padding: 0;
-            background: var(--white);
+            padding: 2rem;
+            background: var(--warm-white);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: row;
-            gap: 0;
+        }
+
+        .core-values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .core-value-card {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .core-values-left, .core-values-right {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
+        .core-value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .core-values-left .image-grid,
-        .core-values-right .image-stack {
-            display: contents;
+        .core-value-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
         }
 
-        .core-values-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+        .core-value-card:hover .core-value-icon {
+            transform: rotate(360deg);
         }
 
-        .core-values-image:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        .core-values-center {
-            flex: 1;
-            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
-            padding: 2rem;
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .core-values-center h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            width: 100%;
-        }
-
-        .value-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .value-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .value-item h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-light);
+        .core-value-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
             margin-bottom: 0.5rem;
         }
 
-        .value-item p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            line-height: 1.4;
+        .core-value-card p {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .core-value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .core-value-card:hover::before {
+            opacity: 0.1;
         }
 
         /* Counter Section */
@@ -647,8 +627,8 @@
             margin: 4rem auto;
             padding: 2rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            color: var(--warm-white);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -687,7 +667,7 @@
         .counter-number {
             font-size: 2.5rem;
             font-weight: 600;
-            color: var(--text-light);
+            color: var(--warm-white);
             margin-bottom: 0.5rem;
         }
 
@@ -700,7 +680,7 @@
         .counter-label {
             font-size: 1rem;
             font-weight: 300;
-            color: var(--text-light);
+            color: var(--warm-white);
             opacity: 0.9;
         }
 
@@ -709,7 +689,7 @@
             max-width: 1400px;
             margin: 4rem auto;
             padding: 2rem;
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -738,7 +718,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(128, 0, 0, 0.5);
+            background: rgba(30, 58, 138, 0.5);
             z-index: 1;
         }
 
@@ -746,7 +726,7 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            color: var(--white);
+            color: var(--warm-white);
         }
 
         .video-content p {
@@ -760,7 +740,7 @@
             position: relative;
             width: 80px;
             height: 80px;
-            background-color: rgba(184, 134, 11, 0.7);
+            background-color: rgba(20, 184, 166, 0.7);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -771,16 +751,16 @@
         }
 
         .play-button:hover {
-            background-color: rgba(128, 0, 0, 0.9);
+            background-color: rgba(30, 58, 138, 0.9);
             transform: scale(1.1);
         }
 
         .play-icon {
             font-size: 40px;
-            color: var(--white);
+            color: var(--warm-white);
         }
 
-        /* Prefects Slider (Arrows Removed) */
+        /* Prefects Slider */
         .prefects-slider {
             position: relative;
             width: 100%;
@@ -827,7 +807,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(128, 0, 0, 0.8));
+            background: linear-gradient(to bottom, transparent, rgba(30, 58, 138, 0.8));
             z-index: 1;
         }
 
@@ -838,20 +818,20 @@
         }
 
         .prefect-slide h2 {
-            color: var(--white);
+            color: var(--warm-white);
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: rgba(184, 134, 11, 0.6);
+            background: rgba(20, 184, 166, 0.6);
             padding: 0.5rem 1rem;
             border-radius: 5px;
         }
 
         .prefect-slide p {
-            color: var(--white);
+            color: var(--warm-white);
             font-size: 1.2rem;
             font-weight: 400;
-            background: rgba(128, 0, 0, 0.6);
+            background: rgba(30, 58, 138, 0.6);
             padding: 0.5rem 1rem;
             border-radius: 5px;
             max-width: 80%;
@@ -869,7 +849,7 @@
         .dot {
             width: 10px;
             height: 10px;
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
             border-radius: 50%;
             cursor: pointer;
             opacity: 0.5;
@@ -878,7 +858,7 @@
 
         .dot.active {
             opacity: 1;
-            background: var(--maroon);
+            background: var(--primary-blue);
         }
 
         /* Audio Player */
@@ -886,7 +866,7 @@
             max-width: 1400px;
             margin: 4rem auto;
             padding: 2rem;
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -894,7 +874,7 @@
 
         .audio-player h2 {
             font-size: 2rem;
-            color: var(--maroon);
+            color: var(--primary-blue);
             margin-bottom: 1.5rem;
         }
 
@@ -906,12 +886,12 @@
             border-radius: 10px;
         }
 
-       /* Join Us Section */
+        /* Join Us Section */
         .join-us-section {
             max-width: 1600px;
             margin: 6rem auto;
             padding: 4rem 3rem;
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             position: relative;
@@ -925,7 +905,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 50,50 0,100" fill="rgba(184,134,11,0.05)"/><polygon points="50,0 100,50 50,100" fill="rgba(128,0,0,0.05)"/><polygon points="0,50 50,0 100,50" fill="rgba(184,134,11,0.05)"/><polygon points="0,100 50,50 100,100" fill="rgba(128,0,0,0.05)"/></svg>') repeat;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 50,50 0,100" fill="rgba(20,184,166,0.05)"/><polygon points="50,0 100,50 50,100" fill="rgba(30,58,138,0.05)"/><polygon points="0,50 50,0 100,50" fill="rgba(20,184,166,0.05)"/><polygon points="0,100 50,50 100,100" fill="rgba(30,58,138,0.05)"/></svg>') repeat;
             background-size: 50px 50px;
             opacity: 0.3;
             z-index: 0;
@@ -957,7 +937,7 @@
             left: -10px;
             right: -10px;
             bottom: -10px;
-            border: 2px dashed var(--dark-yellow);
+            border: 2px dashed var(--accent-teal);
             border-radius: 50%;
             animation: rotate 10s linear infinite;
         }
@@ -968,8 +948,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 2rem;
-            color: var(--white);
-            background: rgba(128, 0, 0, 0.5);
+            color: var(--warm-white);
+            background: rgba(30, 58, 138, 0.5);
             padding: 1rem;
             border-radius: 10px;
             opacity: 0;
@@ -1008,7 +988,7 @@
         .join-us-content h2 {
             font-size: 3.5rem;
             font-weight: 700;
-            color: var(--maroon);
+            color: var(--primary-blue);
             text-transform: uppercase;
             line-height: 1.2;
         }
@@ -1016,7 +996,7 @@
         .join-us-content h3 {
             font-size: 2.5rem;
             font-weight: 600;
-            color: var(--dark-yellow);
+            color: var(--accent-teal);
             line-height: 1.2;
             position: relative;
         }
@@ -1028,7 +1008,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 1rem;
-            color: var(--maroon);
+            color: var(--primary-blue);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -1050,8 +1030,8 @@
         }
 
         .join-btn {
-            background: var(--maroon);
-            color: var(--text-light);
+            background: var(--primary-blue);
+            color: var(--warm-white);
             padding: 1rem 3rem;
             border-radius: 30px;
             text-decoration: none;
@@ -1062,7 +1042,7 @@
         }
 
         .join-btn:hover {
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
@@ -1075,7 +1055,7 @@
         }
 
         .content-card {
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
@@ -1083,23 +1063,23 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-left: 5px solid var(--maroon);
+            border-left: 5px solid var(--primary-blue);
         }
 
         .content-card:hover {
             transform: translateY(-10px);
-            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
-            color: var(--text-light);
-            border-left: 5px solid var(--white);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            color: var(--warm-white);
+            border-left: 5px solid var(--warm-white);
         }
 
         .content-card:hover h2,
         .content-card:hover p {
-            color: var(--text-light);
+            color: var(--warm-white);
         }
 
         .content-card h2 {
-            color: var(--maroon);
+            color: var(--primary-blue);
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
@@ -1115,8 +1095,8 @@
 
         /* Footer */
         .footer {
-            background: var(--maroon);
-            color: var(--text-light);
+            background: var(--primary-blue);
+            color: var(--warm-white);
             padding: 4rem 2rem 2rem;
             position: relative;
             overflow: hidden;
@@ -1131,7 +1111,7 @@
             left: 0;
             width: 100%;
             height: 50px;
-            background: var(--white);
+            background: var(--light-gray);
             border-bottom-left-radius: 50%;
             border-bottom-right-radius: 50%;
             z-index: 0;
@@ -1156,7 +1136,7 @@
         .pen {
             width: 40px;
             height: 40px;
-            background: url('https://img.icons8.com/ios-filled Wesbite/images/pen.png') no-repeat center;
+            background: url('https://img.icons8.com/ios-filled/40/FFFFFF/pen.png') no-repeat center;
             background-size: contain;
         }
 
@@ -1191,7 +1171,7 @@
         .footer-section h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--text-light);
+            color: var(--warm-white);
         }
 
         .footer-section p {
@@ -1211,7 +1191,7 @@
         }
 
         .social-links a {
-            color: var(--text-light);
+            color: var(--warm-white);
             font-size: 1.5rem;
             padding: 0.5rem;
             border-radius: 50%;
@@ -1220,7 +1200,7 @@
         }
 
         .social-links a:hover {
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
             transform: translateY(-3px);
         }
 
@@ -1233,7 +1213,7 @@
         }
 
         .footer-links a, .footer-contact a {
-            color: var(--text-light);
+            color: var(--warm-white);
             text-decoration: none;
             opacity: 0.8;
             transition: all 0.3s ease;
@@ -1241,12 +1221,12 @@
 
         .footer-links a:hover {
             opacity: 1;
-            color: var(--dark-yellow);
+            color: var(--accent-teal);
         }
 
         .footer-contact i {
             margin-right: 0.75rem;
-            color: var(--dark-yellow);
+            color: var(--accent-teal);
         }
 
         .newsletter-form {
@@ -1264,17 +1244,17 @@
         }
 
         .newsletter-form button {
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
             border: none;
             padding: 0.75rem 1.5rem;
             border-radius: 20px;
-            color: var(--text-light);
+            color: var(--warm-white);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .newsletter-form button:hover {
-            background: var(--maroon);
+            background: var(--primary-blue);
             transform: scale(1.05);
         }
 
@@ -1315,14 +1295,14 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--dark-yellow);
+            border: 2px solid var(--accent-teal);
         }
 
         .chatbot-badge {
             position: absolute;
             bottom: -10px;
-            background: var(--maroon);
-            color: var(--text-light);
+            background: var(--primary-blue);
+            color: var(--warm-white);
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 10px;
@@ -1341,7 +1321,7 @@
         .chatbot-container {
             width: 320px;
             height: 450px;
-            background: var(--white);
+            background: var(--warm-white);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             display: none;
@@ -1360,8 +1340,8 @@
         }
 
         .chatbot-header {
-            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            color: var(--warm-white);
             padding: 10px 15px;
             display: flex;
             align-items: center;
@@ -1379,7 +1359,7 @@
             height: 30px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--white);
+            border: 2px solid var(--warm-white);
         }
 
         .header-avatar span {
@@ -1390,7 +1370,7 @@
         .chatbot-close {
             background: none;
             border: none;
-            color: var(--text-light);
+            color: var(--warm-white);
             font-size: 1.2rem;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -1422,8 +1402,8 @@
         }
 
         .bot-message span {
-            background: var(--white);
-            color: var(--maroon);
+            background: var(--warm-white);
+            color: var(--primary-blue);
             padding: 8px 12px;
             border-radius: 10px 10px 10px 0;
             max-width: 80%;
@@ -1435,8 +1415,8 @@
         }
 
         .user-message span {
-            background: var(--dark-yellow);
-            color: var(--text-light);
+            background: var(--accent-teal);
+            color: var(--warm-white);
             padding: 8px 12px;
             border-radius: 10px 10px 0 10px;
             max-width: 80%;
@@ -1446,7 +1426,7 @@
         .chatbot-input {
             display: flex;
             padding: 10px;
-            background: var(--white);
+            background: var(--warm-white);
             border-top: 1px solid var(--text-dark);
         }
 
@@ -1461,21 +1441,21 @@
         }
 
         .chatbot-input input:focus {
-            border-color: var(--dark-yellow);
+            border-color: var(--accent-teal);
         }
 
         .chatbot-input button {
-            background: var(--maroon);
+            background: var(--primary-blue);
             border: none;
             padding: 8px 15px;
-            color: var(--text-light);
+            color: var(--warm-white);
             border-radius: 0 20px 20px 0;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
         .chatbot-input button:hover {
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
         }
 
         /* Pop-Up Alert */
@@ -1484,7 +1464,7 @@
             bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--white);
+            background: var(--warm-white);
             color: var(--text-dark);
             padding: 2rem;
             border-radius: 20px;
@@ -1497,7 +1477,7 @@
             transition: bottom 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
             max-width: 500px;
             width: 90%;
-            border: 1px solid var(--dark-yellow);
+            border: 1px solid var(--accent-teal);
         }
 
         .popup-alert.active {
@@ -1514,14 +1494,14 @@
 
         .popup-header i {
             font-size: 2rem;
-            color: var(--maroon);
+            color: var(--primary-blue);
         }
 
         .popup-header h3 {
             font-size: 1.5rem;
             font-weight: 700;
             margin: 0;
-            color: var(--maroon);
+            color: var(--primary-blue);
         }
 
         .popup-content p {
@@ -1538,8 +1518,8 @@
         }
 
         .popup-actions a {
-            background: linear-gradient(135deg, var(--maroon), var(--dark-yellow));
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            color: var(--warm-white);
             padding: 0.75rem 2rem;
             border-radius: 25px;
             text-decoration: none;
@@ -1553,13 +1533,13 @@
 
         .popup-actions a:hover {
             transform: scale(1.05);
-            background: linear-gradient(135deg, var(--dark-yellow), var(--maroon));
+            background: linear-gradient(135deg, var(--accent-teal), var(--primary-blue));
         }
 
         .popup-close {
-            background: var(--maroon);
+            background: var(--primary-blue);
             border: none;
-            color: var(--text-light);
+            color: var(--warm-white);
             font-size: 1.2rem;
             width: 35px;
             height: 35px;
@@ -1572,7 +1552,7 @@
         }
 
         .popup-close:hover {
-            background: var(--dark-yellow);
+            background: var(--accent-teal);
             transform: rotate(90deg);
         }
 
@@ -1614,6 +1594,10 @@
             .join-btn {
                 padding: 0.8rem 2.5rem;
                 font-size: 1.1rem;
+            }
+
+            .core-values-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
 
@@ -1658,7 +1642,7 @@
                 left: 0;
                 width: 250px;
                 height: 100vh;
-                background: var(--white);
+                background: var(--warm-white);
                 flex-direction: column;
                 padding: 4rem 2rem;
                 box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
@@ -1722,37 +1706,23 @@
             }
 
             .core-values-section {
-                flex-direction: column;
-                padding: 0;
+                padding: 1rem;
             }
 
-            .core-values-left,
-            .core-values-right {
-                grid-template-columns: 1fr;
-            }
-
-            .core-values-image {
-                height: 150px;
-            }
-
-            .core-values-center {
+            .core-value-card {
                 padding: 1.5rem;
             }
 
-            .core-values-center h2 {
-                font-size: 1.5rem;
+            .core-value-icon {
+                font-size: 2.5rem;
             }
 
-            .values-grid {
-                grid-template-columns: 1fr;
+            .core-value-card h3 {
+                font-size: 1.3rem;
             }
 
-            .value-item h3 {
-                font-size: 1rem;
-            }
-
-            .value-item p {
-                font-size: 0.85rem;
+            .core-value-card p {
+                font-size: 0.9rem;
             }
 
             .video-container {
@@ -1914,20 +1884,16 @@
                 height: 150px;
             }
 
-            .core-values-image {
-                height: 120px;
+            .core-value-icon {
+                font-size: 2rem;
             }
 
-            .core-values-center h2 {
-                font-size: 1.2rem;
+            .core-value-card h3 {
+                font-size: 1.1rem;
             }
 
-            .value-item h3 {
-                font-size: 0.9rem;
-            }
-
-            .value-item p {
-                font-size: 0.8rem;
+            .core-value-card p {
+                font-size: 0.85rem;
             }
 
             .video-container {
@@ -2087,18 +2053,18 @@
                 border-radius: 20px;
             }
         }
-         /* Core Values */
-         .core-values { padding: 60px 0; background: var(--light-bg); }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--maroon); }
-        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .value-card { text-align: center; padding: 20px; }
-        .value-card i { font-size: 2.5rem; color: var(--maroon); margin-bottom: 15px; }
-        .value-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .value-card p { font-size: 1rem; }
- /* Map Section */
- .map-section { padding: 60px 0; text-align: center; }
-        .map-section iframe { width: 100%; height: 400px; border: none; }
 
+        /* Map Section */
+        .map-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -2140,7 +2106,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="academics.html">Academics</a></li>
                     <li><a href="admissions.html">Admissions</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="t.html">Gallery</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -2159,7 +2125,8 @@
             </div>
             <div class="slide slide-2">
                 <div class="hero-content">
-                    <div class="hashtags">#EDUCATION #EXCELLENCE #LEADERSHIP</div>
+                    <div class="hashtag
+s">#EDUCATION #EXCELLENCE #LEADERSHIP</div>
                     <h1>Academic Excellence</h1>
                     <p>Join a legacy of academic achievement and personal growth.</p>
                     <a href="#academics" class="cta-btn">Explore Programs</a>
@@ -2194,28 +2161,7 @@
         <span class="modal-close" id="modalClose">×</span>
         <img id="modalImage" src="" alt="Full-screen image">
     </div>
-  <section class="core-values">
-        <div class="container">
-            <h2 class="section-title">Why Choose SMACOMA</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <i class="fas fa-book"></i>
-                    <h3>Academic Excellence</h3>
-                    <p>Our rigorous curriculum ensures top-tier education for all students.</p>
-                </div>
-                <div class="value-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Holistic Development</h3>
-                    <p>We nurture character, leadership, and personal growth.</p>
-                </div>
-                <div class="value-card">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Nutritious Meals</h3>
-                    <p>Healthy, balanced meals to support student well-being.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <section class="news-marquee">
         <div class="marquee-wrapper">
             <div class="marquee-content">
@@ -2277,53 +2223,37 @@
         </section>
 
         <section id="core-values" class="core-values-section">
-            <div class="core-values-left">
-                <div class="image-grid">
-                    <img src="l1(14).jpg" alt="School Event" class="core-values-image">
-                    <img src="m (2).JPG" alt="Computer Lab" class="core-values-image">
-                    <img src="J.jpg" alt="Students Studying" class="core-values-image">
-                    <img src="CO.jpg" alt="School Campus" class="core-values-image">
-                    <img src="P (1).JPG" alt="Classroom" class="core-values-image">
-                    <img src="P (2).JPG" alt="Library" class="core-values-image">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="core-values-grid">
+                <div class="core-value-card">
+                    <i class="fas fa-pray core-value-icon"></i>
+                    <h3>God Fearing</h3>
+                    <p>We instill a deep sense of spirituality and moral grounding in our students.</p>
                 </div>
-            </div>
-            <div class="core-values-center">
-                <h2>Core Values</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <h3>God Fearing</h3>
-                        <p>We produce God fearing students!</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Excellence</h3>
-                        <p>We strive to produce outstanding and extremely good students academically!</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Integrity</h3>
-                        <p>What a joy to have honest and strong principles in our students!</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Innovativeness</h3>
-                        <p>We encourage and develop the skill and imagination to create new things!</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Perseverance</h3>
-                        <p>Our students are persistent in whatever they do despite any difficulties or delay in achieving success!</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Responsibility</h3>
-                        <p>We instill a sense of responsibility in our students in order for them to be able to be in control of their studies!</p>
-                    </div>
+                <div class="core-value-card">
+                    <i class="fas fa-star core-value-icon"></i>
+                    <h3>Excellence</h3>
+                    <p>Striving for outstanding academic and personal achievements.</p>
                 </div>
-            </div>
-            <div class="core-values-right">
-                <div class="image-stack">
-                    <img src="COO.JPG" alt="Students in Line" class="core-values-image">
-                    <img src="DA.JPG" alt="Award Ceremony" class="core-values-image">
-                    <img src="P (3).JPG" alt="Sports Day" class="core-values-image">
-                    <img src="P (4).JPG" alt="Science Lab" class="core-values-image">
-                    <img src="CO.jpg" alt="Assembly" class="core-values-image">
-                    <img src="l1 (2).jpg" alt="Graduation" class="core-values-image">
+                <div class="core-value-card">
+                    <i class="fas fa-balance-scale core-value-icon"></i>
+                    <h3>Integrity</h3>
+                    <p>Fostering honesty and strong moral principles in all endeavors.</p>
+                </div>
+                <div class="core-value-card">
+                    <i class="fas fa-lightbulb core-value-icon"></i>
+                    <h3>Innovativeness</h3>
+                    <p>Encouraging creativity and the development of new ideas.</p>
+                </div>
+                <div class="core-value-card">
+                    <i class="fas fa-running core-value-icon"></i>
+                    <h3>Perseverance</h3>
+                    <p>Promoting resilience and determination in the face of challenges.</p>
+                </div>
+                <div class="core-value-card">
+                    <i class="fas fa-hand-holding-heart core-value-icon"></i>
+                    <h3>Responsibility</h3>
+                    <p>Empowering students to take charge of their learning and actions.</p>
                 </div>
             </div>
         </section>
@@ -2415,14 +2345,9 @@
                     <div class="prefect-slide" data-index="2" style="background-image: url('P (3).JPG');">
                         <h2>Asiimwe Colline - Speaker (2025)</h2>
                         <p>"Sports at SMACOMA built my teamwork skills and lifelong friendships."</p>
-                    </div>
-                    <div class="prefect-slide" data-index="3" style="background-image: url('P (4).JPG');">
-                        <h2>Mary Nambi - Academic Prefect (2017)</h2>
-                        <p>"The rigorous academics prepared me for university and beyond."</p>
-                    </div>
-                    <div class="prefect-slide" data-index="4" style="background-image: url('COO.JPG');">
-                        <h2>Keriton Halax - Academic Prefect (2017)</h2>
-                        <p>"The rigorous academics prepared me for university and beyond."</p>
+                                        <div class="prefect-slide" data-index="3" style="background-image: url('P (4).JPG');">
+                        <h2>Jane Nakato - Head Girl (2024)</h2>
+                        <p>"SMACOMA's values of integrity and perseverance guided my leadership journey."</p>
                     </div>
                 </div>
                 <div class="slider-dots">
@@ -2430,22 +2355,21 @@
                     <span class="dot" data-index="1"></span>
                     <span class="dot" data-index="2"></span>
                     <span class="dot" data-index="3"></span>
-                    <span class="dot" data-index="4"></span>
                 </div>
             </div>
         </section>
 
-        <section id="join-us" class="join-us-section">
+        <section class="join-us-section" id="join-us">
             <div class="join-us-background"></div>
             <div class="join-us-container">
                 <div class="join-us-image">
-                    <img src="COO.jpg" alt="Join Us">
-                    <i class="fas fa-users box-icon"></i>
+                    <img src="l1 (19).jpg" alt="Join Us">
+                    <i class="fas fa-graduation-cap box-icon"></i>
                 </div>
                 <div class="join-us-content">
-                    <h2>Become Part of</h2>
-                    <h3>Our Legacy</h3>
-                    <p>Join a community dedicated to excellence, leadership, and lifelong learning at St Margaret College Makerere.</p>
+                    <h2>Be Part of Our Legacy</h2>
+                    <h3>Apply for 2025</h3>
+                    <p>Discover a world of opportunities at St. Margaret College Makerere. Join our vibrant community and shape your future with us.</p>
                     <div class="join-us-buttons">
                         <a href="admissions.html" class="join-btn">Apply Now</a>
                         <a href="contact.html" class="join-btn">Contact Us</a>
@@ -2458,30 +2382,29 @@
             <h2 class="section-title">Community Voices</h2>
             <div class="content-grid">
                 <div class="content-card">
-                    <h2>Esther K., Student</h2>
-                    <p>"SMACOMA gave me the confidence to pursue my dreams in science."</p>
+                    <h2>Esther M., Alumna</h2>
+                    <p>"SMACOMA gave me the confidence to pursue my dreams in engineering."</p>
                 </div>
                 <div class="content-card">
-                    <h2>Mr. Okello, Teacher</h2>
-                    <p>"Teaching here is rewarding; the students are eager to learn."</p>
+                    <h2>Mr. Okello, Parent</h2>
+                    <p>"The teachers' dedication transformed my daughter's academic journey."</p>
                 </div>
                 <div class="content-card">
-                    <h2>Grace N., Alumna</h2>
-                    <p>"The skills I gained at SMACOMA still guide my career today."</p>
+                    <h2>John K., Student</h2>
+                    <p>"The robotics club sparked my passion for technology."</p>
                 </div>
                 <div class="content-card">
-                    <h2>Mrs. Auma, Parent</h2>
-                    <p>"My daughter thrives here thanks to the supportive environment."</p>
+                    <h2>Ms. Auma, Teacher</h2>
+                    <p>"Teaching at SMACOMA is rewarding; the students inspire me daily."</p>
                 </div>
             </div>
         </section>
-    </main>
-    <section class="map-section">
-        <div class="container">
+
+        <section class="map-section">
             <h2 class="section-title">Find Us</h2>
-            <iframe src="https://maps.google.com/maps?q=St.%20Margaret%20College%20Makerere&t=m&z=10&output=embed&iwloc=near" title="St. Margaret College Makerere"></iframe>
-        </div>
-    </section>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7563385594633!2d32.56780331475778!3d0.32960636410306697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMTknNDYuNiJOIDMywrAzNCcwNC4xIkU!5e0!3m2!1sen!2sug!4v1634567890123" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-background">
@@ -2493,8 +2416,8 @@
         </div>
         <div class="footer-container">
             <div class="footer-section">
-                <img src="logo.png" alt="SMACOMA Footer Logo" class="footer-logo">
-                <p>St. Margaret College Makerere<br>Empowering Future Leaders Since 1954</p>
+                <img src="logo.png" alt="SMACOMA" class="footer-logo">
+                <p>St. Margaret College Makerere, empowering future leaders since 1954.</p>
                 <div class="social-links">
                     <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -2516,46 +2439,46 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="footer-contact">
-                    <li><i class="fas fa-map-marker-alt"></i> P.O. Box 123, Makerere, Uganda</li>
-                    <li><i class="fas fa-phone"></i> <a href="tel:+256123456789">+256 123 456 789</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> P.O. Box 1234, Kampala, Uganda</li>
+                    <li><i class="fas fa-phone"></i> +256 123 456 789</li>
                     <li><i class="fas fa-envelope"></i> <a href="mailto:info@smacoma.ac.ug">info@smacoma.ac.ug</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Newsletter</h3>
                 <p>Stay updated with our latest news and events.</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Your Email" required>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 St. Margaret College Makerere. All Rights Reserved.</p>
+            <p>&copy; 2025 St. Margaret College Makerere. All rights reserved.</p>
         </div>
     </footer>
 
     <div class="chatbot-wrapper">
-        <div class="chatbot-avatar" id="chatbotToggle">
-            <i class="fas fa-user-graduate"></i>
-            <span class="chatbot-badge">KERITON GPT</span>
+        <div class="chatbot-avatar">
+            <img src="logo.png" alt="Chatbot" class="avatar-img">
+            <span class="chatbot-badge">Ask Me!</span>
         </div>
-        <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-container">
             <div class="chatbot-header">
                 <div class="header-avatar">
-                    <i class="fas fa-user-graduate"></i>
+                    <img src="logo.png" alt="KERITON GPT" class="header-avatar-img">
                     <span>KERITON GPT</span>
                 </div>
-                <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
             </div>
-            <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-messages">
                 <div class="message bot-message">
-                    <i class="fas fa-user-graduate"></i>
-                    <span>Hello! Welcome to SMACOMA. How can KERITON GPT assist you today?</span>
+                    <img src="logo.png" alt="Bot" class="message-avatar">
+                    <span>Welcome to SMACOMA! How can I assist you today?</span>
                 </div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatInput" placeholder="Type your question...">
+                <input type="text" placeholder="Type your message..." id="chatInput">
                 <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
@@ -2563,17 +2486,19 @@
 
     <div class="popup-alert" id="popupAlert">
         <div class="popup-header">
-            <i class="fas fa-bullhorn"></i>
-            <h3>Apply or Join Us Today</h3>
+            <i class="fas fa-bell"></i>
+            <h3>Welcome to SMACOMA</h3>
         </div>
         <div class="popup-content">
-            <p>Be part of St Margaret College Makerere's legacy of excellence. Enroll for the 2025-2026 academic year!</p>
+            <p>Ready to join our vibrant community? Apply for the 2025-2026 academic year today!</p>
         </div>
         <div class="popup-actions">
             <a href="admissions.html"><i class="fas fa-user-plus"></i> Apply Now</a>
-            <button class="popup-close" id="popupClose"><i class="fas fa-times"></i></button>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+            <button class="popup-close"><i class="fas fa-times"></i></button>
         </div>
     </div>
+
     <script>
         // Navbar Toggle
         const navToggle = document.querySelector('.nav-toggle');
@@ -2591,7 +2516,11 @@
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
         // Slideshow
@@ -2602,133 +2531,108 @@
         function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
-                dots[i].classList.toggle('active', i === index);
             });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
         }
 
-        dots.forEach((dot, index) => {
+        dots.forEach(dot => {
             dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
+                showSlide(parseInt(dot.dataset.index));
             });
         });
 
         setInterval(() => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+            showSlide((currentSlide + 1) % slides.length);
         }, 5000);
 
         // Image Modal
-        const modal = document.getElementById('imageModal');
+        const imageModal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const modalClose = document.getElementById('modalClose');
-        const images = document.querySelectorAll('.core-values-image, .headmistress-photo img, .join-us-image img');
 
-        images.forEach(image => {
-            image.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImage.src = image.src;
+        document.querySelectorAll('.clickable-image').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src;
+                imageModal.style.display = 'flex';
             });
         });
 
         modalClose.addEventListener('click', () => {
-            modal.style.display = 'none';
+            imageModal.style.display = 'none';
         });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
-
-        // Headmistress Message Animation
-const messageText = "At St. Margaret College Makerere, we are committed to nurturing young minds to become leaders of tomorrow.<br><br>Our holistic approach ensures academic excellence, character development, and a passion for lifelong learning.<br><br>Join us on this journey of growth and discovery.";
-const messageElement = document.getElementById('headmistressMessage');
-
-// Split the text into an array, preserving <br> tags as separate elements
-const words = messageText.split(/(<br>|\s+)/).filter(word => word.trim() !== '');
-
-words.forEach((word, index) => {
-    const span = document.createElement('span');
-    span.classList.add('word');
-    if (word === '<br>') {
-        span.innerHTML = '<br>'; // Insert line break
-    } else {
-        span.textContent = word; // Set word without extra space here
-        span.style.marginRight = '0.3em'; // Add consistent spacing between words
-    }
-    messageElement.appendChild(span);
-});
-
-// Intersection Observer for animation
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const wordElements = document.querySelectorAll('.word');
-            wordElements.forEach((word, i) => {
-                setTimeout(() => {
-                    word.classList.add('visible');
-                }, i * 150); // Increased delay to 150ms for a smoother, more readable pace
-            });
-            observer.unobserve(entry.target); // Stop observing once animation triggers
-        }
-    });
-}, { threshold: 0.5 });
-
-observer.observe(document.querySelector('.headmistress-message'));
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter-number');
-        const counterSection = document.getElementById('student-counter');
-
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-target'));
-                        let count = 0;
-                        const increment = target / 100;
-
-                        const updateCounter = () => {
-                            if (count < target) {
-                                count += increment;
-                                counter.textContent = Math.ceil(count);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.textContent = target;
-                            }
-                        };
-
-                        updateCounter();
-                    });
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counterObserver.observe(counterSection);
 
         // Video Modal
-        const playButton = document.getElementById('play-button');
         const videoModal = document.getElementById('videoModal');
         const videoModalClose = document.getElementById('videoModalClose');
-        const promoVideo = document.getElementById('promo-video');
+        const playButton = document.getElementById('play-button');
+        const video = document.getElementById('promo-video');
 
         playButton.addEventListener('click', () => {
             videoModal.style.display = 'flex';
-            promoVideo.play();
+            video.play();
         });
 
         videoModalClose.addEventListener('click', () => {
             videoModal.style.display = 'none';
-            promoVideo.pause();
-            promoVideo.currentTime = 0;
+            video.pause();
+            video.currentTime = 0;
         });
 
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                videoModal.style.display = 'none';
-                promoVideo.pause();
-                promoVideo.currentTime = 0;
-            }
+        // Headmistress Message Animation
+        const messageText = "At St. Margaret College Makerere, we are committed to nurturing young minds to become leaders of tomorrow. Our holistic approach ensures academic excellence, character development, and spiritual growth. Join us in this journey of empowerment.";
+        const messageElement = document.getElementById('headmistressMessage');
+        const words = messageText.split(' ');
+
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.classList.add('word');
+            span.textContent = word + ' ';
+            messageElement.appendChild(span);
         });
+
+        const wordElements = document.querySelectorAll('.word');
+        wordElements.forEach((word, index) => {
+            setTimeout(() => {
+                word.classList.add('visible');
+            }, index * 200);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter-number');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const counterSection = document.getElementById('student-counter');
+        let hasAnimated = false;
+
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting && !hasAnimated) {
+                animateCounters();
+                hasAnimated = true;
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(counterSection);
 
         // Prefects Slider
         const prefectSlides = document.querySelectorAll('.prefect-slide');
@@ -2738,29 +2642,30 @@ observer.observe(document.querySelector('.headmistress-message'));
         function showPrefectSlide(index) {
             prefectSlides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
-                prefectDots[i].classList.toggle('active', i === index);
             });
+            prefectDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentPrefectSlide = index;
         }
 
-        prefectDots.forEach((dot, index) => {
+        prefectDots.forEach(dot => {
             dot.addEventListener('click', () => {
-                currentPrefectSlide = index;
-                showPrefectSlide(currentPrefectSlide);
+                showPrefectSlide(parseInt(dot.dataset.index));
             });
         });
 
         setInterval(() => {
-            currentPrefectSlide = (currentPrefectSlide + 1) % prefectSlides.length;
-            showPrefectSlide(currentPrefectSlide);
+            showPrefectSlide((currentPrefectSlide + 1) % prefectSlides.length);
         }, 5000);
 
         // Chatbot Functionality
         const chatbotAvatar = document.querySelector('.chatbot-avatar');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const chatbotClose = document.getElementById('chatbotClose');
-        const sendMessage = document.getElementById('sendMessage');
+        const chatbotContainer = document.querySelector('.chatbot-container');
+        const chatbotClose = document.querySelector('.chatbot-close');
         const chatInput = document.getElementById('chatInput');
-        const chatbotMessages = document.getElementById('chatbotMessages');
+        const sendMessage = document.getElementById('sendMessage');
+        const messagesContainer = document.querySelector('.chatbot-messages');
 
         chatbotAvatar.addEventListener('click', () => {
             chatbotContainer.classList.toggle('active');
@@ -2770,46 +2675,25 @@ observer.observe(document.querySelector('.headmistress-message'));
             chatbotContainer.classList.remove('active');
         });
 
-        function addMessage(message, isUser = false) {
+        function addMessage(message, isUser) {
             const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-
-            const avatar = document.createElement('img');
-            avatar.classList.add('message-avatar');
-            avatar.src = isUser ? 'user-avatar.png' : 'sr.jpg';
-            avatar.alt = isUser ? 'User' : 'Bot';
-
-            const span = document.createElement('span');
-            span.textContent = message;
-
-            messageDiv.appendChild(avatar);
-            messageDiv.appendChild(span);
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        function botResponse(userMessage) {
-            const responses = {
-                'hello': 'Hi there! How can I assist you today?',
-                'admissions': 'Admissions for 2025-2026 are open! Visit the Admissions page for details.',
-                'contact': 'You can reach us at info@smacoma.ac.ug or +256 123 456 789.',
-                'academics': 'We offer a wide range of programs. Check the Academics page for more info!',
-                'default': 'I’m here to help! Could you please provide more details?'
-            };
-
-            const message = userMessage.toLowerCase();
-            return responses[message] || responses['default'];
+            messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+            messageDiv.innerHTML = `
+                <img src="${isUser ? 'user.png' : 'logo.png'}" alt="${isUser ? 'User' : 'Bot'}" class="message-avatar">
+                <span>${message}</span>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
         sendMessage.addEventListener('click', () => {
             const message = chatInput.value.trim();
             if (message) {
                 addMessage(message, true);
-                setTimeout(() => {
-                    addMessage(botResponse(message));
-                }, 500);
                 chatInput.value = '';
+                setTimeout(() => {
+                    addMessage('Thank you for your message! How else can I assist you?', false);
+                }, 1000);
             }
         });
 
@@ -2819,30 +2703,23 @@ observer.observe(document.querySelector('.headmistress-message'));
             }
         });
 
-        // Newsletter Form Submission
-        const newsletterForm = document.getElementById('newsletterForm');
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for subscribing!');
-            newsletterForm.reset();
-        });
-
-        // Enhanced Pop-Up Alert
+        // Pop-up Alert
         const popupAlert = document.getElementById('popupAlert');
-        const popupClose = document.getElementById('popupClose');
+        const popupClose = document.querySelector('.popup-close');
 
         setTimeout(() => {
             popupAlert.classList.add('active');
-        }, 2000);
+        }, 180000); // 3 minutes
 
         popupClose.addEventListener('click', () => {
             popupAlert.classList.remove('active');
         });
 
-        // Close Pop-Up when clicking outside
-        popupAlert.addEventListener('click', (e) => {
-            if (e.target === popupAlert) {
-                popupAlert.classList.remove('active');
+        // Disable Right-Click and Dev Tools
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'i')) {
+                e.preventDefault();
             }
         });
     </script>
