@@ -13,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Times New Roman', Times, serif;
+            scroll-behavior: smooth;
         }
 
         :root {
@@ -22,10 +23,11 @@
             --white: #FFFFFF;
             --text-gray: #333333; /* Dark Gray */
             --shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --light-gray: #F5F5F5;
         }
 
         body {
-            background: var(--white);
+            background: var(--light-gray);
             color: var(--text-gray);
             min-height: 100vh;
             overflow-x: hidden;
@@ -41,9 +43,9 @@
 
         .icon {
             position: absolute;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--accent);
-            opacity: 0.2;
+            opacity: 0.15;
             animation: floatAround linear infinite;
         }
 
@@ -51,14 +53,14 @@
         .pen { animation-name: floatPen; }
 
         @keyframes floatBook {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
-            50% { opacity: 0.4; }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.15; }
+            50% { opacity: 0.3; }
             100% { transform: translate(100vw, -100vh) rotate(360deg); opacity: 0; }
         }
 
         @keyframes floatPen {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
-            50% { opacity: 0.4; }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.15; }
+            50% { opacity: 0.3; }
             100% { transform: translate(-100vw, -100vh) rotate(-360deg); opacity: 0; }
         }
 
@@ -89,7 +91,7 @@
         }
 
         .logo-img {
-            height: 70px;
+            height: 80px;
             transition: transform 0.3s ease;
         }
 
@@ -99,7 +101,7 @@
 
         .logo-text {
             color: var(--white);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: bold;
             margin-left: 1rem;
             text-transform: uppercase;
@@ -116,16 +118,16 @@
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--white);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
             transition: all 0.3s ease;
         }
 
@@ -135,19 +137,19 @@
 
         .nav-links a:hover {
             background: var(--accent);
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
 
         /* Sidebar */
         .sidebar {
-            position: fixed;
+            position: sticky;
             top: 100px;
             left: 0;
-            width: 250px;
+            width: 220px;
             background: var(--white);
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow);
-            height: calc(100vh - 100px);
+            min-height: calc(100vh - 100px);
             overflow-y: auto;
             z-index: 900;
         }
@@ -155,7 +157,8 @@
         .sidebar h3 {
             color: var(--primary);
             margin-bottom: 1.5rem;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+            text-align: center;
         }
 
         .sidebar ul {
@@ -165,13 +168,13 @@
         .sidebar a {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             color: var(--text-gray);
             text-decoration: none;
-            padding: 0.75rem;
+            padding: 0.75rem 1rem;
             border-radius: 10px;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .sidebar a:hover {
@@ -182,7 +185,7 @@
 
         /* Hero Banner */
         .hero-banner {
-            height: 60vh;
+            height: 70vh;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sr.jpg');
             background-size: cover;
             background-position: center;
@@ -196,92 +199,107 @@
 
         .hero-text h1 {
             color: var(--white);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(3rem, 6vw, 5rem);
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
             animation: fadeIn 1s ease;
         }
 
         .hero-text p {
             color: var(--white);
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
             animation: fadeIn 1s ease 0.3s forwards;
             opacity: 0;
         }
 
         /* Container */
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            margin-left: 270px;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            margin-left: 250px;
         }
 
         .content-box {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideIn 0.5s ease;
         }
 
         .content-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
 
         .content-box h2 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
         }
 
         .content-box p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .content-box ul, .content-box ol {
-            padding-left: 1.5rem;
-            font-size: 1rem;
+            padding-left: 2rem;
+            font-size: 1.1rem;
         }
 
         .content-box li {
-            margin: 0.5rem 0;
+            margin: 0.75rem 0;
         }
 
         /* Progress Tracker */
         .progress-tracker {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
             flex-wrap: wrap;
         }
 
         .progress-step {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: var(--secondary);
             color: var(--white);
             border-radius: 50%;
             display: grid;
             place-items: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .progress-step:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 110%;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            z-index: 10;
         }
 
         .progress-step.active {
             background: var(--primary);
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .progress-content {
             display: none;
-            padding: 1rem;
+            padding: 1.5rem;
             background: rgba(211, 47, 47, 0.1);
             border-radius: 10px;
         }
@@ -291,7 +309,7 @@
             animation: fadeIn 0.5s;
         }
 
-        /* Fee Table */
+        /* Table Wrapper */
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -300,20 +318,21 @@
         .fee-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
-            font-size: 1rem;
-            min-width: 600px; /* Ensures table has enough width to avoid cramped text */
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
         }
 
         .fee-table th, .fee-table td {
             border: 1px solid var(--primary);
-            padding: 0.75rem;
+            padding: 1rem;
             text-align: left;
+            min-width: 120px;
         }
 
         .fee-table th {
             background: var(--primary);
             color: var(--white);
+            font-weight: 600;
         }
 
         .fee-table tr:nth-child(even) {
@@ -328,32 +347,33 @@
         .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             background: var(--primary);
             color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
+            padding: 1rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .download-btn:hover {
             background: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
 
         /* Back to Top */
         #backToTop {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background: var(--primary);
             color: var(--white);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             cursor: pointer;
             opacity: 0;
@@ -371,32 +391,37 @@
             background: var(--secondary);
             color: var(--white);
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            padding: 3rem;
+            margin-top: 3rem;
         }
 
         .social-links {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .social-links a {
             color: var(--accent);
-            font-size: 1.8rem;
+            font-size: 2rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
             color: var(--white);
-            transform: scale(1.2);
+            transform: scale(1.3);
         }
 
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Responsive Design */
@@ -410,6 +435,10 @@
 
             .container {
                 margin-left: 0;
+            }
+
+            .hero-banner {
+                height: 60vh;
             }
         }
 
@@ -452,13 +481,14 @@
             }
 
             .progress-step {
-                width: 60px;
-                height: 60px;
-                font-size: 0.8rem;
+                width: 70px;
+                height: 70px;
+                font-size: 0.85rem;
             }
 
             .fee-table {
                 font-size: 0.9rem;
+                min-width: 600px;
             }
 
             .fee-table th, .fee-table td {
@@ -469,6 +499,10 @@
         @media (max-width: 480px) {
             .logo-img {
                 height: 50px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
             }
 
             .content-box h2 {
@@ -488,7 +522,17 @@
             }
 
             .table-wrapper {
-                margin: 0 -1rem; /* Extend table wrapper to full width */
+                margin: 0 -1rem;
+            }
+
+            .download-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            #backToTop {
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
@@ -508,7 +552,7 @@
                 <img src="logo.png" alt="St. Margaret College Makerere" class="logo-img">
                 <span class="logo-text">ST MARGARET COLLEGE MAKERERE</span>
             </div>
-            <button class="hamburger"><i class="fas fa-bars"></i></button>
+            <button class="hamburger" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -531,16 +575,16 @@
     <aside class="sidebar">
         <h3>Admissions Menu</h3>
         <ul>
-            <li><a href="#overview"><i class="fas fa-home"></i> Overview</a></li>
-            <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-            <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
-            <li><a href="#fees"><i class="fas fa-money-bill-wave"></i> Fee Structure</a></li>
-            <li><a href="#bursary"><i class="fas fa-award"></i> Bursary Program</a></li>
-            <li><a href="#boarding"><i class="fas fa-bed"></i> Boarding Requirements</a></li>
-            <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-            <li><a href="#scholarships"><i class="fas fa-graduation-cap"></i> Scholarships</a></li>
-            <li><a href="#bursary-staff"><i class="fas fa-users"></i> Bursary Staff</a></li>
-            <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
+            <li><a href="#overview" aria-label="Admissions Overview"><i class="fas fa-home"></i> Overview</a></li>
+            <li><a href="#application-process" aria-label="Application Process"><i class="fas fa-file-alt"></i> Application Process</a></li>
+            <li><a href="#requirements" aria-label="Admission Requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
+            <li><a href="#fees" aria-label="Fee Structure"><i class="fas fa-money-bill-wave"></i> Fee Structure</a></li>
+            <li><a href="#bursary" aria-label="Bursary Program"><i class="fas fa-award"></i> Bursary Program</a></li>
+            <li><a href="#boarding" aria-label="Boarding Requirements"><i class="fas fa-bed"></i> Boarding Requirements</a></li>
+            <li><a href="#deadlines" aria-label="Application Deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
+            <li><a href="#scholarships" aria-label="Scholarships"><i class="fas fa-graduation-cap"></i> Scholarships</a></li>
+            <li><a href="#bursary-staff" aria-label="Bursary Staff"><i class="fas fa-users"></i> Bursary Staff</a></li>
+            <li><a href="#download-form" aria-label="Download Application Form"><i class="fas fa-download"></i> Download Form</a></li>
         </ul>
     </aside>
 
@@ -555,17 +599,17 @@
             <h2>Application Process</h2>
             <p>Follow these steps to apply to SMACOMA:</p>
             <div class="progress-tracker">
-                <div class="progress-step active" data-step="1">Download Form</div>
-                <div class="progress-step" data-step="2">Complete Form</div>
-                <div class="progress-step" data-step="3">Gather Documents</div>
-                <div class="progress-step" data-step="4">Pay Fee</div>
-                <div class="progress-step" data-step="5">Submit</div>
-                <div class="progress-step" data-step="6">Interview</div>
-                <div class="progress-step" data-step="7">Admission Offer</div>
+                <div class="progress-step active" data-step="1" data-tooltip="Download Application Form">Download Form</div>
+                <div class="progress-step" data-step="2" data-tooltip="Fill Out the Form">Complete Form</div>
+                <div class="progress-step" data-step="3" data-tooltip="Collect Required Documents">Gather Documents</div>
+                <div class="progress-step" data-step="4" data-tooltip="Pay Application Fee">Pay Fee</div>
+                <div class="progress-step" data-step="5" data-tooltip="Submit Application">Submit</div>
+                <div class="progress-step" data-step="6" data-tooltip="Attend Interview">Interview</div>
+                <div class="progress-step" data-step="7" data-tooltip="Receive Admission Offer">Admission Offer</div>
             </div>
             <div class="progress-content active" id="step-1">
                 <p>Download the application form below or collect it from our office at Makerere Kikoni.</p>
-                <a href="application-form.pdf" class="download-btn"><i class="fas fa-download"></i> Download Now</a>
+                <a href="application-form.pdf" class="download-btn" aria-label="Download Application Form"><i class="fas fa-download"></i> Download Now</a>
             </div>
             <div class="progress-content" id="step-2">
                 <p>Fill out all sections accurately, including personal and academic details.</p>
@@ -632,7 +676,7 @@
                     <tr>
                         <td>Tuition</td>
                         <td>350,000</td>
-                        <td>700,000</ O-Level (Boarding)</td>
+                        <td>700,000</td>
                         <td>400,000</td>
                         <td>750,000</td>
                     </tr>
@@ -742,7 +786,7 @@
                 <li><strong>Sports & Arts:</strong> 20–30% discount for national-level achievers.</li>
                 <li><strong>Application:</strong> Include a scholarship request letter.</li>
             </ul>
-            <p>Contact: <a href="/cdn-cgi/l/email-protection#e99b8b8087868b98898c8d9493a9948a86848a86c7898bc79c8e"><span class="__cf_email__" data-cfemail="8cfcece7e0e3ecdbece9e8f1f6ccf1efe3e1ede3efa2edeba2f9eb">[email&#160;protected]</span></a></p>
+            <p>Contact: <a href="/cdn-cgi/l/email-protection#a99b8b8087868b98898c8d9493a9948a86848a86c7898bc79c8e"><span class="__cf_email__" data-cfemail="8cfcece7e0e3ecdbece9e8f1f6ccf1efe3e1ede3efa2edeba2f9eb">[email&#160;protected]</span></a></p>
         </section>
 
         <section id="bursary-staff" class="content-box">
@@ -750,21 +794,21 @@
             <p>Our team:</p>
             <ul>
                 <li><strong>Head Bursar:</strong> Jane Nakafeero - <a href="/cdn-cgi/l/email-protection#3c5e494e4f5d4e7c4f515d5f53515d125d5f12495b"><span class="__cf_email__" data-cfemail="a3c1d6d1d0c2d1e3d0ced2d0d2d0ce8dd2d08dd6c4">[email&#160;protected]</span></a></li>
-                <li><strong>Assistant Bursar:</strong> Michael Ssentongo - <a href="/cdn-cgi/l/email-protection#08697b7b617b7c69667c6a7d7a7b697a486b7579777b797526697b267d6f"><span class="__cf_email__" data-cfemail="1e7f6d6d776d6a7f706a7c6b6c6d7f6c5e7d636f6d61636170306f6d306b79">[email&#160;protected]</span></a></li>
-                <li><strong>Scholarship Coordinator:</strong> Sarah Namutebi - <a href="/cdn-cgi/l/email-protection#2b5a4a414645485b4a4f4e57506b584644484448054a48055341"><span class="__cf_email__" data-cfemail="e697868d8a8984978683829b9ca6958b8785898589c8898bc89f8d">[email&#160;protected]</span></a></li>
+                <li><strong>Assistant Bursar:</strong> Michael Ssentongo - <a href="/cdn-cgi/l/email-protection#48697b7b617b7c69667c6a7d7a7b697a486b7579777b797526697b267d6f"><span class="__cf_email__" data-cfemail="1e7f6d6d776d6a7f706a7c6b6c6d7f6c5e7d636f6d61636170306f6d306b79">[email&#160;protected]</span></a></li>
+                <li><strong>Scholarship Coordinator:</strong> Sarah Namutebi - <a href="/cdn-cgi/l/email-protection#2b5a4a414645485b4a4f4e57506b584644484448054a48055341"><span class="__cf_email__" data-cfemail="a697868d8a8984978683829b9ca6958b8785898589c8898bc89f8d">[email&#160;protected]</span></a></li>
             </ul>
         </section>
 
         <section id="download-form" class="content-box">
             <h2>Download Application Form</h2>
             <p>Get started:</p>
-            <a href="application-form.pdf" download class="download-btn">
+            <a href="application-form.pdf" download class="download-btn" aria-label="Download Application Form">
                 <i class="fas fa-download"></i> Download Now
             </a>
         </section>
     </div>
 
-    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    <button id="backToTop" title="Go to top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
 
     <footer>
         <p>© 2025 St. Margaret College Makerere. All Rights Reserved.</p>
@@ -778,15 +822,19 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Intersection Observer
+            // Intersection Observer for content boxes
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.style.opacity = 1;
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
                 });
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.content-box').forEach(box => {
                 box.style.opacity = 0;
+                box.style.transform = 'translateY(20px)';
                 observer.observe(box);
             });
 
@@ -816,6 +864,21 @@
 
             backToTopBtn.addEventListener("click", () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            // Smooth scroll for sidebar links
+            document.querySelectorAll('.sidebar a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
