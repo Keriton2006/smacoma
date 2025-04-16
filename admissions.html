@@ -292,11 +292,17 @@
         }
 
         /* Fee Table */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .fee-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1rem 0;
             font-size: 1rem;
+            min-width: 600px; /* Ensures table has enough width to avoid cramped text */
         }
 
         .fee-table th, .fee-table td {
@@ -450,6 +456,14 @@
                 height: 60px;
                 font-size: 0.8rem;
             }
+
+            .fee-table {
+                font-size: 0.9rem;
+            }
+
+            .fee-table th, .fee-table td {
+                padding: 0.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -466,7 +480,15 @@
             }
 
             .fee-table {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+            }
+
+            .fee-table th, .fee-table td {
+                padding: 0.4rem;
+            }
+
+            .table-wrapper {
+                margin: 0 -1rem; /* Extend table wrapper to full width */
             }
         }
     </style>
@@ -555,7 +577,7 @@
                 <p>Pay the non-refundable admission fee of UGX 70,000 to Centenary Bank (A/C: 2215100120), DFCU Bank (A/C: 01153659975211), Stanbic Bank (A/C: 9030020748604), or MOMO PAY (Merchant Code: 151540).</p>
             </div>
             <div class="progress-content" id="step-5">
-                <p>Submit via email to <a href="mailto:admissions@smacoma.ac.ug">admissions@smacoma.ac.ug</a> or in person.</p>
+                <p>Submit via email to <a href="/cdn-cgi/l/email-protection#b392979e9a80809a9c9d80b3809e92909c9e92dd9290dd8694"><span class="__cf_email__" data-cfemail="8beafee6e2f8f8e2e4e5f8cbe6eae8e4e6eaa5eae8a5feec">[email&#160;protected]</span></a> or in person.</p>
             </div>
             <div class="progress-content" id="step-6">
                 <p>Shortlisted candidates attend an interview and entrance exam.</p>
@@ -598,79 +620,83 @@
         <section id="fees" class="content-box">
             <h2>Fee Structure (2023)</h2>
             <p>Fees are structured to provide value. Amounts in UGX per term:</p>
-            <table class="fee-table">
-                <tr>
-                    <th>Category</th>
-                    <th>O-Level (Day)</th>
-                    <th>O-Level (Boarding)</th>
-                    <th>A-Level (Day)</th>
-                    <th>A-Level (Boarding)</th>
-                </tr>
-                <tr>
-                    <td>Tuition</td>
-                    <td>350,000</td>
-                    <td>700,000</td>
-                    <td>400,000</td>
-                    <td>750,000</td>
-                </tr>
-                <tr>
-                    <td>Admission Fee</td>
-                    <td>70,000</td>
-                    <td>70,000</td>
-                    <td>70,000</td>
-                    <td>70,000</td>
-                </tr>
-                <tr>
-                    <td>Development Fee</td>
-                    <td>50,000</td>
-                    <td>50,000</td>
-                    <td>50,000</td>
-                    <td>50,000</td>
-                </tr>
-                <tr>
-                    <td>Medical Fee</td>
-                    <td>20,000</td>
-                    <td>30,000</td>
-                    <td>20,000</td>
-                    <td>30,000</td>
-                </tr>
-                <tr>
-                    <td>UNEB Registration (S.4/S.6)</td>
-                    <td>230,000/NA</td>
-                    <td>230,000/NA</td>
-                    <td>NA/250,000</td>
-                    <td>NA/250,000</td>
-                </tr>
-            </table>
+            <div class="table-wrapper">
+                <table class="fee-table">
+                    <tr>
+                        <th>Category</th>
+                        <th>O-Level (Day)</th>
+                        <th>O-Level (Boarding)</th>
+                        <th>A-Level (Day)</th>
+                        <th>A-Level (Boarding)</th>
+                    </tr>
+                    <tr>
+                        <td>Tuition</td>
+                        <td>350,000</td>
+                        <td>700,000</ O-Level (Boarding)</td>
+                        <td>400,000</td>
+                        <td>750,000</td>
+                    </tr>
+                    <tr>
+                        <td>Admission Fee</td>
+                        <td>70,000</td>
+                        <td>70,000</td>
+                        <td>70,000</td>
+                        <td>70,000</td>
+                    </tr>
+                    <tr>
+                        <td>Development Fee</td>
+                        <td>50,000</td>
+                        <td>50,000</td>
+                        <td>50,000</td>
+                        <td>50,000</td>
+                    </tr>
+                    <tr>
+                        <td>Medical Fee</td>
+                        <td>20,000</td>
+                        <td>30,000</td>
+                        <td>20,000</td>
+                        <td>30,000</td>
+                    </tr>
+                    <tr>
+                        <td>UNEB Registration (S.4/S.6)</td>
+                        <td>230,000/NA</td>
+                        <td>230,000/NA</td>
+                        <td>NA/250,000</td>
+                        <td>NA/250,000</td>
+                    </tr>
+                </table>
+            </div>
             <p><strong>Payment Options:</strong> Pay to Centenary Bank (A/C: 2215100120), DFCU Bank (A/C: 01153659975211), Stanbic Bank (A/C: 9030020748604), or MOMO PAY (Merchant Code: 151540). Installments available.</p>
         </section>
 
         <section id="bursary" class="content-box">
             <h2>Bursary Program</h2>
             <p>SMACOMA offers bursaries to support talented students. Bursary recipients pay reduced fees:</p>
-            <table class="fee-table">
-                <tr>
-                    <th>Class</th>
-                    <th>Day (Non-Bursary)</th>
-                    <th>Day (Bursary)</th>
-                    <th>Boarding (Non-Bursary)</th>
-                    <th>Boarding (Bursary)</th>
-                </tr>
-                <tr>
-                    <td>S.1 – S.4</td>
-                    <td>500,000</td>
-                    <td>250,000</td>
-                    <td>900,000</td>
-                    <td>500,000</td>
-                </tr>
-                <tr>
-                    <td>S.5 – S.6</td>
-                    <td>600,000</td>
-                    <td>350,000</td>
-                    <td>950,000</td>
-                    <td>600,000</td>
-                </tr>
-            </table>
+            <div class="table-wrapper">
+                <table class="fee-table">
+                    <tr>
+                        <th>Class</th>
+                        <th>Day (Non-Bursary)</th>
+                        <th>Day (Bursary)</th>
+                        <th>Boarding (Non-Bursary)</th>
+                        <th>Boarding (Bursary)</th>
+                    </tr>
+                    <tr>
+                        <td>S.1 – S.4</td>
+                        <td>500,000</td>
+                        <td>250,000</td>
+                        <td>900,000</td>
+                        <td>500,000</td>
+                    </tr>
+                    <tr>
+                        <td>S.5 – S.6</td>
+                        <td>600,000</td>
+                        <td>350,000</td>
+                        <td>950,000</td>
+                        <td>600,000</td>
+                    </tr>
+                </table>
+            </div>
             <p>Bursary students must adhere to school rules. Contact our bursary staff for eligibility details.</p>
         </section>
 
@@ -716,16 +742,16 @@
                 <li><strong>Sports & Arts:</strong> 20–30% discount for national-level achievers.</li>
                 <li><strong>Application:</strong> Include a scholarship request letter.</li>
             </ul>
-            <p>Contact: <a href="mailto:bursar@smacoma.ac.ug">bursar@smacoma.ac.ug</a></p>
+            <p>Contact: <a href="/cdn-cgi/l/email-protection#e99b8b8087868b98898c8d9493a9948a86848a86c7898bc79c8e"><span class="__cf_email__" data-cfemail="8cfcece7e0e3ecdbece9e8f1f6ccf1efe3e1ede3efa2edeba2f9eb">[email&#160;protected]</span></a></p>
         </section>
 
         <section id="bursary-staff" class="content-box">
             <h2>Bursary Staff</h2>
             <p>Our team:</p>
             <ul>
-                <li><strong>Head Bursar:</strong> Jane Nakafeero - <a href="mailto:bursar@smacoma.ac.ug">bursar@smacoma.ac.ug</a></li>
-                <li><strong>Assistant Bursar:</strong> Michael Ssentongo - <a href="mailto:assistantbursar@smacoma.ac.ug">assistantbursar@smacoma.ac.ug</a></li>
-                <li><strong>Scholarship Coordinator:</strong> Sarah Namutebi - <a href="mailto:scholarships@smacoma.ac.ug">scholarships@smacoma.ac.ug</a></li>
+                <li><strong>Head Bursar:</strong> Jane Nakafeero - <a href="/cdn-cgi/l/email-protection#3c5e494e4f5d4e7c4f515d5f53515d125d5f12495b"><span class="__cf_email__" data-cfemail="a3c1d6d1d0c2d1e3d0ced2d0d2d0ce8dd2d08dd6c4">[email&#160;protected]</span></a></li>
+                <li><strong>Assistant Bursar:</strong> Michael Ssentongo - <a href="/cdn-cgi/l/email-protection#08697b7b617b7c69667c6a7d7a7b697a486b7579777b797526697b267d6f"><span class="__cf_email__" data-cfemail="1e7f6d6d776d6a7f706a7c6b6c6d7f6c5e7d636f6d61636170306f6d306b79">[email&#160;protected]</span></a></li>
+                <li><strong>Scholarship Coordinator:</strong> Sarah Namutebi - <a href="/cdn-cgi/l/email-protection#2b5a4a414645485b4a4f4e57506b584644484448054a48055341"><span class="__cf_email__" data-cfemail="e697868d8a8984978683829b9ca6958b8785898589c8898bc89f8d">[email&#160;protected]</span></a></li>
             </ul>
         </section>
 
@@ -749,6 +775,7 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Intersection Observer
