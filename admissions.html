@@ -6,28 +6,28 @@
     <title>Admissions - SMACOMA</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Times New Roman', Times, serif;
         }
 
-         :root {
-            --primary-blue: #1E3A8A;
-            --secondary: #14B8A6;
-            --light-gray: #F3F4F6;
-            --warm-white: #FEFCE8;
-            --text-dark: #111827;
+        :root {
+            --primary: #D32F2F; /* Red */
+            --secondary: #6A1B1B; /* Maroon */
+            --accent: #E64A19; /* Dark Orange */
+            --white: #FFFFFF;
+            --text-gray: #333333; /* Dark Gray */
+            --shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         body {
             background: var(--white);
             color: var(--text-gray);
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
         }
 
@@ -35,15 +35,15 @@
         .floating-icons {
             position: absolute;
             inset: 0;
-            z-index: 0;
+            z-index: -1;
             pointer-events: none;
         }
 
         .icon {
             position: absolute;
-            font-size: 1.5rem;
-            color: var(--primary);
-            opacity: 0.3;
+            font-size: 1.8rem;
+            color: var(--accent);
+            opacity: 0.2;
             animation: floatAround linear infinite;
         }
 
@@ -51,35 +51,30 @@
         .pen { animation-name: floatPen; }
 
         @keyframes floatBook {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
-            50% { opacity: 0.5; }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+            50% { opacity: 0.4; }
             100% { transform: translate(100vw, -100vh) rotate(360deg); opacity: 0; }
         }
 
         @keyframes floatPen {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
-            50% { opacity: 0.5; }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+            50% { opacity: 0.4; }
             100% { transform: translate(-100vw, -100vh) rotate(-360deg); opacity: 0; }
         }
 
-        .icon:nth-child(odd) { color: var(--secondary); }
+        .icon:nth-child(odd) { color: var(--primary); }
         .icon:nth-child(1) { top: 10%; left: 5%; animation-duration: 15s; }
         .icon:nth-child(2) { top: 20%; left: 15%; animation-duration: 18s; }
         .icon:nth-child(3) { top: 30%; left: 25%; animation-duration: 20s; }
         .icon:nth-child(4) { top: 40%; left: 35%; animation-duration: 17s; }
         .icon:nth-child(5) { top: 50%; left: 45%; animation-duration: 22s; }
-        .icon:nth-child(6) { top: 60%; left: 55%; animation-duration: 19s; }
-        .icon:nth-child(7) { top: 70%; left: 65%; animation-duration: 16s; }
-        .icon:nth-child(8) { top: 80%; left: 75%; animation-duration: 21s; }
-        .icon:nth-child(9) { top: 90%; left: 85%; animation-duration: 14s; }
-        .icon:nth-child(10) { top: 15%; left: 95%; animation-duration: 23s; }
 
         /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--white);
+            background: var(--secondary);
             padding: 1rem 2rem;
             box-shadow: var(--shadow);
             z-index: 1000;
@@ -94,12 +89,20 @@
         }
 
         .logo-img {
-            height: 80px;
+            height: 70px;
             transition: transform 0.3s ease;
         }
 
         .logo-img:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-left: 1rem;
+            text-transform: uppercase;
         }
 
         .hamburger {
@@ -107,7 +110,7 @@
             font-size: 2rem;
             background: none;
             border: none;
-            color: var(--primary);
+            color: var(--white);
             cursor: pointer;
         }
 
@@ -119,7 +122,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-gray);
+            color: var(--white);
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -128,65 +131,31 @@
 
         .nav-links a.active {
             background: var(--primary);
-            color: var(--white);
         }
 
         .nav-links a:hover {
-            background: var(--secondary);
-            color: var(--white);
+            background: var(--accent);
+            transform: scale(1.05);
         }
 
-        /* Banner */
-        .admissions-banner {
-            height: 50vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sr.jpg');
-            background-size: cover;
-            background-position: center;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 80px;
-        }
-
-        .banner-text h1 {
-            color: var(--white);
-            font-size: clamp(2rem, 5vw, 4rem);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1s ease;
-        }
-
-        .banner-text p {
-            color: var(--white);
-            font-size: clamp(1rem, 3vw, 1.8rem);
-            animation: fadeIn 1s ease 0.3s forwards;
-            opacity: 0;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-        }
-
+        /* Sidebar */
         .sidebar {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            height: fit-content;
-            position: sticky;
+            position: fixed;
             top: 100px;
+            left: 0;
+            width: 250px;
+            background: var(--white);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+            z-index: 900;
         }
 
         .sidebar h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
         }
 
         .sidebar ul {
@@ -202,7 +171,7 @@
             padding: 0.75rem;
             border-radius: 10px;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .sidebar a:hover {
@@ -211,58 +180,127 @@
             transform: translateX(5px);
         }
 
-        .main-content {
+        /* Hero Banner */
+        .hero-banner {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sr.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: grid;
-            gap: 1.5rem;
+            place-items: center;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 80px;
+        }
+
+        .hero-text h1 {
+            color: var(--white);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-text p {
+            color: var(--white);
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            animation: fadeIn 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            margin-left: 270px;
         }
 
         .content-box {
             background: var(--white);
-            padding: 1.5rem;
-            border-radius: 15px;
+            padding: 2rem;
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .content-box.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
 
         .content-box h2 {
             color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         .content-box p {
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .content-box ul, .content-box ol {
             padding-left: 1.5rem;
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .content-box li {
             margin: 0.5rem 0;
         }
 
+        /* Progress Tracker */
+        .progress-tracker {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .progress-step {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 0.9rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .progress-content {
+            display: none;
+            padding: 1rem;
+            background: rgba(211, 47, 47, 0.1);
+            border-radius: 10px;
+        }
+
+        .progress-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        /* Fee Table */
         .fee-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1rem 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .fee-table th, .fee-table td {
-            border: 2px solid var(--primary);
+            border: 1px solid var(--primary);
             padding: 0.75rem;
             text-align: left;
         }
@@ -273,11 +311,11 @@
         }
 
         .fee-table tr:nth-child(even) {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(211, 47, 47, 0.05);
         }
 
         .fee-table tr:hover {
-            background: var(--secondary);
+            background: var(--accent);
             color: var(--white);
         }
 
@@ -288,14 +326,14 @@
             background: var(--primary);
             color: var(--white);
             padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            border-radius: 30px;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .download-btn:hover {
-            background: var(--secondary);
+            background: var(--accent);
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
@@ -308,8 +346,8 @@
             background: var(--primary);
             color: var(--white);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             opacity: 0;
@@ -322,12 +360,12 @@
             transform: scale(1);
         }
 
-        /* Footer from k.html */
+        /* Footer */
         footer {
-            background: var(--accent);
+            background: var(--secondary);
             color: var(--white);
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             margin-top: 2rem;
         }
 
@@ -335,20 +373,17 @@
             margin-top: 1rem;
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-links a {
-            color: var(--primary);
-            font-size: 1.5rem;
-            padding: 0.5rem;
-            border-radius: 50%;
+            color: var(--accent);
+            font-size: 1.8rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
             color: var(--white);
-            background: var(--secondary);
             transform: scale(1.2);
         }
 
@@ -360,13 +395,15 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-                padding: 0 1rem;
-            }
-
             .sidebar {
                 position: static;
+                width: 100%;
+                height: auto;
+                margin-bottom: 2rem;
+            }
+
+            .container {
+                margin-left: 0;
             }
         }
 
@@ -385,7 +422,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--white);
+                background: var(--secondary);
                 flex-direction: column;
                 padding: 1rem;
                 box-shadow: var(--shadow);
@@ -395,88 +432,41 @@
                 display: flex;
             }
 
-            .nav-links a {
-                padding: 1rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            .admissions-banner {
-                height: 40vh;
+            .hero-banner {
+                height: 50vh;
                 margin-top: 60px;
             }
 
-            .banner-text h1 {
-                font-size: clamp(1.5rem, 4vw, 3rem);
+            .hero-text h1 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
             }
 
-            .banner-text p {
-                font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+            .hero-text p {
+                font-size: clamp(1rem, 2.5vw, 1.5rem);
             }
 
-            .sidebar {
-                padding: 1rem;
-            }
-
-            .sidebar h3 {
-                font-size: 1.2rem;
-            }
-
-            .sidebar a {
-                padding: 0.5rem;
-                font-size: 0.85rem;
-            }
-
-            .content-box {
-                padding: 1rem;
-            }
-
-            .content-box h2 {
-                font-size: 1.5rem;
-            }
-
-            .content-box p, .content-box ul, .content-box ol {
-                font-size: 0.85rem;
-            }
-
-            .fee-table th, .fee-table td {
-                padding: 0.5rem;
+            .progress-step {
+                width: 60px;
+                height: 60px;
                 font-size: 0.8rem;
-            }
-
-            .download-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            footer {
-                padding: 1rem;
-            }
-
-            .social-links a {
-                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
             .logo-img {
-                height: 60px;
+                height: 50px;
             }
 
-            .navbar {
-                padding: 0.75rem;
+            .content-box h2 {
+                font-size: 1.6rem;
             }
 
-            .container {
-                margin: 1rem auto;
+            .content-box p, .content-box ul, .content-box ol {
+                font-size: 0.95rem;
             }
 
             .fee-table {
-                font-size: 0.75rem;
-            }
-
-            .fee-table th, .fee-table td {
-                padding: 0.4rem;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -488,17 +478,13 @@
         <i class="fas fa-book icon book"></i>
         <i class="fas fa-pen icon pen"></i>
         <i class="fas fa-book icon book"></i>
-        <i class="fas fa-pen icon pen"></i>
-        <i class="fas fa-book icon book"></i>
-        <i class="fas fa-pen icon pen"></i>
-        <i class="fas fa-book icon book"></i>
-        <i class="fas fa-pen icon pen"></i>
     </div>
 
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <img src="logo.png" alt="St. Margaret College Makerere" class="logo-img">
+                <span class="logo-text">ST MARGARET COLLEGE MAKERERE</span>
             </div>
             <button class="hamburger"><i class="fas fa-bars"></i></button>
             <nav>
@@ -513,164 +499,243 @@
         </div>
     </header>
 
-    <section class="admissions-banner">
-        <div class="banner-text">
-            <h1>Admissions at SMACOMA</h1>
-            <p>Embark on Your Journey to Excellence</p>
+    <section class="hero-banner">
+        <div class="hero-text">
+            <h1>Join SMACOMA Today</h1>
+            <p>Your Path to Academic and Personal Excellence</p>
         </div>
     </section>
 
+    <aside class="sidebar">
+        <h3>Admissions Menu</h3>
+        <ul>
+            <li><a href="#overview"><i class="fas fa-home"></i> Overview</a></li>
+            <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
+            <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
+            <li><a href="#fees"><i class="fas fa-money-bill-wave"></i> Fee Structure</a></li>
+            <li><a href="#bursary"><i class="fas fa-award"></i> Bursary Program</a></li>
+            <li><a href="#boarding"><i class="fas fa-bed"></i> Boarding Requirements</a></li>
+            <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
+            <li><a href="#scholarships"><i class="fas fa-graduation-cap"></i> Scholarships</a></li>
+            <li><a href="#bursary-staff"><i class="fas fa-users"></i> Bursary Staff</a></li>
+            <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
+        </ul>
+    </aside>
+
     <div class="container">
-        <aside class="sidebar">
-            <h3>Admissions Navigation</h3>
+        <section id="overview" class="content-box">
+            <h2>Admissions Overview</h2>
+            <p>St. Margaret College Makerere (SMACOMA), located in Makerere Kikoni off Sir Apollo Kaggwa Road, is a mixed, day, and boarding secondary school registered with the Ministry of Education & Sports (Center No. U1883). We offer Arts and Sciences at O and A Levels, alongside vocational training in Tailoring, Catering, Hairdressing, Fruit Processing, and Computer Training (DIT Center No. UVQF/811).</p>
+            <p>Our vibrant community nurtures talents through co-curricular activities like football, netball, volleyball, basketball, chess, and athletics. Join us to embark on a journey of academic excellence and personal growth.</p>
+        </section>
+
+        <section id="application-process" class="content-box">
+            <h2>Application Process</h2>
+            <p>Follow these steps to apply to SMACOMA:</p>
+            <div class="progress-tracker">
+                <div class="progress-step active" data-step="1">Download Form</div>
+                <div class="progress-step" data-step="2">Complete Form</div>
+                <div class="progress-step" data-step="3">Gather Documents</div>
+                <div class="progress-step" data-step="4">Pay Fee</div>
+                <div class="progress-step" data-step="5">Submit</div>
+                <div class="progress-step" data-step="6">Interview</div>
+                <div class="progress-step" data-step="7">Admission Offer</div>
+            </div>
+            <div class="progress-content active" id="step-1">
+                <p>Download the application form below or collect it from our office at Makerere Kikoni.</p>
+                <a href="application-form.pdf" class="download-btn"><i class="fas fa-download"></i> Download Now</a>
+            </div>
+            <div class="progress-content" id="step-2">
+                <p>Fill out all sections accurately, including personal and academic details.</p>
+            </div>
+            <div class="progress-content" id="step-3">
+                <p>Prepare required documents listed in the Requirements section.</p>
+            </div>
+            <div class="progress-content" id="step-4">
+                <p>Pay the non-refundable admission fee of UGX 70,000 to Centenary Bank (A/C: 2215100120), DFCU Bank (A/C: 01153659975211), Stanbic Bank (A/C: 9030020748604), or MOMO PAY (Merchant Code: 151540).</p>
+            </div>
+            <div class="progress-content" id="step-5">
+                <p>Submit via email to <a href="mailto:admissions@smacoma.ac.ug">admissions@smacoma.ac.ug</a> or in person.</p>
+            </div>
+            <div class="progress-content" id="step-6">
+                <p>Shortlisted candidates attend an interview and entrance exam.</p>
+            </div>
+            <div class="progress-content" id="step-7">
+                <p>Successful applicants receive an offer letter within two weeks.</p>
+            </div>
+        </section>
+
+        <section id="requirements" class="content-box">
+            <h2>Admission Requirements</h2>
+            <p>We seek passionate and capable students. Requirements include:</p>
             <ul>
-                <li><a href="#welcome"><i class="fas fa-home"></i> Welcome</a></li>
-                <li><a href="#application-process"><i class="fas fa-file-alt"></i> Application Process</a></li>
-                <li><a href="#requirements"><i class="fas fa-check-circle"></i> Admission Requirements</a></li>
-                <li><a href="#fees"><i class="fas fa-money-bill-wave"></i> Fee Structure</a></li>
-                <li><a href="#deadlines"><i class="fas fa-calendar-alt"></i> Deadlines</a></li>
-                <li><a href="#scholarships"><i class="fas fa-graduation-cap"></i> Scholarships</a></li>
-                <li><a href="#download-form"><i class="fas fa-download"></i> Download Form</a></li>
-                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Admissions</a></li>
+                <li><strong>O-Level Entry:</strong> 5 passes (C4 or better) in UNEB exams, including English and Mathematics.</li>
+                <li><strong>A-Level Entry:</strong> 2 principal passes at A-Level, 5+ O-Level passes.</li>
+                <li><strong>Documents:</strong>
+                    <ul>
+                        <li>Certified academic transcripts/certificates.</li>
+                        <li>Primary Leaving Recommendation (O-Level) or UCE pass slip (A-Level).</li>
+                        <li>Passport photos (UGX 5,000, one for student, one for parent).</li>
+                        <li>Birth certificate or national ID.</li>
+                        <li>Recommendation letter from previous school.</li>
+                        <li>Stamped medical form from a qualified medical officer.</li>
+                        <li>Signed rules and regulations form.</li>
+                    </ul>
+                </li>
+                <li><strong>Additional Items:</strong>
+                    <ul>
+                        <li>Uniform: O-Level (UGX 65,000), A-Level (UGX 70,000).</li>
+                        <li>School T-shirt (UGX 30,000), sportswear (UGX 30,000), sweater (UGX 40,000).</li>
+                        <li>Casual wear for boarders (UGX 50,000).</li>
+                        <li>Black shoes (low-heeled), black belt, white socks (girls).</li>
+                        <li>Textbooks, black books, stationery (Rotatrim for S.1–S.4, ruled ream for S.5–S.6).</li>
+                        <li>2 brooms, 6 toilet papers.</li>
+                    </ul>
+                </li>
             </ul>
-        </aside>
+        </section>
 
-        <main class="main-content">
-            <section id="welcome" class="content-box">
-                <h2>Welcome to SMACOMA Admissions</h2>
-                <p>St. Margaret College Makerere (SMACOMA) is committed to nurturing future leaders through quality education rooted in values and innovation. Our admissions process is designed to identify passionate, capable students ready to join our vibrant community.</p>
-                <p>Whether you're aiming for O-Level, A-Level, or our specialized certificate programs, we offer a supportive environment to help you thrive. Explore this page for detailed information on how to apply, what we require, and the costs involved.</p>
-            </section>
+        <section id="fees" class="content-box">
+            <h2>Fee Structure (2023)</h2>
+            <p>Fees are structured to provide value. Amounts in UGX per term:</p>
+            <table class="fee-table">
+                <tr>
+                    <th>Category</th>
+                    <th>O-Level (Day)</th>
+                    <th>O-Level (Boarding)</th>
+                    <th>A-Level (Day)</th>
+                    <th>A-Level (Boarding)</th>
+                </tr>
+                <tr>
+                    <td>Tuition</td>
+                    <td>350,000</td>
+                    <td>700,000</td>
+                    <td>400,000</td>
+                    <td>750,000</td>
+                </tr>
+                <tr>
+                    <td>Admission Fee</td>
+                    <td>70,000</td>
+                    <td>70,000</td>
+                    <td>70,000</td>
+                    <td>70,000</td>
+                </tr>
+                <tr>
+                    <td>Development Fee</td>
+                    <td>50,000</td>
+                    <td>50,000</td>
+                    <td>50,000</td>
+                    <td>50,000</td>
+                </tr>
+                <tr>
+                    <td>Medical Fee</td>
+                    <td>20,000</td>
+                    <td>30,000</td>
+                    <td>20,000</td>
+                    <td>30,000</td>
+                </tr>
+                <tr>
+                    <td>UNEB Registration (S.4/S.6)</td>
+                    <td>230,000/NA</td>
+                    <td>230,000/NA</td>
+                    <td>NA/250,000</td>
+                    <td>NA/250,000</td>
+                </tr>
+            </table>
+            <p><strong>Payment Options:</strong> Pay to Centenary Bank (A/C: 2215100120), DFCU Bank (A/C: 01153659975211), Stanbic Bank (A/C: 9030020748604), or MOMO PAY (Merchant Code: 151540). Installments available.</p>
+        </section>
 
-            <section id="application-process" class="content-box">
-                <h2>Application Process</h2>
-                <p>Joining SMACOMA is simple and transparent. Follow these steps to start your journey:</p>
-                <ol>
-                    <li><strong>Download or Collect the Form:</strong> Access it below or visit our admissions office at Makerere Hill Road, Kampala.</li>
-                    <li><strong>Complete Your Application:</strong> Fill out all sections, ensuring accuracy in personal and academic details.</li>
-                    <li><strong>Gather Documents:</strong> Prepare the required documents listed below.</li>
-                    <li><strong>Pay the Application Fee:</strong> UGX 50,000 (non-refundable) via bank deposit or mobile money (details provided on the form).</li>
-                    <li><strong>Submit Your Application:</strong> Email to admissions@smacoma.ac.ug or deliver in person by the deadline.</li>
-                    <li><strong>Interview & Assessment:</strong> Shortlisted candidates attend an interview and entrance exam.</li>
-                    <li><strong>Admission Offer:</strong> Successful applicants receive an offer letter within two weeks.</li>
-                </ol>
-                <p><strong>Note:</strong> Applications are processed on a rolling basis, so early submission is encouraged!</p>
-            </section>
+        <section id="bursary" class="content-box">
+            <h2>Bursary Program</h2>
+            <p>SMACOMA offers bursaries to support talented students. Bursary recipients pay reduced fees:</p>
+            <table class="fee-table">
+                <tr>
+                    <th>Class</th>
+                    <th>Day (Non-Bursary)</th>
+                    <th>Day (Bursary)</th>
+                    <th>Boarding (Non-Bursary)</th>
+                    <th>Boarding (Bursary)</th>
+                </tr>
+                <tr>
+                    <td>S.1 – S.4</td>
+                    <td>500,000</td>
+                    <td>250,000</td>
+                    <td>900,000</td>
+                    <td>500,000</td>
+                </tr>
+                <tr>
+                    <td>S.5 – S.6</td>
+                    <td>600,000</td>
+                    <td>350,000</td>
+                    <td>950,000</td>
+                    <td>600,000</td>
+                </tr>
+            </table>
+            <p>Bursary students must adhere to school rules. Contact our bursary staff for eligibility details.</p>
+        </section>
 
-            <section id="requirements" class="content-box">
-                <h2>Admission Requirements</h2>
-                <p>We seek students with academic potential, character, and a drive to excel. Here are the cool requirements:</p>
-                <ul>
-                    <li><strong>O-Level Entry:</strong> Minimum of 5 passes (C4 or better) in UNEB exams, including English and Mathematics. Bonus points for distinction in Sciences or Arts!</li>
-                    <li><strong>A-Level Entry:</strong> At least 2 principal passes at A-Level, with a strong O-Level background (5+ passes).</li>
-                    <li><strong>Certificate Programs:</strong> PLE certificate with a pass in English, plus a creative portfolio or practical skills demo (e.g., art, tech, or leadership).</li>
-                    <li><strong>Documents:</strong>
-                        <ul>
-                            <li>Certified copies of academic transcripts/certificates.</li>
-                            <li>Two passport-sized photos (recent, with your name on the back).</li>
-                            <li>Birth certificate or national ID.</li>
-                            <li>Recommendation letter from your last school’s headteacher.</li>
-                            <li>Proof of application fee payment.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Extra Edge:</strong> Participation in extracurriculars (sports, debate, music) or community service boosts your application!</li>
-                </ul>
-            </section>
+        <section id="boarding" class="content-box">
+            <h2>Boarding Requirements</h2>
+            <p>Boarders must bring:</p>
+            <ul>
+                <li>School fees bank slip.</li>
+                <li>Medical fee (UGX 30,000).</li>
+                <li>JAYZ (5L, boys); liquid soap (5L, girls); JIK, knife (girls).</li>
+                <li>Uniform, sportswear, sweater, casual dress (school-purchased).</li>
+                <li>2 black skirts/trousers, red/yellow T-shirts (school-purchased).</li>
+                <li>Mattress, blanket, bed sheets, mosquito net, pillow, towel, jerry can, basin, bucket.</li>
+                <li>Black shoes, stockings, slippers, torch, iron box.</li>
+                <li>3 bars of soap, bathing soap, toothpaste, toothbrush, sponge.</li>
+                <li>Suitcase, handkerchief, sugar, plate, cup, fork, spoon.</li>
+                <li>Rotatrim/ruled ream, box file, mathematical set, calculator, 12 black books, pens, pencils.</li>
+                <li>Heavy-duty brush, 2 brooms, 9 toilet papers.</li>
+                <li>Vaseline, comb, basin, Bible.</li>
+                <li>Sanitary pads (girls), shaver, razor blade.</li>
+                <li>Hoe, panga (yearly).</li>
+                <li>UGX 5,000 for hair cutting (termly).</li>
+                <li>Tailoring fee (UGX 30,000).</li>
+            </ul>
+        </section>
 
-            <section id="fees" class="content-box">
-                <h2>Fee Structure (2025 Academic Year)</h2>
-                <p>Our fees are structured to provide value while maintaining excellence. All amounts are in Ugandan Shillings (UGX) per term.</p>
-                <table class="fee-table">
-                    <tr>
-                        <th>Category</th>
-                        <th>O-Level (Day)</th>
-                        <th>O-Level (Boarding)</th>
-                        <th>A-Level (Day)</th>
-                        <th>A-Level (Boarding)</th>
-                    </tr>
-                    <tr>
-                        <td>Tuition</td>
-                        <td>800,000</td>
-                        <td>1,200,000</td>
-                        <td>900,000</td>
-                        <td>1,350,000</td>
-                    </tr>
-                    <tr>
-                        <td>Boarding Fees</td>
-                        <td>N/A</td>
-                        <td>600,000</td>
-                        <td>N/A</td>
-                        <td>650,000</td>
-                    </tr>
-                    <tr>
-                        <td>Uniform (One-time)</td>
-                        <td>150,000</td>
-                        <td>150,000</td>
-                        <td>150,000</td>
-                        <td>150,000</td>
-                    </tr>
-                    <tr>
-                        <td>Development Fee</td>
-                        <td>100,000</td>
-                        <td>100,000</td>
-                        <td>100,000</td>
-                        <td>100,000</td>
-                    </tr>
-                    <tr>
-                        <td>Medical Fee</td>
-                        <td>50,000</td>
-                        <td>50,000</td>
-                        <td>50,000</td>
-                        <td>50,000</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td><strong>1,100,000</strong></td>
-                        <td><strong>2,100,000</strong></td>
-                        <td><strong>1,200,000</strong></td>
-                        <td><strong>2,300,000</strong></td>
-                    </tr>
-                </table>
-                <p><strong>Additional Costs:</strong></p>
-                <ul>
-                    <li>Application Fee: UGX 50,000 (one-time, non-refundable).</li>
-                    <li>Stationery & Books: Approx. UGX 200,000 per year.</li>
-                    <li>Optional Trips: UGX 100,000–300,000 (varies by destination).</li>
-                </ul>
-                <p><strong>Payment Options:</strong> Full payment or installments (50% at term start, 50% mid-term). Payments via bank or MTN Mobile Money.</p>
-            </section>
+        <section id="deadlines" class="content-box">
+            <h2>Application Deadlines</h2>
+            <p>Key dates:</p>
+            <ul>
+                <li><strong>First Intake (Feb 2025):</strong> Dec 15, 2024</li>
+                <li><strong>Second Intake (Jun 2025):</strong> May 15, 2025</li>
+                <li><strong>Late Applications:</strong> Jan 15, 2025 (First Intake) or Jun 1, 2025 (Second Intake) with UGX 20,000 late fee.</li>
+            </ul>
+        </section>
 
-            <section id="deadlines" class="content-box">
-                <h2>Application Deadlines</h2>
-                <p>Mark your calendar to secure your spot:</p>
-                <ul>
-                    <li><strong>First Intake (February 2025):</strong> December 15, 2024</li>
-                    <li><strong>Second Intake (June 2025):</strong> May 15, 2025</li>
-                    <li><strong>Late Applications:</strong> Accepted until January 15, 2025 (First Intake) or June 1, 2025 (Second Intake) with a UGX 20,000 late fee.</li>
-                </ul>
-                <p>Early applicants get priority in scholarship considerations and dormitory allocation!</p>
-            </section>
+        <section id="scholarships" class="content-box">
+            <h2>Scholarships</h2>
+            <p>We offer:</p>
+            <ul>
+                <li><strong>Merit Scholarship:</strong> Up to 50% tuition waiver for 8+ distinctions (O-Level) or 3 principal passes (A-B, A-Level).</li>
+                <li><strong>Need-Based Aid:</strong> Partial fee coverage (submit proof of income).</li>
+                <li><strong>Sports & Arts:</strong> 20–30% discount for national-level achievers.</li>
+                <li><strong>Application:</strong> Include a scholarship request letter.</li>
+            </ul>
+            <p>Contact: <a href="mailto:bursar@smacoma.ac.ug">bursar@smacoma.ac.ug</a></p>
+        </section>
 
-            <section id="scholarships" class="content-box">
-                <h2>Scholarships & Financial Aid</h2>
-                <p>We believe in rewarding talent and supporting need. Explore our scholarship options:</p>
-                <ul>
-                    <li><strong>Merit Scholarship:</strong> Up to 50% tuition waiver for students with 8+ distinctions at O-Level or 3 principal passes (A-B) at A-Level.</li>
-                    <li><strong>Need-Based Aid:</strong> Partial fee coverage for financially challenged students (submit proof of income).</li>
-                    <li><strong>Sports & Arts Excellence:</strong> 20–30% discount for national-level achievers in sports, music, or art.</li>
-                    <li><strong>How to Apply:</strong> Include a scholarship request letter with your application.</li>
-                </ul>
-                <p>Contact our bursar at bursar@smacoma.ac.ug for more details.</p>
-            </section>
+        <section id="bursary-staff" class="content-box">
+            <h2>Bursary Staff</h2>
+            <p>Our team:</p>
+            <ul>
+                <li><strong>Head Bursar:</strong> Jane Nakafeero - <a href="mailto:bursar@smacoma.ac.ug">bursar@smacoma.ac.ug</a></li>
+                <li><strong>Assistant Bursar:</strong> Michael Ssentongo - <a href="mailto:assistantbursar@smacoma.ac.ug">assistantbursar@smacoma.ac.ug</a></li>
+                <li><strong>Scholarship Coordinator:</strong> Sarah Namutebi - <a href="mailto:scholarships@smacoma.ac.ug">scholarships@smacoma.ac.ug</a></li>
+            </ul>
+        </section>
 
-            <section id="download-form" class="content-box">
-                <h2>Download Application Form</h2>
-                <p>Get started by downloading our application form in PDF format:</p>
-                <a href="application-form.pdf" download class="download-btn">
-                    <i class="fas fa-download"></i> Download Now
-                </a>
-            </section>
-        </main>
+        <section id="download-form" class="content-box">
+            <h2>Download Application Form</h2>
+            <p>Get started:</p>
+            <a href="application-form.pdf" download class="download-btn">
+                <i class="fas fa-download"></i> Download Now
+            </a>
+        </section>
     </div>
 
     <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
@@ -686,16 +751,19 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Intersection Observer for content boxes
+            // Intersection Observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                    if (entry.isIntersecting) entry.target.style.opacity = 1;
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.content-box').forEach(box => observer.observe(box));
+            document.querySelectorAll('.content-box').forEach(box => {
+                box.style.opacity = 0;
+                observer.observe(box);
+            });
 
-            // Hamburger Menu Toggle
+            // Hamburger Menu
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
 
@@ -703,12 +771,13 @@
                 navLinks.classList.toggle('active');
             });
 
-            // Close menu when clicking a link on mobile
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        navLinks.classList.remove('active');
-                    }
+            // Progress Tracker
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.addEventListener('click', () => {
+                    document.querySelectorAll('.progress-step').forEach(s => s.classList.remove('active'));
+                    document.querySelectorAll('.progress-content').forEach(c => c.classList.remove('active'));
+                    step.classList.add('active');
+                    document.getElementById(`step-${step.dataset.step}`).classList.add('active');
                 });
             });
 
