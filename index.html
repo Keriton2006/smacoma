@@ -157,24 +157,54 @@
             gap: 2rem;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary-blue);
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            touch-action: manipulation;
-        }
+        /* Headmistress Message Word Spacing */
+.word {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-right: 4px; /* Adds spacing between words */
+}
 
-        .nav-links a:hover {
-            background: var(--accent-teal);
-            color: var(--warm-white);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
+/* Ensure consistent line spacing */
+.headmistress-text p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 2;
+    word-spacing: 2px; /* Additional control for word spacing */
+}
 
+/* Navbar Link Hover Effect (Underline) */
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    touch-action: manipulation;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-teal);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-links a:hover {
+    color: var(--accent-teal); /* Maintain color change on hover */
+}
         .nav-toggle {
             display: none;
             font-size: 1.5rem;
@@ -2580,24 +2610,29 @@
             video.currentTime = 0;
         });
 
-        // Headmistress Message Animation
-        const messageText = "At St. Margaret College Makerere, we are committed to nurturing young minds to become leaders of tomorrow. Our holistic approach ensures academic excellence, character development, and spiritual growth. Join us in this journey of empowerment.";
-        const messageElement = document.getElementById('headmistressMessage');
-        const words = messageText.split(' ');
+       // Headmistress Message Animation
+const messageText = "At St. Margaret College Makerere, we are committed to nurturing young minds to become leaders of tomorrow. Our holistic approach ensures academic excellence, character development, and spiritual growth. Join us in this journey of empowerment.";
+const messageElement = document.getElementById('headmistressMessage');
+const words = messageText.split(' ');
 
-        words.forEach((word, index) => {
-            const span = document.createElement('span');
-            span.classList.add('word');
-            span.textContent = word + ' ';
-            messageElement.appendChild(span);
-        });
+words.forEach((word, index) => {
+    const span = document.createElement('span');
+    span.classList.add('word');
+    span.textContent = word;
+    span.style.marginRight = '4px'; // Ensure spacing between words
+    messageElement.appendChild(span);
+    // Add a space after each word except the last one
+    if (index < words.length - 1) {
+        messageElement.appendChild(document.createTextNode(' '));
+    }
+});
 
-        const wordElements = document.querySelectorAll('.word');
-        wordElements.forEach((word, index) => {
-            setTimeout(() => {
-                word.classList.add('visible');
-            }, index * 200);
-        });
+const wordElements = document.querySelectorAll('.word');
+wordElements.forEach((word, index) => {
+    setTimeout(() => {
+        word.classList.add('visible');
+    }, index * 200);
+});
 
         // Counter Animation
         const counters = document.querySelectorAll('.counter-number');
