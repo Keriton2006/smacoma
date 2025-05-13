@@ -5,37 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St Margaret College Makerere - Images</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: rgb(156, 27, 4); /* Red */
+            --secondary: #fffce9; /* Maroon */
+            --accent: #d76d13; /* Dark Orange */
+            --white: #fffce9;
+            --text-gray: #333333; /* Dark Gray */
+            --shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        * {
             margin: 0;
             padding: 0;
-            background-color: #FFFFFF;
-            color: #008080;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
+        body {
+            background-color: var(--secondary);
+            color: var(--text-gray);
+        }
+        /* Navbar */
         nav {
-            background-color: #008080;
+            background-color: var(--primary);
             padding: 1em;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+        .school-name {
+            color: var(--white);
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
         }
         .logo img {
             height: 40px;
-            margin-right: 20px;
         }
-        nav a {
-            color: #FFFFFF;
-            margin: 0 1em;
+        .nav-links {
+            display: flex;
+            gap: 1em;
+        }
+        .nav-links a {
+            color: var(--white);
             text-decoration: none;
             font-weight: bold;
         }
-        nav a:hover {
-            color: #FF7F50;
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.5em;
+            color: var(--white);
+            cursor: pointer;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(156, 27, 4, 0.7), rgba(156, 27, 4, 0.7)), url('https://via.placeholder.com/1200x400?text=Hero+Background');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2em;
+            box-shadow: var(--shadow);
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        /* Slideshow Section */
+        .slideshow-section {
+            padding: 2em;
+            text-align: center;
+        }
+        .slideshow-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 1em;
+            color: var(--text-gray);
         }
         .slideshow-container {
             position: relative;
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 0 auto;
             overflow: hidden;
         }
         .slide {
@@ -45,6 +106,9 @@
         .slide img {
             width: 100%;
             height: auto;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
         }
         .prev, .next {
             cursor: pointer;
@@ -52,11 +116,11 @@
             top: 50%;
             width: auto;
             padding: 16px;
-            color: #FFFFFF;
+            color: var(--white);
             font-weight: bold;
             font-size: 18px;
             transition: 0.6s ease;
-            background-color: rgba(0, 128, 128, 0.5); /* Teal with transparency */
+            background-color: rgba(156, 27, 4, 0.5);
             user-select: none;
         }
         .prev {
@@ -66,39 +130,54 @@
             right: 0;
         }
         .prev:hover, .next:hover {
-            background-color: rgba(0, 128, 128, 0.8); /* Darker teal on hover */
+            background-color: rgba(156, 27, 4, 0.8);
+        }
+        /* Gallery Sections */
+        .gallery-section {
+            padding: 2em;
+            text-align: center;
+        }
+        .gallery-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 1em;
+            color: var(--text-gray);
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 10px;
-            padding: 20px;
-            background-color: #F5F5F5;
+            gap: 1em;
+            padding: 1em;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
         }
         .gallery img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border: 2px solid #008080; /* Teal border */
+            border: 2px solid var(--primary);
+            border-radius: 8px;
             transition: transform 0.3s;
         }
         .gallery img:hover {
             transform: scale(1.05);
-            border-color: #FF7F50; /* Coral border on hover */
+            border-color: var(--accent);
         }
+        /* Footer */
         footer {
-            background-color: #008080; /* Teal background */
-            color: #FFFFFF;
+            background-color: var(--primary);
+            color: var(--white);
             padding: 2em;
             text-align: center;
+            box-shadow: var(--shadow);
         }
         footer a {
-            color: #FFFFFF;
+            color: var(--white);
             margin: 0 1em;
             text-decoration: none;
         }
         footer a:hover {
-            color: #FF7F50; /* Coral for hover */
+            color: var(--accent);
         }
         .footer-section {
             margin: 1em 0;
@@ -109,19 +188,64 @@
         .footer-section input {
             padding: 0.5em;
             margin-right: 0.5em;
-            border: 1px solid #FFFFFF;
-            background-color: #FFFFFF;
-            color: #008080;
+            border: 1px solid var(--white);
+            background-color: var(--white);
+            color: var(--text-gray);
         }
         .footer-section button {
             padding: 0.5em 1em;
-            background-color: #FF7F50; /* Coral button */
+            background-color: var(--accent);
             border: none;
-            color: #FFFFFF;
+            color: var(--white);
             cursor: pointer;
+            border-radius: 5px;
         }
         .footer-section button:hover {
-            background-color: #e06b47; /* Darker coral on hover */
+            background-color: #b05a0f;
+        }
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            .school-name {
+                font-size: 1.2em;
+                margin-bottom: 0.5em;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--primary);
+                padding: 1em 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                margin: 0.5em 0;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero {
+                height: 300px;
+            }
+            .hero h1 {
+                font-size: 1.8em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .slideshow-section, .gallery-section {
+                padding: 1em;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .gallery img {
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -130,70 +254,102 @@
         <div class="logo">
             <img src="https://via.placeholder.com/40x40?text=SMACOMA+Logo" alt="SMACOMA Logo">
         </div>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Academics</a>
-        <a href="#">Admissions</a>
-        <a href="#">Gallery</a>
-        <a href="#">Contact</a>
+        <div class="school-name">ST MARGARET COLLEGE MAKERERE</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Academics</a>
+            <a href="#">Admissions</a>
+            <a href="#">Contact</a>
+        </div>
     </nav>
 
-    <div class="slideshow-container">
-        <div class="slide">
-            <img src="PA.jpg" alt="Chess Tournament">
-        </div>
-        <div class="slide">
-            <img src="PA.jpg" alt="Debate Wins">
-        </div>
-        <div class="slide">
-            <img src="PA.jpg" alt="Science Fair">
-        </div>
-        <div class="slide">
-            <img src="PA.jpg" alt="Vocational Center">
-        </div>
-        <div class="slide">
-            <img src="PA.jpg" alt="Arts Center">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+    <div class="hero">
+        <h1>Image Gallery</h1>
+        <p>Explore the vibrant life at SMACOMA through our photo collection</p>
     </div>
 
-    <div class="gallery">
-        <img src="PA.jpg" alt="School Life 1">
-        <img src="PA.jpg" alt="School Life 2">
-        <img src="PA.jpg" alt="School Life 3">
-        <img src="PA.jpg" alt="School Life 4">
-        <img src="PA.jpg" alt="School Life 5">
-        <img src="PA.jpg" alt="School Life 6">
-        <img src="PA.jpg" alt="School Life 7">
-        <img src="PA.jpg" alt="School Life 8">
-        <img src="PA.jpg" alt="School Life 9">
-        <img src="PA.jpg" alt="School Life 10">
-        <img src="PA.jpg" alt="School Life 11">
-        <img src="PA.jpg" alt="School Life 12">
-        <img src="PA.jpg" alt="School Life 13">
-        <img src="PA.jpg" alt="School Life 14">
-        <img src="PA.jpg" alt="School Life 15">
-        <img src="PA.jpg" alt="School Life 16">
-        <img src="PA.jpg" alt="School Life 17">
-        <img src="PA.jpg" alt="School Life 18">
-        <img src="PA.jpg" alt="School Life 19">
-        <img src="PA.jpg" alt="School Life 20">
-        <img src="PA.jpg" alt="School Life 21">
-        <img src="PA.jpg" alt="School Life 22">
-        <img src="PA.jpg" alt="School Life 23">
-        <img src="PA.jpg" alt="School Life 24">
-        <img src="PA.jpg" alt="School Life 25">
-        <img src="PA.jpg" alt="School Life 26">
-        <img src="PA.jpg" alt="School Life 27">
-        <img src="PA.jpg" alt="School Life 28">
-        <img src="PA.jpg" alt="School Life 29">
-        <img src="PA.jpg" alt="School Life 30">
-        <img src="PA.jpg" alt="School Life 31">
-        <img src="PA.jpg" alt="School Life 32">
-        <img src="PA.jpg" alt="School Life 33">
-        <img src="PA.jpg" alt="School Life 34">
-        <img src="PA.jpg" alt="School Life 35">
+    <div class="slideshow-section">
+        <h2>Featured Events</h2>
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="PA.jpg" alt="Chess Tournament">
+            </div>
+            <div class="slide">
+                <img src="PA.jpg" alt="Debate Wins">
+            </div>
+            <div class="slide">
+                <img src="PA.jpg" alt="Science Fair">
+            </div>
+            <div class="slide">
+                <img src="PA.jpg" alt="Vocational Center">
+            </div>
+            <div class="slide">
+                <img src="PA.jpg" alt="Arts Center">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2>Games and Sports</h2>
+        <div class="gallery">
+            <img src="PA.jpg" alt="Sports 1">
+            <img src="PA.jpg" alt="Sports 2">
+            <img src="PA.jpg" alt="Sports 3">
+            <img src="PA.jpg" alt="Sports 4">
+            <img src="PA.jpg" alt="Sports 5">
+            <img src="PA.jpg" alt="Sports 6">
+            <img src="PA.jpg" alt="Sports 7">
+            <img src="PA.jpg" alt="Sports 8">
+            <img src="PA.jpg" alt="Sports 9">
+            <img src="PA.jpg" alt="Sports 10">
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2>Campus Lifestyle</h2>
+        <div class="gallery">
+            <img src="PA.jpg" alt="Lifestyle 1">
+            <img src="PA.jpg" alt="Lifestyle 2">
+            <img src="PA.jpg" alt="Lifestyle 3">
+            <img src="PA.jpg" alt="Lifestyle 4">
+            <img src="PA.jpg" alt="Lifestyle 5">
+            <img src="PA.jpg" alt="Lifestyle 6">
+            <img src="PA.jpg" alt="Lifestyle 7">
+            <img src="PA.jpg" alt="Lifestyle 8">
+            <img src="PA.jpg" alt="Lifestyle 9">
+            <img src="PA.jpg" alt="Lifestyle 10">
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2>Leadership</h2>
+        <div class="gallery">
+            <img src="PA.jpg" alt="Leadership 1">
+            <img src="PA.jpg" alt="Leadership 2">
+            <img src="PA.jpg" alt="Leadership 3">
+            <img src="PA.jpg" alt="Leadership 4">
+            <img src="PA.jpg" alt="Leadership 5">
+            <img src="PA.jpg" alt="Leadership 6">
+            <img src="PA.jpg" alt="Leadership 7">
+            <img src="PA.jpg" alt="Leadership 8">
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2>Music, Dance, and Drama (MDD)</h2>
+        <div class="gallery">
+            <img src="PA.jpg" alt="MDD 1">
+            <img src="PA.jpg" alt="MDD 2">
+            <img src="PA.jpg" alt="MDD 3">
+            <img src="PA.jpg" alt="MDD 4">
+            <img src="PA.jpg" alt="MDD 5">
+            <img src="PA.jpg" alt="MDD 6">
+            <img src="PA.jpg" alt="MDD 7">
+        </div>
     </div>
 
     <footer>
@@ -213,7 +369,6 @@
                 <a href="#">About</a>
                 <a href="#">Academics</a>
                 <a href="#">Admissions</a>
-                <a href="#">Gallery</a>
                 <a href="#">Contact</a>
             </p>
         </div>
@@ -253,6 +408,12 @@
 
         // Auto-slide every 3 seconds
         setInterval(() => plusSlides(1), 3000);
+
+        // Hamburger menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
