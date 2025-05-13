@@ -25,7 +25,8 @@
         }
         /* Navbar */
         nav {
-            background-color: var(--primary);
+            background: url('https://via.placeholder.com/1200x100?text=ST+MARGARET') no-repeat center center;
+            background-size: cover;
             padding: 1em;
             display: flex;
             justify-content: space-between;
@@ -39,6 +40,7 @@
             font-weight: bold;
             text-align: center;
             flex-grow: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .logo img {
             height: 40px;
@@ -83,54 +85,42 @@
         .hero p {
             font-size: 1.2em;
         }
-        /* Slideshow Section */
-        .slideshow-section {
+        /* Video Section */
+        .video-section {
             padding: 2em;
             text-align: center;
         }
-        .slideshow-section h2 {
+        .video-section h2 {
             font-size: 1.8em;
             margin-bottom: 1em;
             color: var(--text-gray);
         }
-        .slideshow-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        .slide {
-            display: none;
-            width: 100%;
-        }
-        .slide img {
-            width: 100%;
-            height: auto;
-            border: 2px solid var(--primary);
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1em;
+            padding: 1em;
+            background-color: var(--white);
             border-radius: 8px;
             box-shadow: var(--shadow);
         }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            background-color: rgba(156, 27, 4, 0.5);
-            user-select: none;
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .prev {
-            left: 0;
+        .video-item h3 {
+            font-size: 1.1em;
+            margin-top: 0.5em;
+            color: var(--text-gray);
         }
-        .next {
-            right: 0;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(156, 27, 4, 0.8);
+        video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            background-color: #000;
         }
         /* Gallery Sections */
         .gallery-section {
@@ -237,11 +227,14 @@
             .hero p {
                 font-size: 1em;
             }
-            .slideshow-section, .gallery-section {
+            .video-section, .gallery-section {
                 padding: 1em;
             }
-            .gallery {
+            .video-container, .gallery {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            video {
+                height: 150px;
             }
             .gallery img {
                 height: 150px;
@@ -268,29 +261,6 @@
     <div class="hero">
         <h1>Image Gallery</h1>
         <p>Explore the vibrant life at SMACOMA through our photo collection</p>
-    </div>
-
-    <div class="slideshow-section">
-        <h2>Featured Events</h2>
-        <div class="slideshow-container">
-            <div class="slide">
-                <img src="PA.jpg" alt="Chess Tournament">
-            </div>
-            <div class="slide">
-                <img src="PA.jpg" alt="Debate Wins">
-            </div>
-            <div class="slide">
-                <img src="PA.jpg" alt="Science Fair">
-            </div>
-            <div class="slide">
-                <img src="PA.jpg" alt="Vocational Center">
-            </div>
-            <div class="slide">
-                <img src="PA.jpg" alt="Arts Center">
-            </div>
-            <a class="prev" onclick="plusSlides(-1)">❮</a>
-            <a class="next" onclick="plusSlides(1)">❯</a>
-        </div>
     </div>
 
     <div class="gallery-section">
@@ -322,6 +292,52 @@
             <img src="PA.jpg" alt="Lifestyle 8">
             <img src="PA.jpg" alt="Lifestyle 9">
             <img src="PA.jpg" alt="Lifestyle 10">
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Video Highlights</h2>
+        <div class="video-container">
+            <div class="video-item">
+                <video controls><source src="placeholder1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>UCE Performance Thanksgiving</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>UCE Performance Thanksgiving</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder3.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>UACE Thanksgiving</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder4.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Interhouse Competitions</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder5.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Class Debates</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder6.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Class Debates</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder7.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Class Debates</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder8.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Campus Lifestyle</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder9.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Campus Lifestyle</h3>
+            </div>
+            <div class="video-item">
+                <video controls><source src="placeholder10.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <h3>Campus Lifestyle</h3>
+            </div>
         </div>
     </div>
 
@@ -388,27 +404,6 @@
     </footer>
 
     <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        // Auto-slide every 3 seconds
-        setInterval(() => plusSlides(1), 3000);
-
         // Hamburger menu toggle
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
