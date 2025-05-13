@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Margaret College Makerere - Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #008080;
+        }
+        nav {
+            background-color: #008080;
+            padding: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 20px;
+        }
+        nav a {
+            color: #FFFFFF;
+            margin: 0 1em;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #FF7F50;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            background-color: rgba(0, 128, 128, 0.5); /* Teal with transparency */
+            user-select: none;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 128, 128, 0.8); /* Darker teal on hover */
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            background-color: #F5F5F5;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #008080; /* Teal border */
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            border-color: #FF7F50; /* Coral border on hover */
+        }
+        footer {
+            background-color: #008080; /* Teal background */
+            color: #FFFFFF;
+            padding: 2em;
+            text-align: center;
+        }
+        footer a {
+            color: #FFFFFF;
+            margin: 0 1em;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #FF7F50; /* Coral for hover */
+        }
+        .footer-section {
+            margin: 1em 0;
+        }
+        .footer-section p {
+            margin: 0.5em 0;
+        }
+        .footer-section input {
+            padding: 0.5em;
+            margin-right: 0.5em;
+            border: 1px solid #FFFFFF;
+            background-color: #FFFFFF;
+            color: #008080;
+        }
+        .footer-section button {
+            padding: 0.5em 1em;
+            background-color: #FF7F50; /* Coral button */
+            border: none;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .footer-section button:hover {
+            background-color: #e06b47; /* Darker coral on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://via.placeholder.com/40x40?text=SMACOMA+Logo" alt="SMACOMA Logo">
+        </div>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Academics</a>
+        <a href="#">Admissions</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="slideshow-container">
+        <div class="slide">
+            <img src="PA.jpg" alt="Chess Tournament">
+        </div>
+        <div class="slide">
+            <img src="PA.jpg" alt="Debate Wins">
+        </div>
+        <div class="slide">
+            <img src="PA.jpg" alt="Science Fair">
+        </div>
+        <div class="slide">
+            <img src="PA.jpg" alt="Vocational Center">
+        </div>
+        <div class="slide">
+            <img src="PA.jpg" alt="Arts Center">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <div class="gallery">
+        <img src="PA.jpg" alt="School Life 1">
+        <img src="PA.jpg" alt="School Life 2">
+        <img src="PA.jpg" alt="School Life 3">
+        <img src="PA.jpg" alt="School Life 4">
+        <img src="PA.jpg" alt="School Life 5">
+        <img src="PA.jpg" alt="School Life 6">
+        <img src="PA.jpg" alt="School Life 7">
+        <img src="PA.jpg" alt="School Life 8">
+        <img src="PA.jpg" alt="School Life 9">
+        <img src="PA.jpg" alt="School Life 10">
+        <img src="PA.jpg" alt="School Life 11">
+        <img src="PA.jpg" alt="School Life 12">
+        <img src="PA.jpg" alt="School Life 13">
+        <img src="PA.jpg" alt="School Life 14">
+        <img src="PA.jpg" alt="School Life 15">
+        <img src="PA.jpg" alt="School Life 16">
+        <img src="PA.jpg" alt="School Life 17">
+        <img src="PA.jpg" alt="School Life 18">
+        <img src="PA.jpg" alt="School Life 19">
+        <img src="PA.jpg" alt="School Life 20">
+        <img src="PA.jpg" alt="School Life 21">
+        <img src="PA.jpg" alt="School Life 22">
+        <img src="PA.jpg" alt="School Life 23">
+        <img src="PA.jpg" alt="School Life 24">
+        <img src="PA.jpg" alt="School Life 25">
+        <img src="PA.jpg" alt="School Life 26">
+        <img src="PA.jpg" alt="School Life 27">
+        <img src="PA.jpg" alt="School Life 28">
+        <img src="PA.jpg" alt="School Life 29">
+        <img src="PA.jpg" alt="School Life 30">
+        <img src="PA.jpg" alt="School Life 31">
+        <img src="PA.jpg" alt="School Life 32">
+        <img src="PA.jpg" alt="School Life 33">
+        <img src="PA.jpg" alt="School Life 34">
+        <img src="PA.jpg" alt="School Life 35">
+    </div>
+
+    <footer>
+        <div class="footer-section">
+            <p>St. Margaret College Makerere, empowering future leaders since 2003.</p>
+            <p>
+                <a href="#"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook"></a>
+                <a href="#"><img src="https://via.placeholder.com/24x24?text=TW" alt="Twitter"></a>
+                <a href="#"><img src="https://via.placeholder.com/24x24?text=IG" alt="Instagram"></a>
+                <a href="#"><img src="https://via.placeholder.com/24x24?text=YT" alt="YouTube"></a>
+            </p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <p>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Academics</a>
+                <a href="#">Admissions</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </p>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>P.O. Box 1234, Kampala, Uganda</p>
+            <p>+256 123 456 789</p>
+            <p>info@smacoma.ac.ug</p>
+        </div>
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Stay updated with our latest news and events.</p>
+            <input type="email" placeholder="Your email">
+            <button>Subscribe</button>
+        </div>
+        <p>© 2025 St. Margaret College Makerere. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        // Auto-slide every 3 seconds
+        setInterval(() => plusSlides(1), 3000);
+    </script>
+</body>
+</html>
