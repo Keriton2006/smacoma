@@ -42,57 +42,6 @@
             background: white;
         }
 
-        /* Background Shapes */
-        .background-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: floatUp infinite linear;
-        }
-
-        .circle { border-radius: 50%; background: var(--accent-teal); }
-        .rectangle { background: var(--primary-blue); }
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-bottom: 40px solid var(--accent-teal);
-            background: none;
-        }
-
-        .shape:nth-child(1) { width: 50px; height: 50px; top: 90%; left: 5%; animation-duration: 20s; }
-        .shape:nth-child(2) { width: 80px; height: 80px; top: 85%; left: 15%; animation-duration: 25s; }
-        .shape:nth-child(3) { width: 60px; height: 30px; top: 95%; left: 25%; animation-duration: 18s; }
-        .shape:nth-child(4) { width: 40px; height: 40px; top: 80%; left: 35%; animation-duration: 22s; }
-        .shape:nth-child(5) { width: 70px; height: 20px; top: 90%; left: 45%; animation-duration: 15s; }
-        .shape:nth-child(6) { width: 30px; height: 30px; top: 85%; left: 55%; animation-duration: 28s; }
-        .shape:nth-child(7) { width: 60px; height: 60px; top: 95%; left: 65%; animation-duration: 19s; }
-        .shape:nth-child(8) { width: 45px; height: 45px; top: 80%; left: 75%; animation-duration: 23s; }
-        .shape:nth-child(9) { width: 55px; height: 25px; top: 90%; left: 85%; animation-duration: 17s; }
-        .shape:nth-child(10) { width: 35px; height: 35px; top: 85%; left: 10%; animation-duration: 21s; }
-        .shape:nth-child(11) { width: 25px; height: 25px; top: 95%; left: 20%; animation-duration: 26s; }
-        .shape:nth-child(12) { width: 65px; height: 35px; top: 80%; left: 30%; animation-duration: 16s; }
-        .shape:nth-child(13) { top: 90%; left: 40%; animation-duration: 24s; }
-        .shape:nth-child(14) { width: 50px; height: 50px; top: 85%; left: 50%; animation-duration: 20s; }
-        .shape:nth-child(15) { width: 40px; height: 20px; top: 95%; left: 60%; animation-duration: 27s; }
-        .shape:nth-child(16) { width: 55px; height: 55px; top: 80%; left: 70%; animation-duration: 18s; }
-        .shape:nth-child(17) { width: 30px; height: 30px; top: 90%; left: 80%; animation-duration: 22s; }
-        .shape:nth-child(18) { top: 85%; left: 90%; animation-duration: 25s; }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0); opacity: 0.1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-        }
 
         /* Navbar */
         .navbar {
@@ -585,7 +534,7 @@
             max-width: 1400px;
             margin: 4rem auto;
             padding: 2rem;
-            background: var(--warm-white);
+            background: white;
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
@@ -657,8 +606,8 @@
             margin: 4rem auto;
             padding: 2rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            color: var(--warm-white);
+            background: transparent;
+            color: maroon;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -1156,38 +1105,6 @@
             z-index: 0;
             overflow: hidden;
         }
-
-        .footer-object {
-            position: absolute;
-            opacity: 0.3;
-            animation: floatAcross 15s linear infinite;
-        }
-
-        .pen {
-            width: 40px;
-            height: 40px;
-            background: url('https://img.icons8.com/ios-filled/40/FFFFFF/pen.png') no-repeat center;
-            background-size: contain;
-        }
-
-        .book {
-            width: 50px;
-            height: 50px;
-            background: url('https://img.icons8.com/ios-filled/50/FFFFFF/book.png') no-repeat center;
-            background-size: contain;
-        }
-
-        .footer-object:nth-child(1) { top: 20%; left: -50px; animation-duration: 15s; }
-        .footer-object:nth-child(2) { top: 40%; left: -50px; animation-duration: 18s; }
-        .footer-object:nth-child(3) { top: 60%; left: -50px; animation-duration: 20s; }
-        .footer-object:nth-child(4) { top: 30%; left: -50px; animation-duration: 22s; }
-        .footer-object:nth-child(5) { top: 50%; left: -50px; animation-duration: 17s; }
-
-        @keyframes floatAcross {
-            0% { transform: translateX(-50px); opacity: 0.3; }
-            100% { transform: translateX(100vw); opacity: 0.3; }
-        }
-
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -2098,27 +2015,6 @@
     </style>
 </head>
 <body>
-    <div class="background-shapes">
-        <div class="shape circle"></div>
-        <div class="shape circle"></div>
-        <div class="shape rectangle"></div>
-        <div class="shape circle"></div>
-        <div class="shape rectangle"></div>
-        <div class="shape circle"></div>
-        <div class="shape circle"></div>
-        <div class="shape circle"></div>
-        <div class="shape rectangle"></div>
-        <div class="shape circle"></div>
-        <div class="shape circle"></div>
-        <div class="shape rectangle"></div>
-        <div class="shape triangle"></div>
-        <div class="shape circle"></div>
-        <div class="shape rectangle"></div>
-        <div class="shape circle"></div>
-        <div class="shape circle"></div>
-        <div class="shape triangle"></div>
-    </div>
-
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
